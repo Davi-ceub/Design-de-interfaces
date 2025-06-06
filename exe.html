@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu Virtual de Arte & História</title>
+    <style>
+        /* === CONFIGURAÇÕES GERAIS E TEMA === */
+        :root {
+            --cor-fundo: #1a1a1a; /* Fundo escuro */
+            --cor-fundo-secao: #242424; /* Fundo das seções um pouco mais claro */
+            --cor-texto: #f0f0f0; /* Texto claro */
+            --cor-destaque: #d4af37; /* Dourado para detalhes */
+            --fonte-titulos: 'Georgia', serif;
+            --fonte-corpo: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fonte-titulos);
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        /* === CABEÇALHO === */
+        .cabecalho {
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--fonte-titulos);
+            font-size: 1.8rem;
+            color: var(--cor-destaque);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* === SEÇÃO DE ABERTURA (HERO) === */
+        #inicio {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1531578183217-005e2691a325?q=80&w=2070') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        #inicio h1 {
+            font-size: 3.5rem;
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            border: 2px solid var(--cor-destaque);
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--cor-destaque);
+            color: var(--cor-fundo);
+        }
+
+        /* === GALERIA DE ARTE === */
+        #galeria {
+            background-color: var(--cor-fundo-secao);
+        }
+        
+        #galeria h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .arte-item {
+            background-color: var(--cor-fundo);
+            border: 1px solid #444;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .arte-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .arte-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .arte-item figcaption {
+            padding: 15px;
+            font-family: var(--fonte-titulos);
+        }
+        
+        .arte-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .arte-item p {
+            margin: 0;
+            font-family: var(--fonte-corpo);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Classe para esconder a descrição detalhada */
+        .arte-descricao {
+            display: none;
+        }
+
+        /* === MODAL (POP-UP DA IMAGEM) === */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95);
+        }
+
+        .modal-conteudo {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80vh;
+        }
+
+        #modal-legenda {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 20px 0;
+        }
+        
+        #modal-legenda h3, #modal-legenda p {
+            color: var(--cor-destaque);
+            margin: 5px 0;
+        }
+        
+        #modal-legenda .descricao {
+            color: #ccc;
+            font-family: var(--fonte-corpo);
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        /* === RODAPÉ === */
+        .rodape {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* === RESPONSIVIDADE === */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-menu {
+                margin-top: 1rem;
+                padding-left: 0;
+            }
+            #inicio h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="container navbar">
+            <a href="#inicio" class="logo">Museu Virtual</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="inicio">
+            <div class="container">
+                <h1>Explore a Arte Sem Sair de Casa</h1>
+                <p>Uma coleção curada de obras-primas da história da arte, acessível a qualquer momento.</p>
+                <a href="#galeria" class="cta-button">Comece a Explorar</a>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <div class="container">
+                <h2>Nossas Exposições</h2>
+                <div class="galeria-grid">
+                    
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="Mona Lisa">
+                        <figcaption>
+                            <h3>Mona Lisa</h3>
+                            <p>Leonardo da Vinci, c. 1503–1506</p>
+                            <div class="arte-descricao">A obra de arte mais famosa do mundo, conhecida por seu sorriso enigmático. Atualmente no Museu do Louvre, em Paris.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="A Noite Estrelada">
+                        <figcaption>
+                            <h3>A Noite Estrelada</h3>
+                            <p>Vincent van Gogh, 1889</p>
+                            <div class="arte-descricao">Uma das obras mais icônicas de Van Gogh, pintada durante sua estadia no asilo em Saint-Rémy-de-Provence.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src=https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg alt="A Criação de Adão">
+                            <h3>A Criação de Adão</h3>
+                            <p>Michelangelo, c. 1512</p>
+                            <div class="arte-descricao">Um detalhe do teto da Capela Sistina, no Vaticano, esta obra é um dos afrescos mais famosos e replicados da história da arte.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://static.todamateria.com.br/upload/ap/er/a-persistencia-da-memoria-og.jpg?class=ogImageWide" alt="A Persistência da Memória">
+                        <figcaption>
+                            <h3>A Persistência da Memória</h3>
+                            <p>Salvador Dalí, 1931</p>
+                            <div class="arte-descricao">Famosa pintura surrealista que introduz a imagem dos relógios moles, explorando a relatividade do tempo e do espaço.</div>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/pt/b/bd/Abaporu.jpg" alt="Abaporu">
+                        <figcaption>
+                            <h3>Abaporu</h3>
+                            <p>Tarsila do Amaral, 1928</p>
+                             <div class="arte-descricao">Um marco do modernismo brasileiro e a obra mais importante do período antropofágico. O nome significa "homem que come gente" em tupi-guarani.</div>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="arte-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmW3V3GCkiG4CemhuA_4A7Hv-gsBInSfWQdw&s" alt="Moça com Brinco de Pérola">
+                        <figcaption>
+                            <h3>Moça com Brinco de Pérola</h3>
+                            <p>Johannes Vermeer, c. 1665</p>
+                            <div class="arte-descricao">Uma obra-prima do Século de Ouro dos Países Baixos, frequentemente chamada de "a Mona Lisa do Norte".</div>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="arte-item">
+                        <img src="https://static.dw.com/image/58035051_1006.webp" alt="A Ronda Noturna">
+                        <figcaption>
+                            <h3>A Ronda Noturna</h3>
+                            <p>Rembrandt van Rijn, 1642</p>
+                             <div class="arte-descricao">Famosa por seu tamanho colossal e pelo uso dramático do claro-escuro (chiaroscuro), a obra retrata uma companhia da guarda cívica de Amsterdã.</div>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/1280px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg" alt="Impressão, nascer do sol">
+                        <figcaption>
+                            <h3>Impressão, nascer do sol</h3>
+                            <p>Claude Monet, 1872</p>
+                            <div class="arte-descricao">A pintura que deu nome ao movimento impressionista. Foi exibida em 1874 na primeira exposição impressionista e criticada pelo seu estilo "inacabado".</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src=https://static.todamateria.com.br/upload/og/ri/ogrito-cke.jpg alt="O Grito">
+                        <figcaption>
+                            <h3>O Grito</h3>
+                            <p>Edvard Munch, 1893</p>
+                            <div class="arte-descricao">Uma imagem icônica da arte moderna, que representa a ansiedade do ser humano. Munch criou várias versões desta obra.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1280px-Tsunami_by_hokusai_19th_century.jpg" alt="A Grande Onda de Kanagawa">
+                        <figcaption>
+                            <h3>A Grande Onda de Kanagawa</h3>
+                            <p>Katsushika Hokusai, c. 1831</p>
+                            <div class="arte-descricao">A mais famosa gravura ukiyo-e, que mostra uma onda monumental ameaçando barcos perto da antiga província de Kanagawa, com o Monte Fuji ao fundo.</div>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="arte-item">
+                        <img src="https://istoe.com.br/wp-content/uploads/2021/05/ceia-2-1280x720-1.jpg" alt="A Ultima Ceia">
+                        <figcaption>
+                            <h3>A Ultima Ceia</h3>
+                            <p>Leonardo da Vinci, c. 1498</p>
+                            <div class="arte-descricao">A Ultima Ceia, conhecida como a "Ceia de Leonardo", foi uma pintura realizada pelo artista italiano Leonardo da Vinci em 1498.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/960px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="A Nascita di Venere">
+                        <figcaption>
+                            <h3>A Nascita di Venere</h3>
+                            <p>Sandro Botticelli, 1485</p>
+                            <div class="arte-descricao">A Nascita di Venere, conhecida como a "Nascita di Venere" foi uma pintura realizada pelo artista italiano Sandro Botticelli em 1485.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2023/03/a-liberdade-guiando-o-povo-_-eugene-delacroix-e1685387302659.jpg?crop=1&resize=1212,909" alt="A Liberdade">
+                        <figcaption>
+                            <h3>A Liberdade</h3>
+                            <p>Eugene Delacroix, 1830</p>
+                            <div class="arte-descricao">A Liberdade, conhecida como a "Liberdade" foi uma pintura realizada pelo artista francez Eugene Delacroix em 1830.</div>
+                        </figcaption>
+                        </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://super.abril.com.br/wp-content/uploads/2018/07/5202adfd865be2124b00009djacques_louis_david_-_bonaparte_franchissant_le_grand_saint-bernard-_20_mai_1800_-_google_art_project.jpeg?quality=70&w=720&crop=1" alt="Le Grand Saint-Bernard">
+                        <figcaption>
+                            <h3>Le Grand Saint-Bernard</h3>
+                            <p>Jacques-Louis David, 1800</p>
+                            <div class="arte-descricao">Le Grand Saint-Bernard, conhecido como a "Grand Saint-Bernard" foi uma pintura realizada pelo artista francez Jacques-Louis David em 1800.</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="arte-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Washington_Crossing_the_Delaware_by_Emanuel_Leutze%2C_MMA-NYC%2C_1851.jpg/1200px-Washington_Crossing_the_Delaware_by_Emanuel_Leutze%2C_MMA-NYC%2C_1851.jpg" alt="Washington Crossing the Delaware">
+                        <figcaption>
+                            <h3>Washington Crossing the Delaware</h3>
+                            <p>Emanuel Leutze, 1851</p>
+                            <div  class="arte-descricao">Washington Crossing the Delaware, conhecido como a "Washington Crossing the Delaware" foi uma pintura realizada pelo artista americano Emanuel Leutze em 1851.</div>
+                        </figcaption>
+                    </figure>
+            </div>
+        </section>
+        
+        <section id="sobre">
+            <div class="container">
+                <h2>Sobre o Museu</h2>
+                <p>O Museu Virtual de Arte & História foi criado com a missão de democratizar o acesso à cultura e à arte. Acreditamos que todos devem ter a oportunidade de experienciar a beleza e o conhecimento que as grandes obras de arte proporcionam, independentemente de sua localização geográfica.</p>
+                <p>Nossa coleção digital é cuidadosamente selecionada e está em constante crescimento, trazendo novas exposições e artistas para você explorar no conforto da sua casa. Junte-se a nós nesta jornada pela história da criatividade humana.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="rodape">
+        <div class="container">
+            <p>&copy; 2025 Museu Virtual de Arte & História. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="meuModal" class="modal">
+        <span class="fechar-modal">&times;</span>
+        <img class="modal-conteudo" id="modal-img">
+        <div id="modal-legenda"></div>
+    </div>
+
+    <script>
+        // --- SCRIPT PARA O MODAL DA GALERIA ---
+
+        // Pega os elementos do DOM
+        var modal = document.getElementById("meuModal");
+        var modalImg = document.getElementById("modal-img");
+        var legenda = document.getElementById("modal-legenda");
+        var fechar = document.getElementsByClassName("fechar-modal")[0];
+
+        // Pega todos os itens da galeria e adiciona um evento de clique
+        document.querySelectorAll('.arte-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Pega as informações do item clicado
+                const img = this.querySelector('img');
+                const titulo = this.querySelector('h3').innerText;
+                const autor = this.querySelector('p').innerText;
+                const descricao = this.querySelector('.arte-descricao').innerHTML;
+                
+                // Abre o modal e insere as informações
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                legenda.innerHTML = `<h3>${titulo}</h3><p>${autor}</p><p class="descricao">${descricao}</p>`;
+            });
+        });
+
+        // Quando o usuário clica no (x), fecha o modal
+        fechar.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clica fora da imagem, fecha o modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
