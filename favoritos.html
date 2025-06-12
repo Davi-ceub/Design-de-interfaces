@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Personagens Favoritos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .character-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            margin: 15px;
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .character-info {
+            padding: 20px;
+        }
+
+        .character-info h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        .character-info p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meus Personagens Favoritos</h1>
+    </header>
+    <main>
+        <div class="character-card">
+            <img src="https://wallpapers.com/images/hd/black-and-white-kratos-of-god-of-war-rt24ku56xosrzavv.jpg" alt="Kratos">
+            <div class="character-info">
+                <h2>Kratos</h2>
+                <p>O Fantasma de Esparta, um guerreiro espartano que se tornou o Deus da Guerra e busca vingança contra os deuses do Olimpo.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp6699691.png" alt="Joel Miller">
+            <div class="character-info">
+                <h2>Joel Miller</h2>
+                <p>Um sobrevivente endurecido em um mundo pós-apocalíptico que é encarregado de contrabandear uma jovem chamada Ellie através dos Estados Unidos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/677579.jpg" alt="Arthur Morgan">
+            <div class="character-info">
+                <h2>Arthur Morgan</h2>
+                <p>Um fora-da-lei e membro da gangue Van der Linde no final do Velho Oeste americano, lutando para sobreviver em um mundo em rápida mudança.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp4639208.jpg" alt="Optimus Prime">
+            <div class="character-info">
+                <h2>Optimus Prime</h2>
+                <p>O nobre líder dos Autobots, que se transforma em um caminhão e luta pela liberdade de todos os seres sencientes.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp7019652.jpg" alt="Ultron">
+            <div class="character-info">
+                <h2>Ultron</h2>
+                <p>Uma inteligência artificial genocida e senciente criada por Hank Pym, que busca aniquilar toda a vida na Terra.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp11415938.jpg" alt="Infinity Ultron">
+            <div class="character-info">
+                <h2>Infinity Ultron</h2>
+                <p>Uma versão de Ultron que coletou com sucesso todas as Joias do Infinito, tornando-se uma ameaça multiversal.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp8970747.jpg" alt="Zoom (Hunter Zolomon)">
+            <div class="character-info">
+                <h2>Zoom (Hunter Zolomon)</h2>
+                <p>Um velocista demoníaco da Terra-2 que é obcecado em ser o mais rápido de todos os velocistas.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperbat.com/img/634415-ghost-rider-wallpaper.jpg" alt="Motoqueiro Fantasma">
+            <div class="character-info">
+                <h2>Motoqueiro Fantasma</h2>
+                <p>Um demônio ligado a um hospedeiro humano, que busca vingança contra os pecadores e os arrasta para o inferno.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/wallpapers/bthumb/the-moon-knight-4k-2023-u7.jpg" alt="Cavaleiro da Lua">
+            <div class="character-info">
+                <h2>Cavaleiro da Lua</h2>
+                <p>Um mercenário com transtorno dissociativo de identidade que se torna o avatar do deus egípcio da lua, Khonshu.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/iron-man-4k-avengers-endgame-ih-1080x1920.jpg" alt="Homem de Ferro">
+            <div class="character-info">
+                <h2>Homem de Ferro</h2>
+                <p>Um gênio bilionário, playboy e filantropo que constrói uma armadura para se tornar o super-herói blindado, o Homem de Ferro.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://w0.peakpx.com/wallpaper/100/795/HD-wallpaper-darth-vader-star-wars-vader.jpg" alt="Darth Vader">
+            <div class="character-info">
+                <h2>Darth Vader</h2>
+                <p>Um Lorde das Trevas dos Sith e o executor do Império Galáctico, temido em toda a galáxia.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/darth-revan-star-wars-4k-1a-1280x2120.jpg" alt="Darth Revan">
+            <div class="character-info">
+                <h2>Darth Revan</h2>
+                <p>Um antigo Cavaleiro Jedi que caiu para o lado sombrio durante as Guerras Mandalorianas e se tornou um poderoso Lorde Sith.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://theforceuniverse.com/wp-content/uploads/2023/03/darth_traya_guide-1024x614.png" alt="Darth Traya">
+            <div class="character-info">
+                <h2>Darth Traya</h2>
+                <p>Uma Lorde das Trevas dos Sith e ex-Mestra Jedi que busca destruir a Força.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/2064997.jpg" alt="Darth Nihilus">
+            <div class="character-info">
+                <h2>Darth Nihilus</h2>
+                <p>Um Lorde das Trevas dos Sith que se tornou uma ferida na Força, consumindo a energia vital de planetas inteiros.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/1386936.jpg" alt="Starkiller">
+            <div class="character-info">
+                <h2>Starkiller</h2>
+                <p>O aprendiz secreto de Darth Vader, com poderes da Força incrivelmente brutos e destrutivos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/obi-wan-kenobi-star-wars-character-4k-os-2560x1080.jpg" alt="Obi Wan Kenobi">
+            <div class="character-info">
+                <h2>Obi-Wan Kenobi</h2>
+                <p>Um lendário Mestre Jedi que treinou Anakin Skywalker e mais tarde se tornou um mentor de seu filho, Luke.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/jcjgyhw.jpg" alt="Indiana Jones">
+            <div class="character-info">
+                <h2>Indiana Jones</h2>
+                <p>Um arqueólogo e aventureiro que viaja pelo mundo em busca de artefatos raros e históricos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/1268709.jpg" alt="Sherlock Holmes">
+            <div class="character-info">
+                <h2>Sherlock Holmes</h2>
+                <p>Um detetive consultor brilhante com habilidades de observação e dedução incomparáveis.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/9255455.jpg" alt="Hercule Poirot">
+            <div class="character-info">
+                <h2>Hercule Poirot</h2>
+                <p>Um famoso detetive belga conhecido por sua inteligência, bigode e o uso de suas "pequenas células cinzentas".</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/806868.jpg" alt="Sauron">
+            <div class="character-info">
+                <h2>Sauron</h2>
+                <p>O Lorde das Trevas de Mordor e o criador do Um Anel, que busca governar toda a Terra-média.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://media.moddb.com/images/groups/1/40/39468/DtuSAaMXQAAJfsb.1.jpeg" alt="Annatar">
+            <div class="character-info">
+                <h2>Annatar</h2>
+                <p>A bela forma que Sauron assumiu para enganar os Elfos e forjar os Anéis do Poder.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aafb8ef5-d771-42cc-8d37-c40485b48296/dfqs1ci-f396720b-f486-4b20-bb6c-38f6880d2d82.jpg/v1/fill/w_905,h_883,q_70,strp/sauron___halbrand_by_marimosalad_dfqs1ci-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTc1MiIsInBhdGgiOiJcL2ZcL2FhZmI4ZWY1LWQ3NzEtNDJjYy04ZDM3LWM0MDQ4NWI0ODI5NlwvZGZxczFjaS1mMzk2NzIwYi1mNDg2LTRiMjAtYmI2Yy0zOGY2ODgwZDJkODIuanBnIiwid2lkdGgiOiI8PTE3OTUifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.hY64JUOrlUNZkvT-jE8R0Pafcu8kZ0aUa1RKwfK1Ek4" alt="Halbrand">
+            <div class="character-info">
+                <h2>Halbrand</h2>
+                <p>Um homem misterioso das Terras do Sul que se revela ser o próprio Sauron.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://cdn.donmai.us/original/8d/3b/8d3b1c2ec0ac5a9b7a512af2bf0b9fec.jpg" alt="Os 9 Nazguls">
+            <div class="character-info">
+                <h2>Os 9 Nazgûl</h2>
+                <p>Os nove reis humanos que foram corrompidos pelos Anéis do Poder e se tornaram os servos mais terríveis de Sauron.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp8462699.jpg" alt="Batman">
+            <div class="character-info">
+                <h2>Batman</h2>
+                <p>Um vigilante que jurou proteger Gotham City do crime após o assassinato de seus pais.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallup.net/wp-content/uploads/2016/01/185185-Assassins_Creed-Ezio_Auditore_da_Firenze.jpg" alt="Ezio Auditore">
+            <div class="character-info">
+                <h2>Ezio Auditore</h2>
+                <p>Um nobre italiano que se torna um Mestre Assassino para buscar vingança pela traição de sua família.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://i.pinimg.com/originals/91/8c/4d/918c4d7a18e6b7b52ee79ffe7c5587be.jpg" alt="Bayek de Siwa">
+            <div class="character-info">
+                <h2>Bayek de Siwa</h2>
+                <p>O último Medjay do Egito Antigo e um dos fundadores da Irmandade dos Assassinos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/3021513.jpg" alt="Connor Kenway">
+            <div class="character-info">
+                <h2>Connor Kenway</h2>
+                <p>Um Assassino meio-britânico e meio-moicano que luta pela liberdade de seu povo durante a Revolução Americana.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://pixelz.cc/wp-content/uploads/edd/2018/08/shadow-of-the-tomb-raider-lara-croft-e3-uhd-4k-wallpaper.jpg" alt="Lara Croft">
+            <div class="character-info">
+                <h2>Lara Croft</h2>
+                <p>Uma arqueóloga, caçadora de tesouros e aventureira britânica que explora tumbas e ruínas antigas em todo o mundo.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp10117832.jpg" alt="Greg Heffley">
+            <div class="character-info">
+                <h2>Greg Heffley</h2>
+                <p>Um estudante do ensino fundamental que documenta suas lutas e triunfos diários em seu diário.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp4069118.jpg" alt="Ethan Hunt">
+            <div class="character-info">
+                <h2>Ethan Hunt</h2>
+                <p>Um agente de campo sênior da Impossible Missions Force (IMF) que lidera uma equipe de espionagem de elite.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp1867294.jpg" alt="John Wick">
+            <div class="character-info">
+                <h2>John Wick</h2>
+                <p>Um lendário assassino de aluguel que é forçado a voltar à ativa após a morte de sua esposa e o roubo de seu carro.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/doctor-fate-art-4k-6m-2560x1440.jpg" alt="Doctor Fate">
+            <div class="character-info">
+                <h2>Doctor Fate</h2>
+                <p>Um poderoso feiticeiro que é o agente dos Senhores da Ordem e usa o Elmo do Destino.</p>
+            </div>
+        </div>
+          <div class="character-card">
+            <img src="https://rare-gallery.com/thumbs/4593256-video-games-middle-earth-shadow-of-mordor-talion.jpg" alt="Talion">
+            <div class="character-info">
+                <h2>Talion</h2>
+                <p>Um patrulheiro de Gondor que se funde com o espectro do Lorde Élfico Celebrimbor, buscando vingança contra as forças de Sauron em Mordor.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.ZAmu7fzXrwn9dY0bT1XV1AAAAA&pid=Api&P=0&h=180" alt="Gold Amazo">
+            <div class="character-info">
+                <h2>Gold Amazo</h2>
+                <p>Um androide avançado capaz de duplicar as habilidades e poderes de qualquer super-herói que encontra, tornando-se uma ameaça de nível ômega.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapers.com/images/hd/dr-doom-1200-x-1500-u3a60pwmljeftrrw.jpg" alt="Doctor Doom">
+            <div class="character-info">
+                <h2>Doctor Doom</h2>
+                <p>O monarca da Latvéria, Victor von Doom, é um gênio da ciência e um mestre da feitiçaria, sendo um dos vilões mais formidáveis da Marvel.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
