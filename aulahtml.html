@@ -1,488 +1,494 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enciclopédia de Clubes de Futebol</title>
-    <style>
-        /* --- ESTILOS GERAIS --- */
-        :root {
-            --cor-primaria: #004d40;
-            --cor-secundaria: #00796b;
-            --cor-fundo: #f4f7f6;
-            --cor-texto: #333;
-            --cor-branco: #ffffff;
-            --sombra: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* --- CABEÇALHO --- */
-        header {
-            background-color: var(--cor-primaria);
-            color: var(--cor-branco);
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        /* --- SEÇÃO DE INTERAÇÃO (BUSCA E FILTRO) --- */
-        .interacao {
-            background-color: var(--cor-branco);
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: var(--sombra);
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        /* --- GRID DE CARDS DOS CLUBES --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .clube-card {
-            background-color: var(--cor-branco);
-            border-radius: 8px;
-            box-shadow: var(--sombra);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .clube-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-
-        .card-header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .clube-logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-
-        .clube-card h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--cor-primaria);
-        }
-
-        .card-body {
-            padding: 20px;
-            flex-grow: 1;
-        }
-        
-        .info-basica p, .jogador-destaque p {
-            margin: 0 0 10px 0;
-        }
-        
-        .info-basica strong {
-            color: var(--cor-secundaria);
-        }
-
-        .card-body .descricao {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-        
-        .jogador-destaque {
-            background-color: #e0f2f1;
-            padding: 10px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        /* --- RODAPÉ --- */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enciclopédia de Clubes de Futebol</title>
+<style>
+/* --- ESTILOS GERAIS --- */
+:root {
+--cor-primaria: #004d40;
+--cor-secundaria: #00796b;
+--cor-fundo: #f4f7f6;
+--cor-texto: #333;
+--cor-branco: #ffffff;
+--sombra: 0 4px 8px rgba(0,0,0,0.1);
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background-color: var(--cor-fundo);
+color: var(--cor-texto);
+margin: 0;
+line-height: 1.6;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+/* --- CABEÇALHO --- */
+header {
+background-color: var(--cor-primaria);
+color: var(--cor-branco);
+padding: 20px;
+text-align: center;
+}
+header h1 {
+margin: 0;
+font-size: 2.5rem;
+}
+/* --- SEÇÃO DE INTERAÇÃO (BUSCA E FILTRO) --- */
+.interacao {
+background-color: var(--cor-branco);
+padding: 20px;
+margin-top: 20px;
+border-radius: 8px;
+box-shadow: var(--sombra);
+}
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: 600;
+}
+.busca-container {
+display: flex;
+gap: 10px;
+}
+input[type="text"] {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 1rem;
+flex-grow: 1;
+}
+#botao-busca {
+padding: 12px 20px;
+border: none;
+background-color: var(--cor-secundaria);
+color: var(--cor-branco);
+border-radius: 4px;
+font-size: 1rem;
+cursor: pointer;
+transition: background-color 0.2s;
+}
+#botao-busca:hover {
+background-color: var(--cor-primaria);
+}
+#mensagem-erro {
+color: red;
+font-weight: 500;
+margin-top: 10px;
+display: none; /* Começa oculto */
+}
+/* --- GRID DE CARDS DOS CLUBES --- */
+.grid-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 20px;
+margin-top: 30px;
+}
+.clube-card {
+background-color: var(--cor-branco);
+border-radius: 8px;
+box-shadow: var(--sombra);
+overflow: hidden;
+display: flex;
+flex-direction: column;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.clube-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.card-header {
+padding: 20px;
+display: flex;
+align-items: center;
+gap: 15px;
+border-bottom: 1px solid #eee;
+}
+.clube-logo {
+width: 60px;
+height: 60px;
+object-fit: contain;
+}
+.clube-card h2 {
+margin: 0;
+font-size: 1.5rem;
+color: var(--cor-primaria);
+}
+.card-body {
+padding: 20px;
+flex-grow: 1;
+}
+.info-basica p, .jogador-destaque p {
+margin: 0 0 10px 0;
+}
+.info-basica strong {
+color: var(--cor-secundaria);
+}
+.card-body .descricao {
+font-size: 0.95rem;
+margin-bottom: 15px;
+}
+.jogador-destaque {
+background-color: #e0f2f1;
+padding: 10px;
+border-radius: 4px;
+font-weight: 500;
+}
+/* --- RODAPÉ --- */
+footer {
+text-align: center;
+padding: 20px;
+margin-top: 30px;
+background-color: #333;
+color: #fff;
+}
+</style>
 </head>
 <body>
+<header>
+<h1>Enciclopédia de Clubes de Futebol</h1>
+</header>
+<main class="container">
+<section class="interacao">
+<label for="busca">Busque por um clube:</label>
+<div class="busca-container">
+<input type="text" id="busca" placeholder="Ex: Real Madrid, Chelsea, Al Hilal...">
+<button id="botao-busca">Pesquisar</button>
+</div>
+<p id="mensagem-erro">Clube não encontrado.</p>
+</section>
+<section class="grid-container" id="clubes-container">
 
-    <header>
-        <h1>Enciclopédia de Clubes de Futebol</h1>
-    </header>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/4/43/FCBarcelona.svg" alt="Logo do Barcelona" class="clube-logo">
+<h2>Barcelona</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">Um dos clubes mais populares do mundo, famoso pelo estilo 'tiki-taka' e sua filosofia "Més que un Club".</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
+</div>
+</div>
+</article>
 
-    <main class="container">
-        
-        <section class="interacao">
-            <label for="busca">Busque por um clube:</label>
-            <input type="text" id="busca" placeholder="Ex: Real Madrid, Chelsea, Al Hilal...">
-        </section>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://static.brusheezy.com/system/resources/previews/000/014/339/non_2x/real-madrid-logo-photoshop-psds.jpg" alt="Logo do Real Madrid" class="clube-logo">
+<h2>Real Madrid</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">O clube mais bem-sucedido na história da Champions League, conhecido por sua era dos "Galácticos" e poderio global.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Alfredo Di Stéfano</p>
+</div>
+</div>
+</article>
 
-        <section class="grid-container" id="clubes-container">
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/4/43/FCBarcelona.svg" alt="Logo do Barcelona" class="clube-logo">
-                    <h2>Barcelona</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Espanha</p>
-                        <p><strong>Liga:</strong> LaLiga</p>
-                    </div>
-                    <p class="descricao">Um dos clubes mais populares do mundo, famoso pelo estilo 'tiki-taka' e sua filosofia "Més que un Club".</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/b/b6/Manchester_United_FC_logo.png" alt="Logo do Manchester United" class="clube-logo">
+<h2>Manchester United</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Apelidados de "Red Devils", são um dos clubes mais ricos e vitoriosos da Inglaterra, com uma história marcada por Sir Alex Ferguson.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sir Bobby Charlton</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://static.brusheezy.com/system/resources/previews/000/014/339/non_2x/real-madrid-logo-photoshop-psds.jpg alt="Logo do Real Madrid" class="clube-logo">
-                    <h2>Real Madrid</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Espanha</p>
-                        <p><strong>Liga:</strong> LaLiga</p>
-                    </div>
-                    <p class="descricao">O clube mais bem-sucedido na história da Champions League, conhecido por sua era dos "Galácticos" e poderio global.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Alfredo Di Stéfano</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/0/0c/Liverpool_FC.svg" alt="Logo do Liverpool" class="clube-logo">
+<h2>Liverpool</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Famoso por sua apaixonada torcida e o hino "You'll Never Walk Alone", o clube de Anfield é uma potência histórica.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Steven Gerrard</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/b/b6/Manchester_United_FC_logo.png alt="Logo do Manchester United" class="clube-logo">
-                    <h2>Manchester United</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Apelidados de "Red Devils", são um dos clubes mais ricos e vitoriosos da Inglaterra, com uma história marcada por Sir Alex Ferguson.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Sir Bobby Charlton</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Logo do Bayern Munich" class="clube-logo">
+<h2>Bayern Munich</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Alemanha</p>
+<p><strong>Liga:</strong> Bundesliga</p>
+</div>
+<p class="descricao">O clube mais dominante da Alemanha, conhecido por sua consistência, força financeira e uma sala de troféus recheada.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Franz Beckenbauer</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/0/0c/Liverpool_FC.svg" alt="Logo do Liverpool" class="clube-logo">
-                    <h2>Liverpool</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Famoso por sua apaixonada torcida e o hino "You'll Never Walk Alone", o clube de Anfield é uma potência histórica.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Steven Gerrard</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Logo do Bayern Munich" class="clube-logo">
-                    <h2>Bayern Munich</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Alemanha</p>
-                        <p><strong>Liga:</strong> Bundesliga</p>
-                    </div>
-                    <p class="descricao">O clube mais dominante da Alemanha, conhecido por sua consistência, força financeira e uma sala de troféus recheada.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Franz Beckenbauer</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/d/d2/Logo_PSG.png" alt="Logo do PSG" class="clube-logo">
+<h2>Psg</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> França</p>
+<p><strong>Liga:</strong> Ligue 1</p>
+</div>
+<p class="descricao">Clube proeminente da França na era moderna, famoso por suas contratações de estrelas globais e o domínio na liga nacional.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Raí</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/d/d2/Logo_PSG.png alt="Logo do PSG" class="clube-logo">
-                    <h2>Psg</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> França</p>
-                        <p><strong>Liga:</strong> Ligue 1</p>
-                    </div>
-                    <p class="descricao">Clube proeminente da França na era moderna, famoso por suas contratações de estrelas globais e o domínio na liga nacional.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Raí</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7aBXROeOXYWYfNEtJZ2xSVhCDAQxjX4OTzQ&s" alt="Logo do Juventus" class="clube-logo">
+<h2>Juventus</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Itália</p>
+<p><strong>Liga:</strong> Serie A</p>
+</div>
+<p class="descricao">Conhecida como "La Vecchia Signora" (A Velha Senhora), é o clube com mais títulos da Serie A italiana, sinônimo de força.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Alessandro Del Piero</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7aBXROeOXYWYfNEtJZ2xSVhCDAQxjX4OTzQ&s alt="Logo do Juventus" class="clube-logo">
-                    <h2>Juventus</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Itália</p>
-                        <p><strong>Liga:</strong> Serie A</p>
-                    </div>
-                    <p class="descricao">Conhecida como "La Vecchia Signora" (A Velha Senhora), é o clube com mais títulos da Serie A italiana, sinônimo de força.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Alessandro Del Piero</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" alt="Logo do Inter Milan" class="clube-logo">
-                    <h2>Inter Milan</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Itália</p>
-                        <p><strong>Liga:</strong> Serie A</p>
-                    </div>
-                    <p class="descricao">Os Nerazzurri são o único clube italiano a ter conquistado a "Tríplice Coroa" (liga, copa e Champions) em uma temporada.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Javier Zanetti</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/0/02/Manchester_City_Football_Club.png alt="Logo do Manchester City" class="clube-logo">
-                    <h2>Manchester City</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Potência dominante na Inglaterra na última década, conhecida por seu estilo de jogo ofensivo sob Pep Guardiola.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Sergio Agüero</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/5/53/Arsenal_FC.svg" alt="Logo do Arsenal" class="clube-logo">
-                    <h2>Arsenal</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Os "Gunners" são famosos pela campanha invicta dos "Invincibles" na temporada 2003-04, um feito único na Premier League.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Thierry Henry</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png alt="Logo do Chelsea" class="clube-logo">
-                    <h2>Chelsea</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Um dos clubes mais bem-sucedidos do século XXI, vencendo múltiplos títulos da Premier League e da Champions League.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Frank Lampard</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" alt="Logo do Inter Milan" class="clube-logo">
+<h2>Inter Milan</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Itália</p>
+<p><strong>Liga:</strong> Serie A</p>
+</div>
+<p class="descricao">Os Nerazzurri são o único clube italiano a ter conquistado a "Tríplice Coroa" (liga, copa e Champions) em uma temporada.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Javier Zanetti</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/6/6d/Tottenham_Hotspur.png alt="Logo do Tottenham" class="clube-logo">
-                    <h2>Tottenham</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Inglaterra</p>
-                        <p><strong>Liga:</strong> Premier League</p>
-                    </div>
-                    <p class="descricao">Clube do norte de Londres, famoso pelo lema "To Dare Is To Do" e por seu futebol atraente. Rival histórico do Arsenal.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Harry Kane</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/thumb/1/19/AtleticoMadrid2017.png/250px-AtleticoMadrid2017.png alt="Logo do Atletico Madrid" class="clube-logo">
-                    <h2>Atletico Madrid</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Espanha</p>
-                        <p><strong>Liga:</strong> LaLiga</p>
-                    </div>
-                    <p class="descricao">Conhecido por sua torcida apaixonada e um estilo resiliente sob o comando de Diego Simeone. É a "terceira força" da Espanha.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Luis Aragonés</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/0/02/Manchester_City_Football_Club.png" alt="Logo do Manchester City" class="clube-logo">
+<h2>Manchester City</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Potência dominante na Inglaterra na última década,conhecida por seu estilo de jogo ofensivo sob Pep Guardiola.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sergio Agüero</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/a/a2/Bayer_Leverkusen.png alt="Logo do Bayer 04 Leverkusen" class="clube-logo">
-                    <h2>Bayer 04 Leverkusen</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Alemanha</p>
-                        <p><strong>Liga:</strong> Bundesliga</p>
-                    </div>
-                    <p class="descricao">Famoso por sua histórica temporada invicta em 2023-24, quando conquistou seu primeiro título da Bundesliga.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Michael Ballack</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/5/53/Arsenal_FC.svg" alt="Logo do Arsenal" class="clube-logo">
+<h2>Arsenal</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Os "Gunners" são famosos pela campanha invicta dos "Invincibles" na temporada 2003-04, um feito único na Premier League.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Thierry Henry</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Sport_Lisboa_e_Benfica.svg/250px-Sport_Lisboa_e_Benfica.svg.png alt="Logo do Benfica" class="clube-logo">
-                    <h2>Benfica</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Portugal</p>
-                        <p><strong>Liga:</strong> Liga Portugal</p>
-                    </div>
-                    <p class="descricao">Um dos "Três Grandes" de Portugal, o clube de Lisboa é famoso por sua base de fãs global e por ter revelado a lenda Eusébio.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Eusébio</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/pt/6/65/Al-Nassr_Football_Club.png alt="Logo do Al Nassr" class="clube-logo">
-                    <h2>Al Nassr</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Arábia Saudita</p>
-                        <p><strong>Liga:</strong> Saudi Pro League</p>
-                    </div>
-                    <p class="descricao">Clube de Riade que ganhou notoriedade global ao contratar Cristiano Ronaldo, iniciando uma nova era no futebol saudita.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Majed Abdullah</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Al_Hilal_SFC_Logo.svg/1200px-Al_Hilal_SFC_Logo.svg.png alt="Logo do Al Hilal" class="clube-logo">
-                    <h2>Al Hilal</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Arábia Saudita</p>
-                        <p><strong>Liga:</strong> Saudi Pro League</p>
-                    </div>
-                    <p class="descricao">O clube mais condecorado da Arábia Saudita e da Ásia, conhecido por sua enorme base de torcedores e sucesso contínuo.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Sami Al-Jaber</p>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://www.zerozero.pt/img/logos/equipas/121_imgbank_1735312891.png alt="Logo do Lyon" class="clube-logo">
-                    <h2>Lyon</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> França</p>
-                        <p><strong>Liga:</strong> Ligue 1</p>
-                    </div>
-                    <p class="descricao">Dominou o futebol francês nos anos 2000 com 7 títulos seguidos. Conhecido por sua excelente academia de jovens talentos.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Juninho Pernambucano</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png" alt="Logo do Chelsea" class="clube-logo">
+<h2>Chelsea</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Um dos clubes mais bem-sucedidos do século XXI,vencendo múltiplos títulos da Premier League e da Champions League.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Frank Lampard</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
-                <div class="card-header">
-                    <img src=https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/20232.png alt="Logo do Inter Miami" class="clube-logo">
-                    <h2>Inter Miami</h2>
-                </div>
-                <div class="card-body">
-                    <div class="info-basica">
-                        <p><strong>País:</strong> Estados Unidos</p>
-                        <p><strong>Liga:</strong> MLS</p>
-                    </div>
-                    <p class="descricao">Co-propriedade de David Beckham, o clube da Flórida transformou seu perfil global ao assinar com Lionel Messi em 2023.</p>
-                    <div class="jogador-destaque">
-                        <p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
-                    </div>
-                </div>
-            </article>
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/6/6d/Tottenham_Hotspur.png" alt="Logo do Tottenham" class="clube-logo">
+<h2>Tottenham</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Clube do norte de Londres, famoso pelo lema "To Dare Is To Do" e por seu futebol atraente. Rival histórico do Arsenal.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Harry Kane</p>
+</div>
+</div>
+</article>
 
-            <article class="clube-card">
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/1/19/AtleticoMadrid2017.png/250px-AtleticoMadrid2017.png" alt="Logo do Atletico Madrid" class="clube-logo">
+<h2>Atletico Madrid</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">Conhecido por sua torcida apaixonada e um estilo resiliente sob o comando de Diego Simeone. É a "terceira força" da Espanha.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Luis Aragonés</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/a/a2/Bayer_Leverkusen.png" alt="Logo do Bayer 04 Leverkusen" class="clube-logo">
+<h2>Bayer 04 Leverkusen</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Alemanha</p>
+<p><strong>Liga:</strong> Bundesliga</p>
+</div>
+<p class="descricao">Famoso por sua histórica temporada invicta em 2023-24,quando conquistou seu primeiro título da Bundesliga.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Michael Ballack</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Sport_Lisboa_e_Benfica.svg/250px-Sport_Lisboa_e_Benfica.svg.png" alt="Logo do Benfica" class="clube-logo">
+<h2>Benfica</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Portugal</p>
+<p><strong>Liga:</strong> Liga Portugal</p>
+</div>
+<p class="descricao">Um dos "Três Grandes" de Portugal, o clube de Lisboa é famoso por sua base de fãs global e por ter revelado a lenda Eusébio.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Eusébio</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/6/65/Al-Nassr_Football_Club.png" alt="Logo do Al Nassr" class="clube-logo">
+<h2>Al Nassr</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Arábia Saudita</p>
+<p><strong>Liga:</strong> Saudi Pro League</p>
+</div>
+<p class="descricao">Clube de Riade que ganhou notoriedade global ao contratar Cristiano Ronaldo, iniciando uma nova era no futebol saudita.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Majed Abdullah</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Al_Hilal_SFC_Logo.svg/1200px-Al_Hilal_SFC_Logo.svg.png" alt="Logo do Al Hilal" class="clube-logo">
+<h2>Al Hilal</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Arábia Saudita</p>
+<p><strong>Liga:</strong> Saudi Pro League</p>
+</div>
+<p class="descricao">O clube mais condecorado da Arábia Saudita e da Ásia,conhecido por sua enorme base de torcedores e sucesso contínuo.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sami Al-Jaber</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://www.zerozero.pt/img/logos/equipas/121_imgbank_1735312891.png" alt="Logo do Lyon" class="clube-logo">
+<h2>Lyon</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> França</p>
+<p><strong>Liga:</strong> Ligue 1</p>
+</div>
+<p class="descricao">Dominou o futebol francês nos anos 2000 com 7 títulos seguidos. Conhecido por sua excelente academia de jovens talentos.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Juninho Pernambucano</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/20232.png" alt="Logo do Inter Miami" class="clube-logo">
+<h2>Inter Miami</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Estados Unidos</p>
+<p><strong>Liga:</strong> MLS</p>
+</div>
+<p class="descricao">Co-propriedade de David Beckham, o clube da Flórida transformou seu perfil global ao assinar com Lionel Messi em 2023.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
 <div class="card-header">
 <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/0/03/Escudo_do_Santos_Futebol_Clube.png/250px-Escudo_do_Santos_Futebol_Clube.png" alt="Logo do Santos" class="clube-logo">
 <h2>Santos</h2>
@@ -500,49 +506,77 @@
 </article>
 
 <article class="clube-card">
-    <div class="card-header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/SSC_Napoli.svg/2048px-SSC_Napoli.svg.png" alt="Logo do Napoli" class="clube-logo">
-    <h2>Napoli</h2>
-    </div>
-    <div class="card-body">
-    <div class="info-basica">
-    <p><strong>País:</strong>Italia</p>
-    <p><strong>Liga:</strong>Serie A</p>
-    </div>
-    <p class="descricao">O Società Sportiva Calcio Napoli, ou simplesmente Napoli, é um dos clubes de futebol mais apaixonantes e emblemáticos da Itália.É conhecido por sua fervorosa torcida e por ter sido a casa de um dos maiores jogadores de todos os tempos: Diego Maradona.</p>
-    <div class="jogador-destaque">
-    <p>⭐ <strong>Jogador Histórico:</strong> Maradona</p>
-    </div>
-    </div>
-    </article>
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/SSC_Napoli.svg/2048px-SSC_Napoli.svg.png" alt="Logo do Napoli" class="clube-logo">
+<h2>Napoli</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong>Italia</p>
+<p><strong>Liga:</strong>Serie A</p>
+</div>
+<p class="descricao">O Società Sportiva Calcio Napoli, ou simplesmente Napoli, é um dos clubes de futebol mais apaixonantes e emblemáticos da Itália.É conhecido por sua fervorosa torcida e por ter sido a casa de um dos maiores jogadores de todos os tempos: Diego Maradona.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Maradona</p>
+</div>
+</div>
+</article>
 
+</section>
+</main>
+<footer>
+<p>&copy; 2025 Enciclopédia de Clubes de Futebol. Todos os direitos reservados.</p>
+</footer>
 
-        </section>
-    </main>
+<script>
+// --- SCRIPT PARA BUSCA DE CLUBE COM BOTÃO ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona os elementos do DOM
+    const campoBusca = document.getElementById('busca');
+    const botaoBusca = document.getElementById('botao-busca');
+    const containerClubes = document.getElementById('clubes-container');
+    const mensagemErro = document.getElementById('mensagem-erro');
 
-    <footer>
-        <p>&copy; 2025 Enciclopédia de Clubes de Futebol. Todos os direitos reservados.</p>
-    </footer>
+    // Função que realiza a busca
+    function realizarBusca() {
+        const termoBusca = campoBusca.value.toLowerCase().trim();
+        const todosOsCards = containerClubes.querySelectorAll('.clube-card');
+        let clubeEncontrado = false;
 
-    <script>
-        // --- SCRIPT PARA FILTRAR OS CARDS EM TEMPO REAL ---
+        // Esconde a mensagem de erro antes de cada nova busca
+        mensagemErro.style.display = 'none';
 
-        const campoBusca = document.getElementById('busca');
-
-        campoBusca.addEventListener('keyup', function() {
-            const termoBusca = campoBusca.value.toLowerCase();
-            const cards = document.querySelectorAll('.clube-card');
-
-            cards.forEach(function(card) {
-                const nomeClube = card.querySelector('h2').innerText.toLowerCase();
-
-                if (nomeClube.includes(termoBusca)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // Percorre todos os cards para verificar a correspondência
+        todosOsCards.forEach(card => {
+            const nomeClube = card.querySelector('h2').innerText.toLowerCase();
+            
+            // Verifica se o nome do clube no card inclui o termo buscado
+            if (nomeClube.includes(termoBusca)) {
+                card.style.display = 'flex'; // Mostra o card
+                clubeEncontrado = true;
+            } else {
+                card.style.display = 'none'; // Esconde o card
+            }
         });
-    </script>
+
+        // Se após a busca nenhum clube for encontrado, exibe a mensagem de erro
+        if (!clubeEncontrado) {
+            mensagemErro.style.display = 'block';
+        }
+    }
+
+    // Adiciona o evento de clique para o botão de busca
+    botaoBusca.addEventListener('click', realizarBusca);
+
+    // Adiciona um evento para a tecla "Enter" no campo de busca para conveniência
+    campoBusca.addEventListener('keyup', (event) => {
+        // Verifica se a tecla pressionada foi "Enter"
+        if (event.key === 'Enter') {
+            realizarBusca();
+        }
+    });
+});
+</script>
+
 </body>
 </html>
