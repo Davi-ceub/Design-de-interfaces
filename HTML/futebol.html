@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enciclopédia de Clubes de Futebol</title>
+<style>
+/* --- ESTILOS GERAIS --- */
+:root {
+--cor-primaria: #004d40;
+--cor-secundaria: #00796b;
+--cor-fundo: #f4f7f6;
+--cor-texto: #333;
+--cor-branco: #ffffff;
+--sombra: 0 4px 8px rgba(0,0,0,0.1);
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background-color: var(--cor-fundo);
+color: var(--cor-texto);
+margin: 0;
+line-height: 1.6;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+/* --- CABEÇALHO --- */
+header {
+background-color: var(--cor-primaria);
+color: var(--cor-branco);
+padding: 20px;
+text-align: center;
+}
+header h1 {
+margin: 0;
+font-size: 2.5rem;
+}
+/* --- SEÇÃO DE INTERAÇÃO (BUSCA E FILTRO) --- */
+.interacao {
+background-color: var(--cor-branco);
+padding: 20px;
+margin-top: 20px;
+border-radius: 8px;
+box-shadow: var(--sombra);
+}
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: 600;
+}
+.busca-container {
+display: flex;
+gap: 10px;
+}
+input[type="text"] {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 1rem;
+flex-grow: 1;
+}
+#botao-busca {
+padding: 12px 20px;
+border: none;
+background-color: var(--cor-secundaria);
+color: var(--cor-branco);
+border-radius: 4px;
+font-size: 1rem;
+cursor: pointer;
+transition: background-color 0.2s;
+}
+#botao-busca:hover {
+background-color: var(--cor-primaria);
+}
+#mensagem-erro {
+color: red;
+font-weight: 500;
+margin-top: 10px;
+display: none; /* Começa oculto */
+}
+/* --- GRID DE CARDS DOS CLUBES --- */
+.grid-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 20px;
+margin-top: 30px;
+}
+.clube-card {
+background-color: var(--cor-branco);
+border-radius: 8px;
+box-shadow: var(--sombra);
+overflow: hidden;
+display: flex;
+flex-direction: column;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.clube-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.card-header {
+padding: 20px;
+display: flex;
+align-items: center;
+gap: 15px;
+border-bottom: 1px solid #eee;
+}
+.clube-logo {
+width: 60px;
+height: 60px;
+object-fit: contain;
+}
+.clube-card h2 {
+margin: 0;
+font-size: 1.5rem;
+color: var(--cor-primaria);
+}
+.card-body {
+padding: 20px;
+flex-grow: 1;
+}
+.info-basica p, .jogador-destaque p {
+margin: 0 0 10px 0;
+}
+.info-basica strong {
+color: var(--cor-secundaria);
+}
+.card-body .descricao {
+font-size: 0.95rem;
+margin-bottom: 15px;
+}
+.jogador-destaque {
+background-color: #e0f2f1;
+padding: 10px;
+border-radius: 4px;
+font-weight: 500;
+}
+/* --- RODAPÉ --- */
+footer {
+text-align: center;
+padding: 20px;
+margin-top: 30px;
+background-color: #333;
+color: #fff;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Enciclopédia de Clubes de Futebol</h1>
+</header>
+<main class="container">
+<section class="interacao">
+<label for="busca">Busque por um clube:</label>
+<div class="busca-container">
+<input type="text" id="busca" placeholder="Ex: Real Madrid, Chelsea, Al Hilal...">
+<button id="botao-busca">Pesquisar</button>
+</div>
+<p id="mensagem-erro">Clube não encontrado.</p>
+</section>
+<section class="grid-container" id="clubes-container">
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/4/43/FCBarcelona.svg" alt="Logo do Barcelona" class="clube-logo">
+<h2>Barcelona</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">Um dos clubes mais populares do mundo, famoso pelo estilo 'tiki-taka' e sua filosofia "Més que un Club".</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://static.brusheezy.com/system/resources/previews/000/014/339/non_2x/real-madrid-logo-photoshop-psds.jpg" alt="Logo do Real Madrid" class="clube-logo">
+<h2>Real Madrid</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">O clube mais bem-sucedido na história da Champions League, conhecido por sua era dos "Galácticos" e poderio global.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Alfredo Di Stéfano</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/b/b6/Manchester_United_FC_logo.png" alt="Logo do Manchester United" class="clube-logo">
+<h2>Manchester United</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Apelidados de "Red Devils", são um dos clubes mais ricos e vitoriosos da Inglaterra, com uma história marcada por Sir Alex Ferguson.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sir Bobby Charlton</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/0/0c/Liverpool_FC.svg" alt="Logo do Liverpool" class="clube-logo">
+<h2>Liverpool</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Famoso por sua apaixonada torcida e o hino "You'll Never Walk Alone", o clube de Anfield é uma potência histórica.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Steven Gerrard</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Logo do Bayern Munich" class="clube-logo">
+<h2>Bayern Munich</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Alemanha</p>
+<p><strong>Liga:</strong> Bundesliga</p>
+</div>
+<p class="descricao">O clube mais dominante da Alemanha, conhecido por sua consistência, força financeira e uma sala de troféus recheada.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Franz Beckenbauer</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://logodownload.org/wp-content/uploads/2017/02/psg-logo-escudo-paris-saint-germain-1.png" alt="Logo do PSG" class="clube-logo">
+<h2>Psg</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> França</p>
+<p><strong>Liga:</strong> Ligue 1</p>
+</div>
+<p class="descricao">Clube proeminente da França na era moderna, famoso por suas contratações de estrelas globais e o domínio na liga nacional.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Raí</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7aBXROeOXYWYfNEtJZ2xSVhCDAQxjX4OTzQ&s" alt="Logo do Juventus" class="clube-logo">
+<h2>Juventus</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Itália</p>
+<p><strong>Liga:</strong> Serie A</p>
+</div>
+<p class="descricao">Conhecida como "La Vecchia Signora" (A Velha Senhora), é o clube com mais títulos da Serie A italiana, sinônimo de força.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Alessandro Del Piero</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" alt="Logo do Inter Milan" class="clube-logo">
+<h2>Inter Milan</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Itália</p>
+<p><strong>Liga:</strong> Serie A</p>
+</div>
+<p class="descricao">Os Nerazzurri são o único clube italiano a ter conquistado a "Tríplice Coroa" (liga, copa e Champions) em uma temporada.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Javier Zanetti</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/0/02/Manchester_City_Football_Club.png" alt="Logo do Manchester City" class="clube-logo">
+<h2>Manchester City</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Potência dominante na Inglaterra na última década,conhecida por seu estilo de jogo ofensivo sob Pep Guardiola.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sergio Agüero</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/5/53/Arsenal_FC.svg" alt="Logo do Arsenal" class="clube-logo">
+<h2>Arsenal</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Os "Gunners" são famosos pela campanha invicta dos "Invincibles" na temporada 2003-04, um feito único na Premier League.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Thierry Henry</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://logosmarcas.net/wp-content/uploads/2020/08/Chelsea-Logo.png" alt="Logo do Chelsea" class="clube-logo">
+<h2>Chelsea</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Um dos clubes mais bem-sucedidos do século XXI,vencendo múltiplos títulos da Premier League e da Champions League.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Frank Lampard</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/6/6d/Tottenham_Hotspur.png" alt="Logo do Tottenham" class="clube-logo">
+<h2>Tottenham</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Inglaterra</p>
+<p><strong>Liga:</strong> Premier League</p>
+</div>
+<p class="descricao">Clube do norte de Londres, famoso pelo lema "To Dare Is To Do" e por seu futebol atraente. Rival histórico do Arsenal.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Harry Kane</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/1/19/AtleticoMadrid2017.png/250px-AtleticoMadrid2017.png" alt="Logo do Atletico Madrid" class="clube-logo">
+<h2>Atletico Madrid</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Espanha</p>
+<p><strong>Liga:</strong> LaLiga</p>
+</div>
+<p class="descricao">Conhecido por sua torcida apaixonada e um estilo resiliente sob o comando de Diego Simeone. É a "terceira força" da Espanha.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Luis Aragonés</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/a/a2/Bayer_Leverkusen.png" alt="Logo do Bayer 04 Leverkusen" class="clube-logo">
+<h2>Bayer 04 Leverkusen</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Alemanha</p>
+<p><strong>Liga:</strong> Bundesliga</p>
+</div>
+<p class="descricao">Famoso por sua histórica temporada invicta em 2023-24,quando conquistou seu primeiro título da Bundesliga.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Michael Ballack</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/d/de/Sport_Lisboa_e_Benfica.svg/250px-Sport_Lisboa_e_Benfica.svg.png" alt="Logo do Benfica" class="clube-logo">
+<h2>Benfica</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Portugal</p>
+<p><strong>Liga:</strong> Liga Portugal</p>
+</div>
+<p class="descricao">Um dos "Três Grandes" de Portugal, o clube de Lisboa é famoso por sua base de fãs global e por ter revelado a lenda Eusébio.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Eusébio</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://static.vecteezy.com/system/resources/previews/026/284/880/large_2x/al-nassr-club-logo-symbol-saudi-arabia-football-abstract-design-illustration-with-black-background-free-vector.jpg" alt="Logo do Al Nassr" class="clube-logo">
+<h2>Al Nassr</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Arábia Saudita</p>
+<p><strong>Liga:</strong> Saudi Pro League</p>
+</div>
+<p class="descricao">Clube de Riade que ganhou notoriedade global ao contratar Cristiano Ronaldo, iniciando uma nova era no futebol saudita.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Majed Abdullah</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Al_Hilal_SFC_Logo.svg/960px-Al_Hilal_SFC_Logo.svg.png" alt="Logo do Al Hilal" class="clube-logo">
+<h2>Al Hilal</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Arábia Saudita</p>
+<p><strong>Liga:</strong> Saudi Pro League</p>
+</div>
+<p class="descricao">O clube mais condecorado da Arábia Saudita e da Ásia,conhecido por sua enorme base de torcedores e sucesso contínuo.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Sami Al-Jaber</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://www.zerozero.pt/img/logos/equipas/121_imgbank_1735312891.png" alt="Logo do Lyon" class="clube-logo">
+<h2>Lyon</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> França</p>
+<p><strong>Liga:</strong> Ligue 1</p>
+</div>
+<p class="descricao">Dominou o futebol francês nos anos 2000 com 7 títulos seguidos. Conhecido por sua excelente academia de jovens talentos.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Juninho Pernambucano</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/20232.png" alt="Logo do Inter Miami" class="clube-logo">
+<h2>Inter Miami</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong> Estados Unidos</p>
+<p><strong>Liga:</strong> MLS</p>
+</div>
+<p class="descricao">Co-propriedade de David Beckham, o clube da Flórida transformou seu perfil global ao assinar com Lionel Messi em 2023.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Lionel Messi</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://tse1.mm.bing.net/th/id/OIP.dDapOmCWmVEM_gWw0iSdowHaJg?r=0&pid=Api&P=0&h=180" alt="Logo do Santos" class="clube-logo">
+<h2>Santos</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong>Brasil</p>
+<p><strong>Liga:</strong>Brasileirão</p>
+</div>
+<p class="descricao">O Santos Futebol Clube, fundado em 1912, é um dos maiores e mais vitoriosos clubes de futebol do Brasil e do mundo.O Santos é conhecido pelo seu "futebol arte" e por revelar grandes talentos ao longo de sua história, como Pelé,Neymar Jr. e Robinho.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Pelé</p>
+</div>
+</div>
+</article>
+
+<article class="clube-card">
+<div class="card-header">
+<img src="https://i.pinimg.com/originals/a9/30/15/a930151e27416730bf83fdf138868156.png" alt="Logo do Napoli" class="clube-logo">
+<h2>Napoli</h2>
+</div>
+<div class="card-body">
+<div class="info-basica">
+<p><strong>País:</strong>Italia</p>
+<p><strong>Liga:</strong>Serie A</p>
+</div>
+<p class="descricao">O Società Sportiva Calcio Napoli, ou simplesmente Napoli, é um dos clubes de futebol mais apaixonantes e emblemáticos da Itália.É conhecido por sua fervorosa torcida e por ter sido a casa de um dos maiores jogadores de todos os tempos: Diego Maradona.</p>
+<div class="jogador-destaque">
+<p>⭐ <strong>Jogador Histórico:</strong> Maradona</p>
+</div>
+</div>
+</article>
+
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Aston-Villa-Logo.png" alt="Logo do Aston Villa" class="clube-logo">
+                <h2>Aston Villa</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Um dos clubes mais tradicionais da Inglaterra, campeão europeu em 1982 e historicamente entre as grandes equipes inglesas.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Paul McGrath</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Newcastle-Logo.png" alt="Logo do Newcastle United" class="clube-logo">
+                <h2>Newcastle United</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Clube histórico do nordeste inglês, conhecido pela enorme torcida e pela tradição no futebol inglês.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Alan Shearer</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodownload.org/wp-content/uploads/2019/04/everton-logo-escudo.png" alt="Logo do Everton" class="clube-logo">
+                <h2>Everton</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Um dos clubes mais tradicionais da Inglaterra e membro fundador da Premier League, com nove títulos ingleses.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Dixie Dean</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/West-Ham-Logo.png" alt="Logo do West Ham United" class="clube-logo">
+                <h2>West Ham United</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Tradicional clube londrino, conhecido por sua forte identidade e por revelar grandes jogadores ingleses.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Bobby Moore</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/nottingham-forest-fc-logo-png-transparent.png" alt="Logo do Nottingham Forest" class="clube-logo">
+                <h2>Nottingham Forest</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Gigante histórico europeu, bicampeão consecutivo da Copa dos Campeões em 1979 e 1980.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Brian Clough</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://pluspng.com/img-png/logo-leicester-city-fc-png-leicester-city-fc-logo-1000.png" alt="Logo do Leicester City" class="clube-logo">
+                <h2>Leicester City</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Ficou mundialmente famoso pelo título surpreendente da Premier League em 2015-16.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Jamie Vardy</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Leeds-United-symbol.png" alt="Logo do Leeds United" class="clube-logo">
+                <h2>Leeds United</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Clube histórico inglês, campeão nacional e conhecido por sua enorme torcida e tradição.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Billy Bremner</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2024/12/Wolves-Logo.png" alt="Logo do Wolverhampton Wanderers" class="clube-logo">
+                <h2>Wolverhampton Wanderers</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Um dos clubes históricos da Inglaterra, com tradição nacional e papel importante no desenvolvimento do futebol europeu.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Steve Bull</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://static.vecteezy.com/system/resources/previews/027/011/071/original/sunderland-club-logo-symbol-premier-league-football-abstract-design-illustration-with-black-background-free-vector.jpg" alt="Logo do Sunderland" class="clube-logo">
+                <h2>Sunderland</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Inglaterra</p>
+                    <p><strong>Liga:</strong> Premier League</p>
+                </div>
+                <p class="descricao">Clube histórico do futebol inglês, multicampeão nacional e tradicional força do nordeste da Inglaterra.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Kevin Phillips</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/11/Athletic-Bilbao-Logo-1922-1930.png" alt="Logo do Athletic Bilbao" class="clube-logo">
+                <h2>Athletic Bilbao</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Um dos três clubes que disputaram todas as temporadas da LaLiga desde sua fundação, famoso por sua política de formação e identidade basca.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Telmo Zarra</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-download.com/wp-content/uploads/2016/05/Valencia_CF_logotipo_logo.png" alt="Logo do Valencia" class="clube-logo">
+                <h2>Valencia</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Um dos grandes clubes espanhóis, com títulos nacionais e duas finais consecutivas de Champions League no início dos anos 2000.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Mario Kempes</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/sevilla-fc-logo-png-transparent.png" alt="Logo do Sevilla" class="clube-logo">
+                <h2>Sevilla</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Clube andaluz de enorme tradição, especialmente dominante na Europa League, competição que conquistou diversas vezes.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Jesús Navas</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodetimes.com/times/villarreal/logo-villarreal-1024.png" alt="Logo do Villarreal" class="clube-logo">
+                <h2>Villarreal</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Clube conhecido internacionalmente por seu sucesso europeu e pela conquista da Europa League em 2021.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Juan Román Riquelme</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodownload.org/wp-content/uploads/2022/11/real-sociedad-logo.png" alt="Logo do Real Sociedad" class="clube-logo">
+                <h2>Real Sociedad</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Tradicional clube basco, bicampeão espanhol no início dos anos 1980 e presença frequente em competições europeias.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Xabi Alonso</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://i.pinimg.com/originals/3b/a6/c6/3ba6c62072b44f68baaca0faff4d2782.png" alt="Logo do Real Betis" class="clube-logo">
+                <h2>Real Betis</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Espanha</p>
+                    <p><strong>Liga:</strong> LaLiga</p>
+                </div>
+                <p class="descricao">Um dos clubes mais populares da Andaluzia, campeão espanhol e conhecido por sua apaixonada torcida.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Joaquín</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodetimes.com/times/borussia-dortmund/logo-borussia-dortmund-4096.png" alt="Logo do Borussia Dortmund" class="clube-logo">
+                <h2>Borussia Dortmund</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Um dos maiores clubes alemães, campeão europeu em 1997 e conhecido pela enorme torcida do Signal Iduna Park.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Marco Reus</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://1000logos.net/wp-content/uploads/2022/08/RB-Leipzig-Logo-2010.png" alt="Logo do RB Leipzig" class="clube-logo">
+                <h2>RB Leipzig</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Clube de ascensão rápida no futebol alemão, presença constante no topo da Bundesliga e em competições europeias.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Timo Werner</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/b1/34/ae/b134aeb7ec8e3a0ba91fc2dd30b76153.jpg" alt="Logo do Borussia Mönchengladbach" class="clube-logo">
+                <h2>Borussia Mönchengladbach</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Gigante histórico da Alemanha, especialmente dominante nas décadas de 1970 e 1980.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Berti Vogts</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodownload.org/wp-content/uploads/2019/12/werder-bremen-logo-0-2048x2048.png" alt="Logo do Werder Bremen" class="clube-logo">
+                <h2>Werder Bremen</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Tradicional clube alemão, campeão nacional e europeu e uma das equipes históricas da Bundesliga.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Claudio Pizarro</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/b2/a5/08/b2a5082e97bd64a4425a70a456961a8f.png" alt="Logo do Hamburgo" class="clube-logo">
+                <h2>Hamburgo</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Um dos clubes mais tradicionais da Alemanha, campeão europeu em 1983 e antigo gigante da Bundesliga.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Uwe Seeler</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://1000logos.net/wp-content/uploads/2022/10/FC-Schalke-04-Logo-1958.png" alt="Logo do Schalke 04" class="clube-logo">
+                <h2>Schalke 04</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Alemanha</p>
+                    <p><strong>Liga:</strong> Bundesliga</p>
+                </div>
+                <p class="descricao">Clube histórico do futebol alemão, conhecido por sua enorme torcida e rivalidade regional com o Borussia Dortmund.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Raúl</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://static.vecteezy.com/system/resources/previews/027/484/454/original/ac-milan-club-logo-symbol-serie-a-football-calcio-italy-abstract-design-illustration-with-black-background-free-vector.jpg" alt="Logo do AC Milan" class="clube-logo">
+                <h2>AC Milan</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Um dos maiores clubes da história do futebol europeu, sete vezes campeão da Champions League e tradicional potência italiana.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Paolo Maldini</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Roma-Logo-2016-present.jpg" alt="Logo do Roma" class="clube-logo">
+                <h2>Roma</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Um dos clubes mais populares da Itália, com grande tradição nacional e uma das maiores torcidas do país.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Francesco Totti</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Lazio-logo.png" alt="Logo do Lazio" class="clube-logo">
+                <h2>Lazio</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Tradicional clube de Roma, campeão italiano e vencedor de competições europeias.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Paolo Di Canio</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://static.vecteezy.com/system/resources/previews/027/483/501/original/fiorentina-club-symbol-logo-serie-a-football-calcio-italy-abstract-design-illustration-with-purple-background-free-vector.jpg" alt="Logo do Fiorentina" class="clube-logo">
+                <h2>Fiorentina</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Clube histórico de Florença, tradicional força italiana e vencedor de títulos nacionais e europeus.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Gabriel Batistuta</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://static0.givemesportimages.com/wordpress/wp-content/uploads/2024/08/atalanta_logo_resized.png" alt="Logo do Atalanta" class="clube-logo">
+                <h2>Atalanta</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Clube de grande crescimento no futebol italiano, conhecido por seu futebol ofensivo e sucesso europeu recente.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Gianpaolo Bellini</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logos-download.com/wp-content/uploads/2016/05/Torino_FC_logo_logotype.png" alt="Logo do Torino" class="clube-logo">
+                <h2>Torino</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Clube histórico de Turim, famoso pelo lendário Grande Torino dos anos 1940.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Valentino Mazzola</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://logodetimes.com/times/bologna-football-club-1909/bologna-football-club-1909-4096.png" alt="Logo do Bologna" class="clube-logo">
+                <h2>Bologna</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Um dos clubes históricos da Itália, campeão nacional e tradicional participante da elite italiana.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Roberto Baggio</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://1000logos.net/wp-content/uploads/2023/04/Genoa-logo.png" alt="Logo do Genoa" class="clube-logo">
+                <h2>Genoa</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Clube mais antigo da Itália ainda em atividade e vencedor de vários campeonatos italianos históricos.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Diego Milito</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://vectorseek.com/wp-content/uploads/2023/06/Sampdoria-Logo-Vector.jpg" alt="Logo do Sampdoria" class="clube-logo">
+                <h2>Sampdoria</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Itália</p>
+                    <p><strong>Liga:</strong> Serie A</p>
+                </div>
+                <p class="descricao">Tradicional clube de Gênova, campeão italiano em 1990-91 e finalista da Champions League em 1992.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Roberto Mancini</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://lofrev.net/wp-content/photos/2014/08/Olympique-de-Marseille-Logo.png" alt="Logo do Olympique de Marseille" class="clube-logo">
+                <h2>Olympique de Marseille</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Um dos maiores clubes franceses, campeão da Champions League em 1993 e dono de uma das maiores torcidas da França.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Didier Drogba</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68f601b3f38c9f257f01cf23_as-monaco-footballlogos-org.png" alt="Logo do Monaco" class="clube-logo">
+                <h2>Monaco</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Clube de grande tradição europeia, campeão francês em várias ocasiões e finalista da Champions League em 2004.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Thierry Henry</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/Logo_LOSC_Lille_2018.svg/1280px-Logo_LOSC_Lille_2018.svg.png" alt="Logo do Lille" class="clube-logo">
+                <h2>Lille</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Clube tradicional francês, campeão nacional e conhecido por revelar e desenvolver grandes talentos.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Eden Hazard</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://1000logos.net/wp-content/uploads/2023/04/Saint-Etienne-Logo.png" alt="Logo do Saint-Étienne" class="clube-logo">
+                <h2>Saint-Étienne</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Um dos clubes mais vitoriosos da história francesa, com dez títulos nacionais e enorme tradição.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Michel Platini</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://tous-logos.com/wp-content/uploads/2018/08/logo-Bordeaux.png" alt="Logo do Bordeaux" class="clube-logo">
+                <h2>Bordeaux</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Tradicional clube francês, seis vezes campeão nacional e conhecido por sua rica história no futebol francês.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Zinedine Zidane</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://i.pinimg.com/originals/5d/3e/e5/5d3ee594ce292bfd58a81b5b58845001.png" alt="Logo do Nantes" class="clube-logo">
+                <h2>Nantes</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Um dos clubes históricos da França, campeão nacional em diversas ocasiões e famoso pelo estilo de jogo coletivo.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Didier Deschamps</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://1000logos.net/wp-content/uploads/2020/09/Nice-logo-1536x960.png" alt="Logo do Nice" class="clube-logo">
+                <h2>Nice</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Clube histórico do futebol francês, tetracampeão nacional e tradicional representante da Riviera Francesa.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Hugo Lloris</p>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.yfou6uwlmo3eKpmR1e81bgHaEo?r=0&pid=Api&P=0&h=180" alt="Logo do Lens" class="clube-logo">
+                <h2>Lens</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> França</p>
+                    <p><strong>Liga:</strong> Ligue 1</p>
+                </div>
+                <p class="descricao">Tradicional clube do norte da França, conhecido por sua torcida apaixonada e pelo título nacional de 1998.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Raphaël Varane</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="clube-card">
+            <div class="card-header">
+                <img src="https://images.seeklogo.com/logo-png/55/1/afc-ajax-logo-png_seeklogo-555293.png" alt="Logo do Ajax" class="clube-logo">
+                <h2>Ajax</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-basica">
+                    <p><strong>País:</strong> Holanda</p>
+                    <p><strong>Liga:</strong> Eredivisie</p>
+                </div>
+                <p class="descricao">Um dos clubes mais conhecidos da Holanda, conhecido por suas torcidas vibrantes e pelo estilo de jogo agressivo.</p>
+                <div class="jogador-destaque">
+                    <p>⭐ <strong>Jogador Histórico:</strong> Ronald Koeman</p>
+                </div>
+            </div>
+        </article>
+</section>
+</main>
+<footer>
+<p>&copy; 2026 Enciclopédia de Clubes de Futebol. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// --- SCRIPT PARA BUSCA DE CLUBE COM BOTÃO ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona os elementos do DOM
+    const campoBusca = document.getElementById('busca');
+    const botaoBusca = document.getElementById('botao-busca');
+    const containerClubes = document.getElementById('clubes-container');
+    const mensagemErro = document.getElementById('mensagem-erro');
+
+    // Função que realiza a busca
+    function realizarBusca() {
+        const termoBusca = campoBusca.value.toLowerCase().trim();
+        const todosOsCards = containerClubes.querySelectorAll('.clube-card');
+        let clubeEncontrado = false;
+
+        // Esconde a mensagem de erro antes de cada nova busca
+        mensagemErro.style.display = 'none';
+
+        // Percorre todos os cards para verificar a correspondência
+        todosOsCards.forEach(card => {
+            const nomeClube = card.querySelector('h2').innerText.toLowerCase();
+            
+            // Verifica se o nome do clube no card inclui o termo buscado
+            if (nomeClube.includes(termoBusca)) {
+                card.style.display = 'flex'; // Mostra o card
+                clubeEncontrado = true;
+            } else {
+                card.style.display = 'none'; // Esconde o card
+            }
+        });
+
+        // Se após a busca nenhum clube for encontrado, exibe a mensagem de erro
+        if (!clubeEncontrado) {
+            mensagemErro.style.display = 'block';
+        }
+    }
+
+    // Adiciona o evento de clique para o botão de busca
+    botaoBusca.addEventListener('click', realizarBusca);
+
+    // Adiciona um evento para a tecla "Enter" no campo de busca para conveniência
+    campoBusca.addEventListener('keyup', (event) => {
+        // Verifica se a tecla pressionada foi "Enter"
+        if (event.key === 'Enter') {
+            realizarBusca();
+        }
+    });
+});
+</script>
+
+</body>
+</html>

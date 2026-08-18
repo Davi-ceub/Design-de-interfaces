@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lendas da Ficção</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .character-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            margin: 15px;
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .character-info {
+            padding: 20px;
+        }
+
+        .character-info h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        .character-info p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lendas da Ficção</h1>
+    </header>
+    <main>
+        <div class="character-card">
+            <img src="https://wallpapers.com/images/hd/black-and-white-kratos-of-god-of-war-rt24ku56xosrzavv.jpg" alt="Kratos">
+            <div class="character-info">
+                <h2>Kratos</h2>
+                <p>O Fantasma de Esparta, um guerreiro espartano que se tornou o Deus da Guerra e busca vingança contra os deuses do Olimpo.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp6699691.png" alt="Joel Miller">
+            <div class="character-info">
+                <h2>Joel Miller</h2>
+                <p>Um sobrevivente endurecido em um mundo pós-apocalíptico que é encarregado de contrabandear uma jovem chamada Ellie através dos Estados Unidos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/677579.jpg" alt="Arthur Morgan">
+            <div class="character-info">
+                <h2>Arthur Morgan</h2>
+                <p>Um fora-da-lei e membro da gangue Van der Linde no final do Velho Oeste americano, lutando para sobreviver em um mundo em rápida mudança.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp4639208.jpg" alt="Optimus Prime">
+            <div class="character-info">
+                <h2>Optimus Prime</h2>
+                <p>O nobre líder dos Autobots, que se transforma em um caminhão e luta pela liberdade de todos os seres sencientes.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp7019652.jpg" alt="Ultron">
+            <div class="character-info">
+                <h2>Ultron</h2>
+                <p>Uma inteligência artificial genocida e senciente criada por Hank Pym, que busca aniquilar toda a vida na Terra.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp11415938.jpg" alt="Infinity Ultron">
+            <div class="character-info">
+                <h2>Infinity Ultron</h2>
+                <p>Uma versão de Ultron que coletou com sucesso todas as Joias do Infinito, tornando-se uma ameaça multiversal.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp8970747.jpg" alt="Zoom (Hunter Zolomon)">
+            <div class="character-info">
+                <h2>Zoom (Hunter Zolomon)</h2>
+                <p>Um velocista demoníaco da Terra-2 que é obcecado em ser o mais rápido de todos os velocistas.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperbat.com/img/634415-ghost-rider-wallpaper.jpg" alt="Motoqueiro Fantasma">
+            <div class="character-info">
+                <h2>Motoqueiro Fantasma</h2>
+                <p>Um demônio ligado a um hospedeiro humano, que busca vingança contra os pecadores e os arrasta para o inferno.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/wallpapers/bthumb/the-moon-knight-4k-2023-u7.jpg" alt="Cavaleiro da Lua">
+            <div class="character-info">
+                <h2>Cavaleiro da Lua</h2>
+                <p>Um mercenário com transtorno dissociativo de identidade que se torna o avatar do deus egípcio da lua, Khonshu.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/iron-man-4k-avengers-endgame-ih-1080x1920.jpg" alt="Homem de Ferro">
+            <div class="character-info">
+                <h2>Homem de Ferro</h2>
+                <p>Um gênio bilionário, playboy e filantropo que constrói uma armadura para se tornar o super-herói blindado, o Homem de Ferro.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://w0.peakpx.com/wallpaper/100/795/HD-wallpaper-darth-vader-star-wars-vader.jpg" alt="Darth Vader">
+            <div class="character-info">
+                <h2>Darth Vader</h2>
+                <p>Um Lorde das Trevas dos Sith e o executor do Império Galáctico, temido em toda a galáxia.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/darth-revan-star-wars-4k-1a-1280x2120.jpg" alt="Darth Revan">
+            <div class="character-info">
+                <h2>Darth Revan</h2>
+                <p>Um antigo Cavaleiro Jedi que caiu para o lado sombrio durante as Guerras Mandalorianas e se tornou um poderoso Lorde Sith.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://theforceuniverse.com/wp-content/uploads/2023/03/darth_traya_guide-1024x614.png" alt="Darth Traya">
+            <div class="character-info">
+                <h2>Darth Traya</h2>
+                <p>Uma Lorde das Trevas dos Sith e ex-Mestra Jedi que busca destruir a Força.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/2064997.jpg" alt="Darth Nihilus">
+            <div class="character-info">
+                <h2>Darth Nihilus</h2>
+                <p>Um Lorde das Trevas dos Sith que se tornou uma ferida na Força, consumindo a energia vital de planetas inteiros.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/1386936.jpg" alt="Starkiller">
+            <div class="character-info">
+                <h2>Starkiller</h2>
+                <p>O aprendiz secreto de Darth Vader, com poderes da Força incrivelmente brutos e destrutivos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/obi-wan-kenobi-star-wars-character-4k-os-2560x1080.jpg" alt="Obi Wan Kenobi">
+            <div class="character-info">
+                <h2>Obi-Wan Kenobi</h2>
+                <p>Um lendário Mestre Jedi que treinou Anakin Skywalker e mais tarde se tornou um mentor de seu filho, Luke.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/jcjgyhw.jpg" alt="Indiana Jones">
+            <div class="character-info">
+                <h2>Indiana Jones</h2>
+                <p>Um arqueólogo e aventureiro que viaja pelo mundo em busca de artefatos raros e históricos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/1268709.jpg" alt="Sherlock Holmes">
+            <div class="character-info">
+                <h2>Sherlock Holmes</h2>
+                <p>Um detetive consultor brilhante com habilidades de observação e dedução incomparáveis.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/9255455.jpg" alt="Hercule Poirot">
+            <div class="character-info">
+                <h2>Hercule Poirot</h2>
+                <p>Um famoso detetive belga conhecido por sua inteligência, bigode e o uso de suas "pequenas células cinzentas".</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/806868.jpg" alt="Sauron">
+            <div class="character-info">
+                <h2>Sauron</h2>
+                <p>O Lorde das Trevas de Mordor e o criador do Um Anel, que busca governar toda a Terra-média.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://media.moddb.com/images/groups/1/40/39468/DtuSAaMXQAAJfsb.1.jpeg" alt="Annatar">
+            <div class="character-info">
+                <h2>Annatar</h2>
+                <p>A bela forma que Sauron assumiu para enganar os Elfos e forjar os Anéis do Poder.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aafb8ef5-d771-42cc-8d37-c40485b48296/dfqs1ci-f396720b-f486-4b20-bb6c-38f6880d2d82.jpg/v1/fill/w_905,h_883,q_70,strp/sauron___halbrand_by_marimosalad_dfqs1ci-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTc1MiIsInBhdGgiOiJcL2ZcL2FhZmI4ZWY1LWQ3NzEtNDJjYy04ZDM3LWM0MDQ4NWI0ODI5NlwvZGZxczFjaS1mMzk2NzIwYi1mNDg2LTRiMjAtYmI2Yy0zOGY2ODgwZDJkODIuanBnIiwid2lkdGgiOiI8PTE3OTUifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.hY64JUOrlUNZkvT-jE8R0Pafcu8kZ0aUa1RKwfK1Ek4" alt="Halbrand">
+            <div class="character-info">
+                <h2>Halbrand</h2>
+                <p>Um homem misterioso das Terras do Sul que se revela ser o próprio Sauron.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://sevenswords.uk/wp-content/uploads/2025/09/ringwraiths-1024x512.jpg" alt="Os 9 Nazguls">
+            <div class="character-info">
+                <h2>Os 9 Nazgûl</h2>
+                <p>Os nove reis humanos que foram corrompidos pelos Anéis do Poder e se tornaram os servos mais terríveis de Sauron.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp8462699.jpg" alt="Batman">
+            <div class="character-info">
+                <h2>Batman</h2>
+                <p>Um vigilante que jurou proteger Gotham City do crime após o assassinato de seus pais.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallup.net/wp-content/uploads/2016/01/185185-Assassins_Creed-Ezio_Auditore_da_Firenze.jpg" alt="Ezio Auditore">
+            <div class="character-info">
+                <h2>Ezio Auditore</h2>
+                <p>Um nobre italiano que se torna um Mestre Assassino para buscar vingança pela traição de sua família.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://i.pinimg.com/originals/91/8c/4d/918c4d7a18e6b7b52ee79ffe7c5587be.jpg" alt="Bayek de Siwa">
+            <div class="character-info">
+                <h2>Bayek de Siwa</h2>
+                <p>O último Medjay do Egito Antigo e um dos fundadores da Irmandade dos Assassinos.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpaperaccess.com/full/3021513.jpg" alt="Connor Kenway">
+            <div class="character-info">
+                <h2>Connor Kenway</h2>
+                <p>Um Assassino meio-britânico e meio-moicano que luta pela liberdade de seu povo durante a Revolução Americana.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://pixelz.cc/wp-content/uploads/edd/2018/08/shadow-of-the-tomb-raider-lara-croft-e3-uhd-4k-wallpaper.jpg" alt="Lara Croft">
+            <div class="character-info">
+                <h2>Lara Croft</h2>
+                <p>Uma arqueóloga, caçadora de tesouros e aventureira britânica que explora tumbas e ruínas antigas em todo o mundo.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp10117832.jpg" alt="Greg Heffley">
+            <div class="character-info">
+                <h2>Greg Heffley</h2>
+                <p>Um estudante do ensino fundamental que documenta suas lutas e triunfos diários em seu diário.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp4069118.jpg" alt="Ethan Hunt">
+            <div class="character-info">
+                <h2>Ethan Hunt</h2>
+                <p>Um agente de campo sênior da Impossible Missions Force (IMF) que lidera uma equipe de espionagem de elite.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapercave.com/wp/wp1867294.jpg" alt="John Wick">
+            <div class="character-info">
+                <h2>John Wick</h2>
+                <p>Um lendário assassino de aluguel que é forçado a voltar à ativa após a morte de sua esposa e o roubo de seu carro.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://images.hdqwalls.com/download/doctor-fate-art-4k-6m-2560x1440.jpg" alt="Doctor Fate">
+            <div class="character-info">
+                <h2>Doctor Fate</h2>
+                <p>Um poderoso feiticeiro que é o agente dos Senhores da Ordem e usa o Elmo do Destino.</p>
+            </div>
+        </div>
+          <div class="character-card">
+            <img src="https://cdn.wccftech.com/wp-content/uploads/2017/06/shadow-of-war-troy-baker-talion.jpg" alt="Talion">
+            <div class="character-info">
+                <h2>Talion</h2>
+                <p>Um patrulheiro de Gondor que se funde com o espectro do Lorde Élfico Celebrimbor, buscando vingança contra as forças de Sauron em Mordor.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.ZAmu7fzXrwn9dY0bT1XV1AAAAA&pid=Api&P=0&h=180" alt="Gold Amazo">
+            <div class="character-info">
+                <h2>Gold Amazo</h2>
+                <p>Um androide avançado capaz de duplicar as habilidades e poderes de qualquer super-herói que encontra, tornando-se uma ameaça de nível ômega.</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <img src="https://wallpapers.com/images/hd/dr-doom-1200-x-1500-u3a60pwmljeftrrw.jpg" alt="Doctor Doom">
+            <div class="character-info">
+                <h2>Doctor Doom</h2>
+                <p>O monarca da Latvéria, Victor von Doom, é um gênio da ciência e um mestre da feitiçaria, sendo um dos vilões mais formidáveis da Marvel.</p>
+            </div>
+        </div>
+         <div class="character-card">
+                <img src="https://images7.alphacoders.com/134/1344932.jpeg" alt="Po">
+                <div class="character-info">
+                    <h2>Po</h2>
+                    <p>Um panda entusiasta do kung fu, escolhido como o Dragão Guerreiro, que protege o Vale da Paz com seus amigos, os Cinco Furiosos.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images6.alphacoders.com/507/thumb-1920-507882.png" alt="Gru">
+                <div class="character-info">
+                    <h2>Gru</h2>
+                    <p>Um supervilão que se torna um pai adotivo relutante de três meninas órfãs, encontrando seu coração crescendo algumas vezes maior.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/qtTX96f.jpg" alt="Shrek">
+                <div class="character-info">
+                    <h2>Shrek</h2>
+                    <p>Um ogro mal-humorado que embarca em uma jornada para resgatar a Princesa Fiona para recuperar a solidão de seu pântano, apenas para se apaixonar por ela.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2018/02/Tulak-Hord-Star-Wars.jpg" alt="Tulak Hord">
+                <div class="character-info">
+                    <h2>Tulak Hord</h2>
+                    <p>Um antigo e poderoso Lorde das Trevas dos Sith, conhecido como o "Mestre do Sabre de Luz" e um mestre da feitiçaria Sith.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp8647616.jpg" alt="Mace Windu">
+                <div class="character-info">
+                    <h2>Mace Windu</h2>
+                    <p>Um Mestre Jedi e membro do Alto Conselho Jedi, conhecido por sua sabedoria, proeza em combate e seu sabre de luz de lâmina roxa.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://media.craiyon.com/2025-07-08/0LrGzFtkRa-dljt_fU-9xw.webp" alt="Anakin Skywalker">
+                <div class="character-info">
+                    <h2>Anakin Skywalker</h2>
+                    <p>Um Cavaleiro Jedi profetizado para trazer equilíbrio à Força, que tragicamente cai para o lado sombrio e se torna Darth Vader.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp6674193.jpg" alt="Yoda">
+                <div class="character-info">
+                    <h2>Yoda</h2>
+                    <p>Um lendário Mestre Jedi e um dos membros mais poderosos da Ordem Jedi, conhecido por sua sabedoria e domínio da Força.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images2.alphacoders.com/262/262860.jpg" alt="Gandalf">
+                <div class="character-info">
+                    <h2>Gandalf</h2>
+                    <p>Um mago poderoso e um dos Istari, enviado para a Terra-média para combater Sauron. Conhecido por sua sabedoria, coragem e sacrifício.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp2406370.jpg" alt="Thorin Oakenshield">
+                <div class="character-info">
+                    <h2>Thorin Oakenshield</h2>
+                    <p>O líder da Companhia de Anões que se propõe a recuperar a Montanha Solitária do dragão Smaug.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/4747818.jpg" alt="Bilbo Baggins">
+                <div class="character-info">
+                    <h2>Bilbo Baggins</h2>
+                    <p>Um hobbit que é inesperadamente arrastado para uma aventura épica para recuperar um tesouro de um dragão, descobrindo sua própria coragem ao longo do caminho.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp7442582.jpg" alt="Henry Stickmin">
+                <div class="character-info">
+                    <h2>Henry Stickmin</h2>
+                    <p>Um personagem de videogame conhecido por suas tentativas de roubo, fuga e aventura, onde as escolhas do jogador determinam o resultado cômico.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://w0.peakpx.com/wallpaper/508/103/HD-wallpaper-alastor-hazbin-hotel-venao-venao.jpg" alt="Alastor">
+                <div class="character-info">
+                    <h2>Alastor</h2>
+                    <p>O "Demônio do Rádio", um pecador infame e poderoso no Inferno que oferece sua ajuda a Charlie Morningstar para seu Happy Hotel.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/8258349.png" alt="One Above All">
+                <div class="character-info">
+                    <h2>One Above All</h2>
+                    <p>A entidade suprema do Multiverso Marvel, considerado o ser mais poderoso de toda a existência, servindo como o criador e mestre de tudo.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapers.com/images/hd/tai-lung-escape-scene-kung-fu-panda-uoto6w7fnc2miwne.jpg" alt="Tai Lung">
+                <div class="character-info">
+                    <h2>Tai Lung</h2>
+                    <p>Um leopardo da neve e mestre de kung fu que se tornou um vilão amargo após lhe ser negado o título de Dragão Guerreiro.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp4345338.jpg" alt="Shifu">
+                <div class="character-info">
+                    <h2>Shifu</h2>
+                    <p>Um panda vermelho e mestre de kung fu sábio, embora um tanto severo, que treinou Po e os Cinco Furiosos.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://siachenstudios.com/wp-content/uploads/2022/07/Oogway.png" alt="Oogway">
+                <div class="character-info">
+                    <h2>Oogway</h2>
+                    <p>Uma tartaruga antiga e sábia, o fundador do kung fu e o mentor de Shifu, conhecido por sua sabedoria e ditados filosóficos.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://www.baltana.com/files/wallpapers-1/Kai-In-Kung-Fu-Panda-3-Wallpaper-00031.jpg" alt="Kai (Kung Fu Panda 3)">
+                <div class="character-info">
+                    <h2>Kai</h2>
+                    <p>Um touro guerreiro do reino espiritual que rouba o chi de mestres de kung fu para se tornar o guerreiro mais poderoso.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp7575516.jpg" alt="Captain Rex">
+                <div class="character-info">
+                    <h2>Capitão Rex</h2>
+                    <p>Um capitão clone e veterano das Guerras Clônicas que serviu sob o comando de Anakin Skywalker, conhecido por sua lealdade e pensamento independente.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/2802277.jpg" alt="Commander Cody">
+                <div class="character-info">
+                    <h2>Comandante Cody</h2>
+                    <p>Um comandante clone marechal que serviu sob o comando de Obi-Wan Kenobi durante as Guerras Clônicas, conhecido por sua eficiência e obediência.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp2210115.jpg" alt="Witch-king of Angmar">
+                <div class="character-info">
+                    <h2>Rei-bruxo de Angmar</h2>
+                    <p>O líder dos Nazgûl, o servo mais poderoso de Sauron, um rei antigo que foi corrompido por um Anel do Poder.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.pinimg.com/originals/33/57/8f/33578fb85467ddca90cb40f86b67b1b2.jpg" alt="Primus">
+                <div class="character-info">
+                    <h2>Primus</h2>
+                    <p>O criador dos Transformers, uma antiga divindade que representa a ordem e a criação, e a forma de planeta de Cybertron.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/1911179.jpg" alt="Unicron">
+                <div class="character-info">
+                    <h2>Unicron</h2>
+                    <p>O antigo inimigo de Primus, uma entidade devoradora de planetas que representa o caos e a destruição, e uma ameaça a toda a existência.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images.hdqwalls.com/download/infernal-avenger-the-hellbat-armor-hs-1920x1200.jpg" alt="Hellbat Armor">
+                <div class="character-info">
+                    <h2>Armadura Hellbat</h2>
+                    <p>Uma armadura poderosa forjada pela Liga da Justiça para o Batman usar em batalhas de alto nível, mas que consome o metabolismo de seu usuário.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://comicvine.gamespot.com/a/uploads/original/10/102848/2720216-aaaaaaaaaaaaaaaaaaaaaaaaaa.jpg" alt="Lanterna do Espectro">
+                <div class="character-info">
+                    <h2>Lanterna do Espectro</h2>
+                    <p>Refere-se a qualquer membro das várias Tropas dos Lanternas, cada um empunhando um anel de poder que canaliza uma emoção específica do espectro emocional.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.ytimg.com/vi/13XPufB8VZQ/maxresdefault.jpg" alt="Finn McMissile">
+                <div class="character-info">
+                    <h2>Finn McMissile</h2>
+                    <p>Um mestre espião britânico do filme Carros 2, charmoso, inteligente e equipado com uma variedade de gadgets de espionagem.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.pinimg.com/736x/e9/40/48/e940487b261a24d82f608b53d07b3fa1--lab-rats-donald-oconnor.jpg" alt="Mr. Davenport">
+                <div class="character-info">
+                    <h2>Sr. Davenport</h2>
+                    <p>Um inventor bilionário e o pai adotivo de Adam, Bree e Chase, os Lab Rats. Ele é excêntrico, mas carinhoso.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://static3.wikia.nocookie.net/__cb20131222204745/lab-rats/images/4/40/TCP.jpeg" alt="Principal Perry">
+                <div class="character-info">
+                    <h2>Diretora Perry</h2>
+                    <p>A diretora da escola em Lab Rats, conhecida por sua personalidade dura, comportamento estranho e desconfiança dos irmãos Davenport.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://vignette3.wikia.nocookie.net/lab-rats/images/e/e5/Leo-S4.jpg/revision/latest?cb=20150323010212" alt="Leo Dooley">
+                <div class="character-info">
+                    <h2>Leo Dooley</h2>
+                    <p>O filho da esposa de Davenport e o meio-irmão dos Lab Rats. Ele descobre seus segredos e se torna parte de suas aventuras.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images7.alphacoders.com/400/400717.jpg" alt="Morgoth">
+                <div class="character-info">
+                <h2>Morgoth</h2>
+                <p>O primeiro e mais poderoso dos Lordes das Trevas, o mestre original de Sauron e a fonte de todo o mal na Terra-média.</p>
+            </div>
+            </div>
+            <div class="character-card">
+                <img src="https://ew.com/thmb/5sIvDMrcYKRkf7n-UKwEOt62wkI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Marvel-Studios-Thunderbolts-040725-d74a9f9e85274967a9a63393efd31cf5.jpg" alt="Sentry (Void)">
+                <div class="character-info">
+                    <h2>Sentry (Vazio)</h2>
+                    <p>Um super-herói com o poder de um milhão de sóis em explosão, assombrado por uma persona sombria e destrutiva conhecida como o Vazio.</p>
+                </div>
+            </div>
+             <div class="character-card">
+                <img src="https://images6.fanpop.com/image/photos/43800000/Godzilla-vs-Kong-2021-Wallpaper-monsterverse-43866180-2560-1440.jpg" alt="Godzilla (MonsterVerse)">
+                <div class="character-info">
+                    <h2>Godzilla (MonsterVerse)</h2>
+                    <p>Um antigo predador alfa cuja existência foi mantida em segredo pela Monarch. Ele ocasionalmente emerge para restaurar o equilíbrio da natureza, combatendo outros Titãs.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/6147254.jpg" alt="SpaceGodzilla (MonsterVerse Supernova)">
+                <div class="character-info">
+                    <h2>SpaceGodzilla (MonsterVerse Supernova)</h2>
+                    <p>Uma entidade cósmica nascida das células de Godzilla levadas ao espaço. Ele chega à Terra com o poder de manipular a energia cósmica e cristais, representando uma nova e devastadora ameaça.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://cdnb.artstation.com/p/assets/images/images/038/017/865/large/andrew-vance-mechagodzilla1.jpg?1621952760" alt="Mechagodzilla (MonsterVerse)">
+                <div class="character-info">
+                    <h2>Mechagodzilla (MonsterVerse)</h2>
+                    <p>Uma arma anti-Titã criada pela Apex Cybernetics usando a telepatia de um crânio de Ghidorah. Ele se rebela, tornando-se uma máquina de matar com o objetivo de destruir todos os Titãs.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://vignette.wikia.nocookie.net/godzilla/images/f/f0/Godzilla_King_of_the_Monsters_-_Ghidorah_poster_-_Clear_keyart.jpg/revision/latest/scale-to-width-down/2000?cb=20181219031637" alt="King Ghidorah (MonsterVerse)">
+                <div class="character-info">
+                    <h2>King Ghidorah (MonsterVerse)</h2>
+                    <p>Um dragão de três cabeças de origem extraterrestre e o predador rival de Godzilla. Ele pode gerar tempestades massivas e disparar raios de gravidade de suas bocas.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/9135446.jpg" alt="Destoroyah">
+                <div class="character-info">
+                    <h2>Destoroyah</h2>
+                    <p>Uma criatura nascida de micro-organismos mutados pela Oxygen Destroyer, a arma que matou o Godzilla original. Ele é considerado um dos inimigos mais mortais de Godzilla.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://s2.glbimg.com/F-cbvn2dXAYPv5M1eIWxzXOE4A0=/512x320/smart/e.glbimg.com/og/ed/f/original/2022/03/14/20220308125252_20210317-gato-de-botas-1-1-.jpg" alt="Gato de Botas (O Último Desejo)">
+                <div class="character-info">
+                    <h2>Gato de Botas</h2>
+                    <p>Um espadachim lendário que, após gastar oito de suas nove vidas, embarca em uma jornada para encontrar a mítica Estrela do Desejo e recuperar suas vidas perdidas.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://www.ixpap.com/images/2023/01/Wolf-Puss-in-Boots-Wallpaper-6.jpg" alt="Morte (Gato de Botas: O Último Desejo)">
+                <div class="character-info">
+                    <h2>Morte</h2>
+                    <p>A personificação da própria Morte, representada como um lobo caçador implacável que persegue o Gato de Botas para finalmente ceifar sua última vida.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://comicvine.gamespot.com/a/uploads/original/11115/111159437/5191065-valkorion_01.jpg" alt="Imperador Valkorion">
+                <div class="character-info">
+                    <h2>Imperador Valkorion</h2>
+                    <p>O Imperador Imortal do Império Eterno, uma entidade antiga e imensamente poderosa que governou por séculos e manipulou tanto a República quanto o Império Sith.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp8808367.jpg" alt="Imperador Palpatine">
+                <div class="character-info">
+                    <h2>Imperador Palpatine</h2>
+                    <p>Também conhecido como Darth Sidious, um Lorde das Trevas dos Sith que orquestrou as Guerras Clônicas, destruiu a Ordem Jedi e transformou a República Galáctica no Império Galáctico.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp6617517.jpg" alt="Deadpool">
+                <div class="character-info">
+                    <h2>Deadpool</h2>
+                    <p>O "Mercenário Tagarela", um anti-herói mentalmente instável com um fator de cura sobre-humano. Famoso por seu humor irreverente e por quebrar a quarta parede.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://w0.peakpx.com/wallpaper/788/728/HD-wallpaper-the-mandalorian-poster-the-mandalorian.jpg" alt="O Mandaloriano">
+                <div class="character-info">
+                    <h2>O Mandaloriano</h2>
+                    <p>Din Djarin, um caçador de recompensas solitário de uma seita guerreira que se torna o guardião improvável de Grogu, uma criança sensível à Força.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://sffgazette.com/images/articles/banners/5919.jpg" alt="Guardas Pretorianos do Moff Gideon">
+                <div class="character-info">
+                    <h2>Guardas Pretorianos de Moff Gideon</h2>
+                    <p>Guerreiros de elite equipados com armaduras de Beskar vermelhas e armas de combate corpo a corpo, servindo como a guarda pessoal do implacável Moff Gideon.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaper.forfun.com/fetch/c2/c232128224a43959f6122a347c6bcd7a.jpeg" alt="Guardas Pretorianos do Snoke">
+                <div class="character-info">
+                    <h2>Guardas Pretorianos de Snoke</h2>
+                    <p>Os oito guarda-costas de elite do Líder Supremo Snoke, trajados em armaduras ornamentadas e empunhando uma variedade de armas brancas avançadas para protegê-lo.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Necromancer-The-Hobbit-(1).jpg" alt="O Necromante (O Hobbit)">
+                <div class="character-info">
+                    <h2>O Necromante</h2>
+                    <p>A forma sombria assumida por Sauron enquanto ele residia secretamente na fortaleza de Dol Guldur, acumulando poder e espalhando sua influência maligna pela Terra-média.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp3136811.png" alt="O Destruidor (Thor 1)">
+                <div class="character-info">
+                    <h2>O Destruidor</h2>
+                    <p>Um autômato Asgardiano encantado, criado para guardar o Cofre de Odin. É uma arma quase indestrutível que dispara um raio de energia devastador de seu visor.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa454069-1f38-4db1-a9e3-75d6b00c42e8/dfms2up-8e37cef8-e252-4356-aa6e-4dd71e9d1fc6.jpg/v1/fill/w_1280,h_1600,q_75,strp/kang_the_conqueror_quantumania_artwork___clean_by_akithefull_dfms2up-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTYwMCIsInBhdGgiOiJcL2ZcL2FhNDU0MDY5LTFmMzgtNGRiMS1hOWUzLTc1ZDZiMDBjNDJlOFwvZGZtczJ1cC04ZTM3Y2VmOC1lMjUyLTQzNTYtYWE2ZS00ZGQ3MWU5ZDFmYzYuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.AT5jUKJUu6DKF4cq58PFoe9olKWPUeXEozU0rIIXZIQ" alt="Kang o Conquistador (Quantumania)">
+                <div class="character-info">
+                    <h2>Kang o Conquistador</h2>
+                    <p>Um déspota que viaja no tempo exilado no Reino Quântico. Ele busca escapar para conquistar todas as linhas do tempo e eliminar suas variantes.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.pinimg.com/originals/9a/ec/b2/9aecb2617f80660c079f56d5304646cc.jpg" alt="Dormammu (MCU)">
+                <div class="character-info">
+                    <h2>Dormammu</h2>
+                    <p>O governante tirânico da Dimensão Sombria, uma entidade de imenso poder místico que busca absorver todos os mundos em seu próprio reino de escuridão.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/848156.jpg" alt="Galactus">
+                <div class="character-info">
+                    <h2>Galactus</h2>
+                    <p>Uma entidade cósmica conhecida como o Devorador de Mundos. Ele consome planetas para sustentar sua força vital, sendo uma ameaça de escala inimaginável.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://geekculture.co/wp-content/uploads/2024/10/knull-venom-the-last-dance-939x500.jpg" alt="Knull">
+                <div class="character-info">
+                    <h2>Knull</h2>
+                    <p>O deus primordial da escuridão e criador dos simbiontes. Uma entidade maligna antiga que existia antes do próprio universo, buscando mergulhar tudo no vazio.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp6844096.jpg" alt="Thanos (MCU)">
+                <div class="character-info">
+                    <h2>Thanos</h2>
+                    <p>Um poderoso senhor da guerra Titã que buscou equilibrar o universo aniquilando metade de toda a vida, usando o poder incomparável das Joias do Infinito.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp10134253.jpg" alt="Darkseid (Snyder-Cut)">
+                <div class="character-info">
+                    <h2>Darkseid</h2>
+                    <p>O governante tirânico de Apokolips que busca a Equação Anti-Vida para eliminar o livre arbítrio e subjugar toda a vida no multiverso ao seu poder.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images.hdqwalls.com/wallpapers/x-men-apocalypse-en-sabah-nur.jpg" alt="Apocalypse (X-Men: Apocalypse)">
+                <div class="character-info">
+                    <h2>Apocalypse</h2>
+                    <p>En Sabah Nur, o primeiro mutante, que desperta nos tempos modernos para purificar o mundo com a ajuda de seus Quatro Cavaleiros.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/2132542.jpg" alt="Silver Surfer">
+                <div class="character-info">
+                    <h2>Silver Surfer</h2>
+                    <p>Norrin Radd, que se tornou o arauto de Galactus para salvar seu planeta. Imbuído com o Poder Cósmico, ele viaja pelas estrelas em sua prancha prateada.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.pinimg.com/736x/da/00/04/da00048db6520f13786038c9ce9919cf.jpg" alt="He Who Remains">
+                <div class="character-info">
+                    <h2>Aquele que Permanece</h2>
+                    <p>Uma variante de Kang que criou a Autoridade de Variância Temporal (TVA) para manter uma única "Linha do Tempo Sagrada" e impedir uma guerra multiversal.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp2028666.jpg" alt="Doctor Strange">
+                <div class="character-info">
+                    <h2>Doutor Estranho</h2>
+                    <p>Um cirurgião brilhante que se torna o Mago Supremo após um acidente. Ele protege a Terra de inúmeras ameaças místicas usando seus poderes.</p>
+                </div>
+            </div>
+             <div class="character-card">
+                <img src="https://wallpaperaccess.com/full/7137871.jpg" alt="Agatha Harkness (MCU)">
+                <div class="character-info">
+                    <h2>Agatha Harkness</h2>
+                    <p>Uma bruxa poderosa dos julgamentos de Salém que se torna obcecada em entender e tomar a Magia do Caos de Wanda Maximoff.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://hedwig-cf.netmarble.com/forum-common/mherosgb/futurefight_en/thumbnail/9d5e2324803842f3b7837c9bf7e5761e_1565071499479_d.jpg" alt="Ego (MCU)">
+                <div class="character-info">
+                    <h2>Ego</h2>
+                    <p>Um Celestial antigo e um planeta vivo com um complexo de deus. Pai biológico de Peter Quill, ele busca se expandir e assimilar todo o universo.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp12329651.jpg" alt="Celestials (MCU)">
+                <div class="character-info">
+                    <h2>Celestiais</h2>
+                    <p>Seres cósmicos antigos, semelhantes a deuses, responsáveis pela criação de estrelas, planetas e formas de vida como os Eternos e Deviantes.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://www.sideshow.com/storage/product-images/500555U/wolverine_marvel_feature.jpg" alt="Wolverine (MCU)">
+                <div class="character-info">
+                    <h2>Wolverine</h2>
+                    <p>Um mutante com um poderoso fator de cura, esqueleto de adamantium e garras retráteis, conhecido por seu comportamento rude e lealdade feroz.</p>
+                </div>
+            </div>
+             <div class="character-card">
+                <img src="https://vignette.wikia.nocookie.net/iron-man-armored-adventures/images/e/e9/Mandarin_08.jpg/revision/latest?cb=20120615160814" alt="Mandarim (Iron Man: Armored Adventures)">
+                <div class="character-info">
+                    <h2>O Mandarim</h2>
+                    <p>Nesta série, o adolescente Gene Khan é o descendente do Mandarim original, que busca os dez anéis Makluan para obter poder e vingança.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://wallpapercave.com/wp/wp7475683.jpg" alt="Grand Admiral Thrawn (Ahsoka)">
+                <div class="character-info">
+                    <h2>Grande Almirante Thrawn</h2>
+                    <p>Um brilhante e implacável estrategista Imperial, conhecido por sua apreciação pela arte e sua misteriosa habilidade de entender e derrotar seus inimigos.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images.hdqwalls.com/download/thor-4k-2020-art-yk-1440x2960.jpg" alt="Thor (MCU)">
+                <div class="character-info">
+                    <h2>Thor</h2>
+                    <p>O Deus do Trovão Asgardiano, um membro fundador dos Vingadores que empunha o poderoso martelo Mjolnir e, mais tarde, o machado Stormbreaker.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://images5.alphacoders.com/528/528474.jpg" alt="Hulk (MCU)">
+                <div class="character-info">
+                    <h2>Hulk</h2>
+                    <p>O alter ego gigante, de pele verde e super forte do Dr. Bruce Banner, criado a partir da exposição à radiação gama.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://pixelz.cc/wp-content/uploads/2019/12/avengers-endgame-captain-america-mjolnir-hammer-uhd-4k-wallpaper.jpg" alt="Captain America (MCU)">
+                <div class="character-info">
+                    <h2>Capitão América</h2>
+                    <p>Um super-soldado da Segunda Guerra Mundial que se torna a bússola moral e um dos líderes dos Vingadores, empunhando seu escudo de vibranium.</p>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="https://i.pinimg.com/736x/2b/bc/8c/2bbc8cd46520ef58b714c3ceb8fa67da.jpg" alt="Ant-Man (MCU)">
+                <div class="character-info">
+                    <h2>Homem-Formiga</h2>
+                    <p>Scott Lang, um ladrão habilidoso que se torna um herói após adquirir um traje que lhe permite encolher em tamanho, mas aumentar em força.</p>
+                </div>
+            </div>
+    </main>
+</body>
+</html>
