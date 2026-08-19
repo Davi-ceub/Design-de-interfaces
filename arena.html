@@ -1,0 +1,3878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Arena Multiverso - Compare personagens da Marvel, DC, Star Wars, Transformers e Senhor dos Anéis."
+    >
+
+    <title>Arena Multiverso</title>
+
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #18243d 0%,
+                    #090d18 45%,
+                    #05070d 100%
+                );
+
+            color: #ffffff;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+
+                linear-gradient(
+                    rgba(4, 7, 15, .55),
+                    rgba(4, 7, 15, .92)
+                ),
+
+                url("https://images.unsplash.com/photo-1534791547706-6c2f5e6a3a5c")
+                center / cover;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
+        }
+
+
+        .hero {
+
+            max-width: 1000px;
+
+        }
+
+
+        .hero .badge {
+
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid rgba(255,255,255,.15);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(45px, 8vw, 90px);
+
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #73c9ff,
+                    #a970ff,
+                    #ffffff
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .hero p {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            color: #b9c4d8;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        .hero-button {
+
+            display: inline-block;
+
+            margin-top: 32px;
+
+            padding:
+                15px 30px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5865f2,
+                    #9b4dff
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(100,80,255,.3);
+
+            transition: .3s;
+        }
+
+
+        .hero-button:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.03);
+
+            box-shadow:
+                0 15px 40px
+                rgba(100,80,255,.5);
+        }
+
+
+        /* =========================================================
+           NAV
+        ========================================================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(7,10,18,.88);
+
+            backdrop-filter:
+                blur(15px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+
+            padding: 15px 25px;
+        }
+
+
+        .nav-container {
+
+            max-width: 1350px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+        }
+
+
+        .logo {
+
+            font-size: 21px;
+
+            font-weight: 900;
+        }
+
+
+        .logo span {
+
+            color: #8f72ff;
+        }
+
+
+        nav a {
+
+            color: #b9c4d8;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            margin-left: 25px;
+
+            transition: .2s;
+        }
+
+
+        nav a:hover {
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           CONTAINER
+        ========================================================= */
+
+        .container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding:
+                60px 25px 100px;
+        }
+
+
+        /* =========================================================
+           TITULOS
+        ========================================================= */
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-title h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title p {
+
+            color: #8e9ab0;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================================
+           CONTROLES
+        ========================================================= */
+
+        .controls {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-bottom: 40px;
+
+            justify-content: center;
+        }
+
+
+        .search {
+
+            width: 100%;
+
+            max-width: 600px;
+
+            position: relative;
+        }
+
+
+        .search input {
+
+            width: 100%;
+
+            padding:
+                16px 22px;
+
+            border-radius: 50px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            background:
+                rgba(255,255,255,.06);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 16px;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .search input::placeholder {
+
+            color: #7f8ba0;
+        }
+
+
+        .search input:focus {
+
+            border-color: #7767ff;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(119,103,255,.12);
+        }
+
+
+        .filters {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+
+        .filter {
+
+            border: none;
+
+            padding:
+                10px 17px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            color: #b8c2d4;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+
+        .filter:hover,
+        .filter.active {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5865f2,
+                    #934dff
+                );
+
+            color: white;
+
+            border-color:
+                transparent;
+        }
+
+
+        /* =========================================================
+           CATALOGO
+        ========================================================= */
+
+        .catalogo {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 22px;
+        }
+
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .character-card {
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.09),
+                    rgba(255,255,255,.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition:
+                transform .3s,
+                box-shadow .3s,
+                border .3s;
+
+            animation:
+                fadeIn .45s ease;
+        }
+
+
+        .character-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(130,110,255,.55);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.35);
+        }
+
+
+        .character-image {
+
+            height: 280px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+
+        .character-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .5s;
+        }
+
+
+        .character-card:hover
+        .character-image img {
+
+            transform:
+                scale(1.08);
+        }
+
+
+        .universe {
+
+            position: absolute;
+
+            top: 13px;
+
+            left: 13px;
+
+            padding:
+                7px 12px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            background:
+                rgba(0,0,0,.65);
+
+            backdrop-filter:
+                blur(8px);
+        }
+
+
+        .character-info {
+
+            padding: 20px;
+        }
+
+
+        .character-info h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .character-info p {
+
+            color: #8793a8;
+
+            font-size: 13px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .select-button {
+
+            width: 100%;
+
+            padding:
+                11px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            background:
+                rgba(255,255,255,.07);
+
+            color: white;
+
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+
+        .select-button:hover {
+
+            background:
+                #6d5ce7;
+        }
+
+
+        /* =========================================================
+           ARENA
+        ========================================================= */
+
+        .arena {
+
+            margin-top: 80px;
+
+            padding:
+                45px 30px;
+
+            border-radius: 30px;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(105,78,255,.16),
+                    transparent 60%
+                ),
+
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,.3);
+        }
+
+
+        .arena-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .arena-title h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .arena-title p {
+
+            color: #8995aa;
+        }
+
+
+        .fighters {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 120px 1fr;
+
+            gap: 25px;
+
+            align-items: center;
+        }
+
+
+        .fighter {
+
+            min-height: 500px;
+
+            padding: 25px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(0,0,0,.25);
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            text-align: center;
+        }
+
+
+        .fighter-image {
+
+            width: 210px;
+
+            height: 270px;
+
+            margin:
+                0 auto 20px;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            background: #101522;
+        }
+
+
+        .fighter-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .fighter h3 {
+
+            font-size: 29px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .fighter .universe-name {
+
+            color: #9a83ff;
+
+            font-weight: 700;
+
+            margin-bottom: 25px;
+        }
+
+
+        .vs {
+
+            width: 90px;
+
+            height: 90px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            font-size: 27px;
+
+            font-weight: 1000;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3d6e,
+                    #7a4dff
+                );
+
+            box-shadow:
+                0 0 40px
+                rgba(150,70,255,.45);
+
+            animation:
+                pulse 2s infinite;
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+
+            margin-top: 25px;
+
+            text-align: left;
+        }
+
+
+        .stat {
+
+            margin-bottom: 15px;
+        }
+
+
+        .stat-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            font-size: 13px;
+
+            margin-bottom: 6px;
+
+            color: #b6c0d2;
+        }
+
+
+        .bar {
+
+            height: 9px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .bar-fill {
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            transition:
+                width 1s ease;
+        }
+
+
+        .fighter-left
+        .bar-fill {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff416c,
+                    #ff4b2b
+                );
+        }
+
+
+        .fighter-right
+        .bar-fill {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #4776e6,
+                    #8e54e9
+                );
+        }
+
+
+        /* =========================================================
+           RESULTADO
+        ========================================================= */
+
+        .result {
+
+            display: none;
+
+            margin-top: 45px;
+
+            text-align: center;
+
+            padding:
+                35px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.08),
+                    rgba(255,255,255,.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+        }
+
+
+        .result.show {
+
+            display: block;
+
+            animation:
+                resultAppear .6s ease;
+        }
+
+
+        .result .trophy {
+
+            font-size: 55px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .result h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .winner {
+
+            color: #ffd166;
+        }
+
+
+        .result p {
+
+            max-width: 750px;
+
+            margin:
+                15px auto 0;
+
+            color: #aeb8ca;
+
+            line-height: 1.7;
+        }
+
+
+        .fight-button {
+
+            display: block;
+
+            margin:
+                35px auto 0;
+
+            padding:
+                16px 35px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff416c,
+                    #8e54e9
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        .fight-button:hover {
+
+            transform:
+                translateY(-3px)
+                scale(1.03);
+
+            box-shadow:
+                0 10px 35px
+                rgba(120,70,255,.35);
+        }
+
+
+        /* =========================================================
+           SELEÇÃO
+        ========================================================= */
+
+        .selected {
+
+            border:
+                2px solid #ffd166;
+
+            box-shadow:
+                0 0 30px
+                rgba(255,209,102,.15);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            padding:
+                50px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.08);
+
+            color: #768299;
+        }
+
+
+        footer h2 {
+
+            color: white;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================================
+           ANIMAÇÕES
+        ========================================================= */
+
+        @keyframes fadeIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes pulse {
+
+            0%,100% {
+
+                transform:
+                    scale(1);
+            }
+
+            50% {
+
+                transform:
+                    scale(1.08);
+            }
+        }
+
+
+        @keyframes resultAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(.95);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media(max-width: 900px) {
+
+            .fighters {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .vs {
+
+                margin:
+                    10px auto;
+            }
+
+
+            .fighter {
+
+                min-height:
+                    auto;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            .container {
+
+                padding:
+                    40px 15px;
+            }
+
+
+            .catalogo {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+
+            .character-image {
+
+                height: 220px;
+            }
+
+
+            .character-info {
+
+                padding: 15px;
+            }
+
+
+            .character-info h3 {
+
+                font-size: 18px;
+            }
+
+
+            .arena {
+
+                padding:
+                    30px 15px;
+            }
+        }
+
+
+        @media(max-width: 420px) {
+
+            .catalogo {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =============================================================
+     HEADER
+============================================================= -->
+
+<header>
+
+    <div class="hero">
+
+        <div class="badge">
+            🌌 MULTIVERSO
+        </div>
+
+        <h1>
+            ARENA<br>
+            MULTIVERSO
+        </h1>
+
+        <p>
+            Escolha dois personagens lendários de diferentes
+            universos e descubra quem teria vantagem em um
+            confronto hipotético.
+        </p>
+
+        <a
+            href="#catalogo"
+            class="hero-button"
+        >
+            Escolher personagens ⚔️
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =============================================================
+     NAV
+============================================================= -->
+
+<nav>
+
+    <div class="nav-container">
+
+        <div class="logo">
+            ⚔️ Arena <span>Multiverso</span>
+        </div>
+
+        <div>
+
+            <a href="#catalogo">
+                Personagens
+            </a>
+
+            <a href="#arena">
+                Arena
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =============================================================
+     CONTEÚDO
+============================================================= -->
+
+<main class="container">
+
+
+    <!-- =========================================================
+         CATALOGO
+    ========================================================= -->
+
+    <section id="catalogo">
+
+        <div class="section-title">
+
+            <h2>
+                🧬 Catálogo de Personagens
+            </h2>
+
+            <p>
+                Escolha dois personagens para colocá-los frente a frente.
+            </p>
+
+        </div>
+
+
+        <div class="controls">
+
+            <div class="search">
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="🔎 Pesquisar personagem..."
+                >
+
+            </div>
+
+
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    data-universe="Todos"
+                >
+                    Todos
+                </button>
+
+                <button
+                    class="filter"
+                    data-universe="Marvel"
+                >
+                    🟥 Marvel
+                </button>
+
+                <button
+                    class="filter"
+                    data-universe="DC"
+                >
+                    🟦 DC
+                </button>
+
+                <button
+                    class="filter"
+                    data-universe="Star Wars"
+                >
+                    ⭐ Star Wars
+                </button>
+
+                <button
+                    class="filter"
+                    data-universe="Transformers"
+                >
+                    🤖 Transformers
+                </button>
+
+                <button
+                    class="filter"
+                    data-universe="Senhor dos Anéis"
+                >
+                    💍 Senhor dos Anéis
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="catalogo"
+            id="catalogoPersonagens"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ARENA
+    ========================================================= -->
+
+    <section
+        class="arena"
+        id="arena"
+    >
+
+        <div class="arena-title">
+
+            <h2>
+                ⚔️ Arena de Combate
+            </h2>
+
+            <p>
+                Selecione dois personagens acima para iniciar o confronto.
+            </p>
+
+        </div>
+
+
+        <div class="fighters">
+
+
+            <!-- LUTADOR 1 -->
+
+            <div
+                class="fighter fighter-left"
+                id="fighter1"
+            >
+
+                <div class="fighter-image">
+
+                    <img
+                        id="fighter1Image"
+                        src="https://via.placeholder.com/600x800?text=Escolha+um+personagem"
+                        alt="Primeiro lutador"
+                    >
+
+                </div>
+
+
+                <h3 id="fighter1Name">
+                    Lutador 1
+                </h3>
+
+
+                <div
+                    class="universe-name"
+                    id="fighter1Universe"
+                >
+                    —
+                </div>
+
+
+                <div
+                    class="stats"
+                    id="fighter1Stats"
+                ></div>
+
+            </div>
+
+
+            <!-- VS -->
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <!-- LUTADOR 2 -->
+
+            <div
+                class="fighter fighter-right"
+                id="fighter2"
+            >
+
+                <div class="fighter-image">
+
+                    <img
+                        id="fighter2Image"
+                        src="https://via.placeholder.com/600x800?text=Escolha+um+personagem"
+                        alt="Segundo lutador"
+                    >
+
+                </div>
+
+
+                <h3 id="fighter2Name">
+                    Lutador 2
+                </h3>
+
+
+                <div
+                    class="universe-name"
+                    id="fighter2Universe"
+                >
+                    —
+                </div>
+
+
+                <div
+                    class="stats"
+                    id="fighter2Stats"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÃO -->
+
+        <button
+            class="fight-button"
+            id="fightButton"
+        >
+            ⚔️ INICIAR BATALHA
+        </button>
+
+
+        <!-- RESULTADO -->
+
+        <div
+            class="result"
+            id="result"
+        >
+
+            <div class="trophy">
+                🏆
+            </div>
+
+            <h2>
+                Vencedor:
+                <span
+                    class="winner"
+                    id="winner"
+                >
+                </span>
+            </h2>
+
+            <p id="resultText"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =============================================================
+     FOOTER
+============================================================= -->
+
+<footer>
+
+    <h2>
+        🌌 Arena Multiverso
+    </h2>
+
+    <p>
+        Um simulador fictício de comparação entre personagens.
+    </p>
+
+    <br>
+
+    <p>
+        Os resultados são baseados nos atributos cadastrados
+        e não representam necessariamente o resultado oficial
+        de um confronto nas obras.
+    </p>
+
+</footer>
+
+
+<!-- =============================================================
+     JAVASCRIPT
+============================================================= -->
+
+<script>
+
+
+/* =============================================================
+   BANCO DE PERSONAGENS
+
+   Atributos:
+
+   força
+   velocidade
+   defesa
+   inteligencia
+   poder
+   combate
+============================================================= */
+
+
+const personagens = [
+
+    /* =========================================================
+       ======================= MARVEL ==========================
+       ========================================================= */
+
+    {
+        nome: "Homem-Aranha",
+        universo: "Marvel",
+        descricao: "Herói aracnídeo, ágil e extremamente inteligente.",
+        imagem: "https://i.pinimg.com/736x/ba/f1/f9/baf1f9dc01f26b103e055950dd8ffca6.jpg",
+        stats: {
+            forca: 80,
+            velocidade: 92,
+            defesa: 82,
+            inteligencia: 96,
+            poder: 85,
+            combate: 91
+        }
+    },
+
+    {
+        nome: "Homem de Ferro",
+        universo: "Marvel",
+        descricao: "Gênio, inventor e usuário de uma poderosa armadura tecnológica.",
+        imagem: "https://i.pinimg.com/originals/68/34/8b/68348bb6411d663483eefe1c41fb6453.jpg",
+        stats: {
+            forca: 82,
+            velocidade: 85,
+            defesa: 88,
+            inteligencia: 100,
+            poder: 90,
+            combate: 83
+        }
+    },
+
+    {
+        nome: "Capitão América",
+        universo: "Marvel",
+        descricao: "Super-soldado equipado com seu lendário escudo.",
+        imagem: "https://i.redd.it/concept-art-of-chris-evans-as-captain-america-by-ryan-v0-gyh9ogz76zsd1.jpg?width=1024&format=pjpg&auto=webp&s=36a22e86a805c7055328a4287889b9056e7da8eb",
+        stats: {
+            forca: 80,
+            velocidade: 78,
+            defesa: 84,
+            inteligencia: 88,
+            poder: 72,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Thor",
+        universo: "Marvel",
+        descricao: "Deus do Trovão e um dos mais poderosos heróis da Marvel.",
+        imagem: "https://i.pinimg.com/originals/5b/2f/83/5b2f83cc29ad16b93627161d2350ba43.jpg",
+        stats: {
+            forca: 99,
+            velocidade: 87,
+            defesa: 97,
+            inteligencia: 82,
+            poder: 99,
+            combate: 96
+        }
+    },
+
+    {
+        nome: "Hulk",
+        universo: "Marvel",
+        descricao: "Gigante Esmeralda cuja força aumenta conforme sua raiva.",
+        imagem: "https://i.pinimg.com/originals/e7/7a/d6/e77ad6c8385054cca25fae08b476c8d2.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 72,
+            defesa: 100,
+            inteligencia: 65,
+            poder: 98,
+            combate: 91
+        }
+    },
+
+    {
+        nome: "Wolverine",
+        universo: "Marvel",
+        descricao: "Mutante com fator de cura e garras de adamantium.",
+        imagem: "https://i.pinimg.com/736x/ef/21/ee/ef21eeff58645cd1c3dcc150f04c4346.jpg",
+        stats: {
+            forca: 87,
+            velocidade: 77,
+            defesa: 98,
+            inteligencia: 78,
+            poder: 87,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Deadpool",
+        universo: "Marvel",
+        descricao: "Mercenário extremamente habilidoso com fator de cura e humor peculiar.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8a3b44b2-b8cf-4fbb-a25f-3f693118f092/dfs5c6t-772ea771-f48c-4f96-894b-8c5cd88af7d1.jpg/v1/fill/w_1024,h_1472,q_75,strp/marvel_deadpool_drawing_by_theartsypuffin_dfs5c6t-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTQ3MiIsInBhdGgiOiJcL2ZcLzhhM2I0NGIyLWI4Y2YtNGZiYi1hMjVmLTNmNjkzMTE4ZjA5MlwvZGZzNWM2dC03NzJlYTc3MS1mNDhjLTRmOTYtODk0Yi04YzVjZDg4YWY3ZDEuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.6ZVveKRZthL_ylAXD1zJmJkj9NgjbK-iQLnDiK7uGzQ",
+        stats: {
+            forca: 75,
+            velocidade: 82,
+            defesa: 96,
+            inteligencia: 88,
+            poder: 82,
+            combate: 99
+        }
+    },
+
+    {
+        nome: "Capitã Marvel",
+        universo: "Marvel",
+        descricao: "Heroína cósmica com enorme força e energia.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/071644fd-ddf5-4ce0-ae3f-7ea897b51ad2/dfm97uj-8b2c4001-4e9f-47f2-8dd2-7fe81ad3c082.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA3MTY0NGZkLWRkZjUtNGNlMC1hZTNmLTdlYTg5N2I1MWFkMlwvZGZtOTd1ai04YjJjNDAwMS00ZTlmLTQ3ZjItOGRkMi03ZmU4MWFkM2MwODIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Ef2Wcf_mjXYwFC5t6_0irSQWiAyogP_4GlsRBqUD_QM",
+        stats: {
+            forca: 98,
+            velocidade: 98,
+            defesa: 97,
+            inteligencia: 91,
+            poder: 100,
+            combate: 94
+        }
+    },
+
+    {
+        nome: "Feiticeira Escarlate",
+        universo: "Marvel",
+        descricao: "Uma das mais poderosas manipuladoras de energia e realidade.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/058/260/333/large/bruno-moises-scarlet-witch-chaos.jpg?1673761955",
+        stats: {
+            forca: 65,
+            velocidade: 75,
+            defesa: 78,
+            inteligencia: 94,
+            poder: 100,
+            combate: 84
+        }
+    },
+
+    {
+        nome: "Doutor Estranho",
+        universo: "Marvel",
+        descricao: "Mestre das artes místicas e defensor da realidade.",
+        imagem: "https://i.pinimg.com/736x/85/24/92/852492cffeb89a4bc68697a77072e45a.jpg",
+        stats: {
+            forca: 60,
+            velocidade: 72,
+            defesa: 80,
+            inteligencia: 100,
+            poder: 100,
+            combate: 86
+        }
+    },
+
+    {
+        nome: "Pantera Negra",
+        universo: "Marvel",
+        descricao: "Rei de Wakanda equipado com tecnologia avançada e habilidades aprimoradas.",
+        imagem: "https://i.pinimg.com/originals/cb/a2/b9/cba2b90693cd510dcf7fbe114ca560ff.jpg",
+        stats: {
+            forca: 82,
+            velocidade: 85,
+            defesa: 90,
+            inteligencia: 96,
+            poder: 82,
+            combate: 99
+        }
+    },
+
+    {
+        nome: "Homem-Formiga",
+        universo: "Marvel",
+        descricao: "Herói capaz de alterar seu tamanho e utilizar tecnologia avançada.",
+        imagem: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/ant-man-painting-paul-meijering.jpg",
+        stats: {
+            forca: 78,
+            velocidade: 80,
+            defesa: 72,
+            inteligencia: 90,
+            poder: 84,
+            combate: 80
+        }
+    },
+
+    {
+        nome: "Visão",
+        universo: "Marvel",
+        descricao: "Android extremamente poderoso capaz de manipular sua densidade.",
+        imagem: "https://i.pinimg.com/originals/4a/9a/64/4a9a64d754541634574466ec3ea94a04.jpg",
+        stats: {
+            forca: 92,
+            velocidade: 88,
+            defesa: 96,
+            inteligencia: 98,
+            poder: 98,
+            combate: 90
+        }
+    },
+
+    {
+        nome: "Loki",
+        universo: "Marvel",
+        descricao: "Deus da Trapaça, mestre da magia e das ilusões.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/db8b50ba-9699-488c-93ff-f73b2f528c57/dgg2dx7-aa8cf65a-24cb-4940-aa50-8e13662bc40b.jpg/v1/fill/w_1280,h_2844,q_75,strp/loki_s2_wallpaper_1_by_artsywayne_dgg2dx7-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mjg0NCIsInBhdGgiOiJcL2ZcL2RiOGI1MGJhLTk2OTktNDg4Yy05M2ZmLWY3M2IyZjUyOGM1N1wvZGdnMmR4Ny1hYThjZjY1YS0yNGNiLTQ5NDAtYWE1MC04ZTEzNjYyYmM0MGIuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.3McASYQfW2_GxUlsNiOsuDTmpCH_xw3I7Efy919qr_Y",
+        stats: {
+            forca: 75,
+            velocidade: 72,
+            defesa: 88,
+            inteligencia: 98,
+            poder: 95,
+            combate: 85
+        }
+    },
+
+     {
+        nome: "Ultron",
+        universo: "Marvel",
+        descricao: "Inteligência artificial malévola e um dos maiores antagonistas do universo Marvel.",
+        imagem: "https://i.pinimg.com/originals/33/8b/fd/338bfdb95c00d4bbced9223fadc65856.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 100,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Thanos",
+        universo: "Marvel",
+        descricao: "Titã Louco e um dos maiores antagonistas do universo Marvel.",
+        imagem: "https://i.pinimg.com/originals/ee/6c/cc/ee6cccde725c5a48e0ff5fa53e249ad9.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 82,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Doutor Destino",
+        universo: "Marvel",
+        descricao: "Gênio científico e mestre das artes místicas.",
+        imagem: "https://i.pinimg.com/originals/05/2d/3b/052d3b6d8df4549adec83ecb5fa88d3a.jpg",
+        stats: {
+            forca: 85,
+            velocidade: 75,
+            defesa: 95,
+            inteligencia: 100,
+            poder: 99,
+            combate: 92
+        }
+    },
+
+    {
+        nome: "Galactus",
+        universo: "Marvel",
+        descricao: "Entidade cósmica de escala extraordinária.",
+        imagem: "https://cdna.artstation.com/p/assets/images/images/084/412/060/large/justin-fields-cosmic-galactus-jgf-013025glz.jpg?1738352955",
+        stats: {
+            forca: 100,
+            velocidade: 95,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 95
+        }
+    },
+
+    {
+    nome: "Odin",
+    universo: "Marvel",
+    descricao: "Pai de Thor e soberano de Asgard. Um dos mais poderosos deuses asgardianos, possuidor da Odinforce e de vastos poderes cósmicos.",
+    imagem: "https://i.pinimg.com/originals/d1/41/31/d14131059a640d2f109a732954f49297.jpg",
+    stats: {
+        forca: 99,
+        velocidade: 91,
+        defesa: 99,
+        inteligencia: 98,
+        poder: 100,
+        combate: 98
+    }
+},
+
+{
+    nome: "Mephisto",
+    universo: "Marvel",
+    descricao: "Entidade demoníaca extremamente poderosa que governa uma dimensão infernal. Mestre da manipulação, magia e corrupção de almas.",
+    imagem: "https://i.pinimg.com/736x/69/fe/cd/69fecd69665841104d7e0a25e9ca3fec.jpg",
+    stats: {
+        forca: 94,
+        velocidade: 85,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 94
+    }
+},
+
+{
+    nome: "Dormammu",
+    universo: "Marvel",
+    descricao: "Entidade mística e soberano da Dimensão Negra. Um dos maiores inimigos do Doutor Estranho, capaz de manipular enormes quantidades de energia mística e alterar a própria realidade dentro de seu domínio.",
+    imagem: "https://orig00.deviantart.net/0c2b/f/2017/124/3/2/dormammu_concept_art_for_dr_strange_by_ubermonster-db83qxv.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 94,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 98
+    }
+},
+
+{
+    nome: "Knull",
+    universo: "Marvel",
+    descricao: "Deus ancestral dos simbiontes e entidade primordial das trevas. Knull empunha a All-Black, a Necrosword, e possui uma conexão extraordinária com os simbiontes.",
+    imagem: "https://i.pinimg.com/736x/71/88/60/718860b658a464abde3bb78fa54cd9cb.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 94,
+        defesa: 100,
+        inteligencia: 98,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Kang, o Conquistador",
+    universo: "Marvel",
+    descricao: "Viajante temporal e conquistador do futuro que utiliza tecnologia extremamente avançada para manipular diferentes períodos da história. Possui inúmeras variantes e identidades ao longo do tempo.",
+    imagem: "https://i.redd.it/d84jbcmpdjja1.jpg",
+    stats: {
+        forca: 78,
+        velocidade: 72,
+        defesa: 91,
+        inteligencia: 100,
+        poder: 94,
+        combate: 91
+    }
+},
+
+    /* =========================================================
+       ========================= DC ============================
+       ========================================================= */
+
+    {
+        nome: "Superman",
+        universo: "DC",
+        descricao: "O Homem de Aço, dotado de força e poderes extraordinários.",
+        imagem: "https://images.nightcafe.studio/jobs/N8C71w9rdp5kbWKwFNZY/N8C71w9rdp5kbWKwFNZY--1--da95s.jpg?tr=w-1600,c-at_max",
+        stats: {
+            forca: 100,
+            velocidade: 100,
+            defesa: 100,
+            inteligencia: 92,
+            poder: 100,
+            combate: 96
+        }
+    },
+
+    {
+        nome: "Batman",
+        universo: "DC",
+        descricao: "O Cavaleiro das Trevas, mestre em estratégia e combate.",
+        imagem: "https://i.pinimg.com/originals/74/f8/13/74f8132956bede46eafb761000c382e0.jpg",
+        stats: {
+            forca: 68,
+            velocidade: 75,
+            defesa: 72,
+            inteligencia: 100,
+            poder: 48,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Mulher-Maravilha",
+        universo: "DC",
+        descricao: "Princesa das Amazonas e poderosa guerreira.",
+        imagem: "https://i.pinimg.com/originals/ca/c4/5c/cac45c6e76213bc64d4ae28c24180619.png",
+        stats: {
+            forca: 97,
+            velocidade: 94,
+            defesa: 96,
+            inteligencia: 92,
+            poder: 98,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Flash",
+        universo: "DC",
+        descricao: "Um dos seres mais rápidos do universo DC.",
+        imagem: "https://i.pinimg.com/originals/e2/55/45/e25545a0c00198911f80ab1d0352dbc9.jpg",
+        stats: {
+            forca: 75,
+            velocidade: 100,
+            defesa: 80,
+            inteligencia: 94,
+            poder: 100,
+            combate: 93
+        }
+    },
+
+    {
+        nome: "Aquaman",
+        universo: "DC",
+        descricao: "Rei de Atlântida e poderoso guerreiro.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4870386b-ddb7-4e69-b00a-da64cbe510f2/dfr8h1o-c0767016-efdc-4493-95b1-d25d81e6b2d0.png/v1/fill/w_730,h_1095,q_70,strp/aquaman_fanart_by_blklstdog_by_blklstdog_dfr8h1o-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUzNiIsInBhdGgiOiJcL2ZcLzQ4NzAzODZiLWRkYjctNGU2OS1iMDBhLWRhNjRjYmU1MTBmMlwvZGZyOGgxby1jMDc2NzAxNi1lZmRjLTQ0OTMtOTViMS1kMjVkODFlNmIyZDAucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.1uwlyHnUJeolC_Ms-eWOSYNpjUTzUm5ICC8cBpqm7OU",
+        stats: {
+            forca: 93,
+            velocidade: 78,
+            defesa: 92,
+            inteligencia: 82,
+            poder: 91,
+            combate: 95
+        }
+    },
+
+    {
+        nome: "Lanterna Verde",
+        universo: "DC",
+        descricao: "Portador de um anel capaz de criar construções de energia.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/064/329/075/large/moreira-souza-12.jpg?1687687218",
+        stats: {
+            forca: 78,
+            velocidade: 85,
+            defesa: 91,
+            inteligencia: 94,
+            poder: 100,
+            combate: 92
+        }
+    },
+
+    {
+        nome: "Shazam",
+        universo: "DC",
+        descricao: "Herói mágico com poderes concedidos por entidades mitológicas.",
+        imagem: "https://i.pinimg.com/originals/66/a7/5d/66a75db1a2c9933f41aab0dfddd947ab.jpg",
+        stats: {
+            forca: 98,
+            velocidade: 98,
+            defesa: 97,
+            inteligencia: 82,
+            poder: 99,
+            combate: 92
+        }
+    },
+
+    {
+        nome: "Ciborgue",
+        universo: "DC",
+        descricao: "Herói cibernético conectado a tecnologia extremamente avançada.",
+        imagem: "https://i.pinimg.com/originals/fb/6f/08/fb6f081a08b973b4f1d8752ec8b02224.jpg",
+        stats: {
+            forca: 88,
+            velocidade: 82,
+            defesa: 94,
+            inteligencia: 98,
+            poder: 95,
+            combate: 85
+        }
+    },
+
+    {
+        nome: "Arlequina",
+        universo: "DC",
+        descricao: "Combatente imprevisível e especialista em armas e acrobacias.",
+        imagem: "https://tse4.mm.bing.net/th/id/OIP.hL9Wgy9ESke6hBC_jzuIXwHaLH?r=0&pid=Api&P=0&h=180",
+        stats: {
+            forca: 62,
+            velocidade: 78,
+            defesa: 60,
+            inteligencia: 85,
+            poder: 55,
+            combate: 90
+        }
+    },
+
+    {
+        nome: "Coringa",
+        universo: "DC",
+        descricao: "Um dos maiores vilões e estrategistas do universo DC.",
+        imagem: "https://i.pinimg.com/originals/bd/84/b4/bd84b4561b3a40e6b5c10ac4d985d6eb.jpg",
+        stats: {
+            forca: 48,
+            velocidade: 60,
+            defesa: 55,
+            inteligencia: 99,
+            poder: 50,
+            combate: 82
+        }
+    },
+
+    {
+        nome: "Constantine",
+        universo: "DC",
+        descricao: "Detetive sobrenatural e especialista em magia e ocultismo.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aaa79357-9476-4c1d-b9a8-6e881f2449d3/dfrf5xm-1228b149-0b13-4b4c-aa4b-84be3c42ae34.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhYTc5MzU3LTk0NzYtNGMxZC1iOWE4LTZlODgxZjI0NDlkM1wvZGZyZjV4bS0xMjI4YjE0OS0wYjEzLTRiNGMtYWE0Yi04NGJlM2M0MmFlMzQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.bkIsSwiuM0NiPedmCrjm4t23V0pk3aGjpVygn4xO6Nk",
+        stats: {
+            forca: 45,
+            velocidade: 55,
+            defesa: 60,
+            inteligencia: 99,
+            poder: 94,
+            combate: 75
+        }
+    },
+
+    {
+    nome: "O Espectro",
+    universo: "DC",
+    descricao: "Entidade divina da DC ligada à vingança e à justiça, considerada uma das forças mais poderosas do universo.",
+    imagem: "https://i.pinimg.com/originals/18/76/f6/1876f6c548786b453ef4fa817bdedccd.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 100,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Flash Reverso",
+    universo: "DC",
+    descricao: "Eobard Thawne, velocista do futuro e um dos maiores inimigos do Flash. Possui poderes semelhantes aos de Barry Allen e utiliza sua conexão temporal para atormentar seu maior rival.",
+    imagem: "https://pre11.deviantart.net/f4ac/th/pre/i/2015/343/0/8/reverse_flash_by_nopeys-d9jkxvn.jpg",
+    stats: {
+        forca: 78,
+        velocidade: 100,
+        defesa: 86,
+        inteligencia: 99,
+        poder: 98,
+        combate: 100
+    }
+},
+
+{
+    nome: "Zoom",
+    universo: "The Flash",
+    descricao: "Hunter Zolomon, o principal antagonista da segunda temporada da série The Flash. Um velocista extremamente brutal que buscava se tornar o único velocista do multiverso.",
+    imagem: "https://cdnb.artstation.com/p/assets/images/images/014/767/453/large/niman-shrestha-zoom-2.jpg?1545371038",
+    stats: {
+        forca: 82,
+        velocidade: 100,
+        defesa: 92,
+        inteligencia: 94,
+        poder: 98,
+        combate: 100
+    }
+},
+
+{
+    nome: "Savitar",
+    universo: "The Flash",
+    descricao: "O misterioso velocista da terceira temporada de The Flash. Na série, Savitar é revelado como um remanescente temporal de Barry Allen, utilizando uma poderosa armadura para canalizar sua velocidade.",
+    imagem: "https://wallpapercave.com/wp/wp3979692.jpg",
+    stats: {
+        forca: 94,
+        velocidade: 100,
+        defesa: 99,
+        inteligencia: 96,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Anti-Monitor",
+    universo: "DC",
+    descricao: "Entidade cósmica responsável por destruir universos inteiros durante a Crise nas Infinitas Terras. É uma das maiores ameaças do Multiverso DC.",
+    imagem: "https://i.pinimg.com/originals/60/74/23/6074237ec4ddf07804562e106428aa39.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 96,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 99
+    }
+},
+
+    {
+        nome: "Darkseid",
+        universo: "DC",
+        descricao: "Tirano de Apokolips e uma das maiores ameaças do universo.",
+        imagem: "https://i.pinimg.com/originals/0c/bf/db/0cbfdbd439cbf7f455deba15c502880f.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 90,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 99
+        }
+    },
+
+    {
+        nome: "Doomsday",
+        universo: "DC",
+        descricao: "Criatura extremamente poderosa conhecida por sua resistência e adaptação.",
+        imagem: "https://i.pinimg.com/736x/20/df/7b/20df7bcfbe91d798034d4b7e9f9259be.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 85,
+            defesa: 100,
+            inteligencia: 65,
+            poder: 98,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Caçador de Marte",
+        universo: "DC",
+        descricao: "Marciano com telepatia, força, intangibilidade e metamorfose.",
+        imagem: "https://i.pinimg.com/736x/c8/1f/80/c81f8053c0f65530aba161c7d3b60f14.jpg",
+        stats: {
+            forca: 95,
+            velocidade: 94,
+            defesa: 96,
+            inteligencia: 97,
+            poder: 99,
+            combate: 95
+        }
+    },
+
+
+    /* =========================================================
+       ====================== STAR WARS ========================
+       ========================================================= */
+
+    {
+        nome: "Darth Vader",
+        universo: "Star Wars",
+        descricao: "Lorde Sith e antigo Jedi Anakin Skywalker.",
+        imagem: "https://mir-s3-cdn-cf.behance.net/project_modules/1400/932c09156926007.636fb240e6531.png",
+        stats: {
+            forca: 86,
+            velocidade: 68,
+            defesa: 94,
+            inteligencia: 93,
+            poder: 99,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Luke Skywalker",
+        universo: "Star Wars",
+        descricao: "Mestre Jedi e herói da Aliança Rebelde.",
+        imagem: "https://i.pinimg.com/originals/9d/62/f3/9d62f388f10fd0480e6e4ba0c6667729.jpg",
+        stats: {
+            forca: 75,
+            velocidade: 82,
+            defesa: 88,
+            inteligencia: 94,
+            poder: 99,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Yoda",
+        universo: "Star Wars",
+        descricao: "Um dos maiores Mestres Jedi da história.",
+        imagem: "https://i.pinimg.com/originals/b1/95/99/b1959953f5ca57561076af5d7819ce9d.jpg",
+        stats: {
+            forca: 62,
+            velocidade: 96,
+            defesa: 92,
+            inteligencia: 100,
+            poder: 100,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Obi-Wan Kenobi",
+        universo: "Star Wars",
+        descricao: "Mestre Jedi conhecido por sua técnica e disciplina.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/014/514/095/large/darren-tan-swr-obi-wankenobi-cu1.jpg?1544282719",
+        stats: {
+            forca: 70,
+            velocidade: 84,
+            defesa: 97,
+            inteligencia: 96,
+            poder: 94,
+            combate: 99
+        }
+    },
+
+    {
+        nome: "Palpatine",
+        universo: "Star Wars",
+        descricao: "Imperador Sith e mestre da manipulação política.",
+        imagem: "https://i.etsystatic.com/15590810/r/il/4cadc6/3045981599/il_fullxfull.3045981599_me5j.jpg",
+        stats: {
+            forca: 62,
+            velocidade: 72,
+            defesa: 88,
+            inteligencia: 100,
+            poder: 100,
+            combate: 96
+        }
+    },
+
+    {
+        nome: "Mace Windu",
+        universo: "Star Wars",
+        descricao: "Um dos mais respeitados Mestres Jedi da Ordem.",
+        imagem: "https://wallpapers.com/images/hd/purple-lightsaber-mace-windu-fanart-t8a0lrla6fo3fbe2.jpg",
+        stats: {
+            forca: 75,
+            velocidade: 88,
+            defesa: 94,
+            inteligencia: 96,
+            poder: 97,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Darth Maul",
+        universo: "Star Wars",
+        descricao: "Guerreiro Sith extremamente habilidoso com sabre de luz.",
+        imagem: "https://disneyartonmain.com/cdn/shop/files/usurper_sw.jpg?v=1684600204",
+        stats: {
+            forca: 78,
+            velocidade: 95,
+            defesa: 85,
+            inteligencia: 80,
+            poder: 91,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Ahsoka Tano",
+        universo: "Star Wars",
+        descricao: "Guerreira habilidosa que foi treinada como Jedi.",
+        imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5aa16421-e20b-4a8d-9428-fe192c4f41d2/de9o2qg-d6375198-a050-4145-b857-2f3bf9980f59.png/v1/fill/w_1600,h_2286,q_80,strp/ahsoka_tano_by_mizuriau_de9o2qg-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjI4NiIsInBhdGgiOiJcL2ZcLzVhYTE2NDIxLWUyMGItNGE4ZC05NDI4LWZlMTkyYzRmNDFkMlwvZGU5bzJxZy1kNjM3NTE5OC1hMDUwLTQxNDUtYjg1Ny0yZjNiZjk5ODBmNTkucG5nIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.fbX7T8SPCGALQOtrjkVxUrf5F_0N72txiGsJCY5BOV4",
+        stats: {
+            forca: 70,
+            velocidade: 92,
+            defesa: 90,
+            inteligencia: 94,
+            poder: 93,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Boba Fett",
+        universo: "Star Wars",
+        descricao: "Um dos mais famosos caçadores de recompensa da galáxia.",
+        imagem: "https://i.pinimg.com/originals/6c/d1/fa/6cd1fad08adba9efb8ad0443bdeeee64.jpg",
+        stats: {
+            forca: 65,
+            velocidade: 78,
+            defesa: 85,
+            inteligencia: 88,
+            poder: 70,
+            combate: 95
+        }
+    },
+
+    {
+        nome: "Kylo Ren",
+        universo: "Star Wars",
+        descricao: "Guerreiro da Primeira Ordem e usuário do lado sombrio.",
+        imagem: "https://i.pinimg.com/originals/d8/0a/89/d80a89108f49ee529d3e02eecfaad504.png",
+        stats: {
+            forca: 80,
+            velocidade: 82,
+            defesa: 87,
+            inteligencia: 88,
+            poder: 96,
+            combate: 95
+        }
+    },
+
+    {
+    nome: "Jango Fett",
+    universo: "Star Wars",
+    descricao: "Um dos maiores caçadores de recompensas da galáxia e modelo genético dos clones da República. Extremamente habilidoso com blasters, combate corpo a corpo e seu arsenal mandaloriano.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aac3001a-bf89-4e13-a02d-87adf7a37934/dbg1lz0-2cb05a4f-6b78-46c0-897c-a0c5b77dad4d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhYzMwMDFhLWJmODktNGUxMy1hMDJkLTg3YWRmN2EzNzkzNFwvZGJnMWx6MC0yY2IwNWE0Zi02Yjc4LTQ2YzAtODk3Yy1hMGM1Yjc3ZGFkNGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7cjuz170Ruj_IGBjC26MtSMWAM7OPwIBw5CKrtkgrqY",
+    stats: {
+        forca: 82,
+        velocidade: 86,
+        defesa: 91,
+        inteligencia: 91,
+        poder: 72,
+        combate: 99
+    }
+},
+
+{
+    nome: "Cad Bane",
+    universo: "Star Wars",
+    descricao: "Um dos mais perigosos caçadores de recompensas da galáxia. Especialista em enfrentar Jedi, utiliza pistolas blaster, botas propulsoras, lança-chamas e diversos equipamentos especializados.",
+    imagem: "https://preview.redd.it/dxc6psahsnf81.png?width=1080&format=png&auto=webp&s=6917343144442de708e213888aabd7c4abf9b782",
+    stats: {
+        forca: 76,
+        velocidade: 91,
+        defesa: 82,
+        inteligencia: 96,
+        poder: 70,
+        combate: 100
+    }
+},
+
+{
+    nome: "Darth Traya",
+    universo: "Star Wars",
+    descricao: "Kreia, também conhecida como Darth Traya, é uma poderosa mestra da Força e uma das figuras centrais do Triunvirato Sith. Especialista em manipulação, conhecimento e poderes da Força.",
+    imagem: "https://i.pinimg.com/736x/db/cf/ca/dbcfca68aba53bb1fd270ebfd77e5600.jpg",
+    stats: {
+        forca: 72,
+        velocidade: 76,
+        defesa: 88,
+        inteligencia: 100,
+        poder: 99,
+        combate: 91
+    }
+},
+
+{
+    nome: "Darth Sion",
+    universo: "Star Wars",
+    descricao: "O Senhor da Dor. Um Sith cujo corpo destruído era mantido unido pelo ódio e pelo lado sombrio da Força, permitindo-lhe resistir à própria morte.",
+    imagem: "https://i.etsystatic.com/51599395/r/il/38311e/5964486321/il_fullxfull.5964486321_8njs.jpg",
+    stats: {
+        forca: 94,
+        velocidade: 68,
+        defesa: 100,
+        inteligencia: 72,
+        poder: 96,
+        combate: 98
+    }
+},
+
+{
+    nome: "Darth Nihilus",
+    universo: "Star Wars",
+    descricao: "O Senhor da Fome. Uma entidade Sith consumida por uma fome insaciável pela Força, capaz de drenar a energia vital de outros seres e de mundos inteiros.",
+    imagem: "https://wallpapers.com/images/hd/darth-nihilus-realistic-art-900lnya4ucj11zl8.jpg",
+    stats: {
+        forca: 92,
+        velocidade: 82,
+        defesa: 91,
+        inteligencia: 90,
+        poder: 100,
+        combate: 95
+    }
+},
+
+{
+    nome: "Darth Revan",
+    universo: "Star Wars",
+    descricao: "Um dos mais lendários usuários da Força da Velha República. Revan foi Jedi, Senhor Sith e novamente Jedi, tornando-se um mestre extraordinário tanto do lado luminoso quanto do lado sombrio.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4e2bf8d5-c115-46ad-bff7-1abe6ed2f272/dgf3e71-63b0ecd1-bacc-47db-a382-f626f3a44da2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRlMmJmOGQ1LWMxMTUtNDZhZC1iZmY3LTFhYmU2ZWQyZjI3MlwvZGdmM2U3MS02M2IwZWNkMS1iYWNjLTQ3ZGItYTM4Mi1mNjI2ZjNhNDRkYTIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9-ye4f8xuej_-1Sqv2A0elkyJJI1tT7yg-imeQsLHgY",
+    stats: {
+        forca: 96,
+        velocidade: 94,
+        defesa: 95,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Valkorion",
+    universo: "Star Wars",
+    descricao: "A identidade assumida por Darth Vitiate, um dos mais antigos e poderosos Sith da galáxia. Mestre da manipulação, da imortalidade e de poderes extraordinários da Força.",
+    imagem: "https://www.starwars-holonet.com/holonet/images/e/e7/11948/perso_valkorion_01.jpg",
+    stats: {
+        forca: 98,
+        velocidade: 88,
+        defesa: 99,
+        inteligencia: 100,
+        poder: 100,
+        combate: 97
+    }
+},
+
+{
+    nome: "Snoke",
+    universo: "Star Wars",
+    descricao: "Líder Supremo da Primeira Ordem e poderoso usuário do lado sombrio. Manipulou Kylo Ren e outros membros da Primeira Ordem enquanto buscava consolidar seu domínio sobre a galáxia.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5cd007ce-da58-4a35-965e-56a1412972a0/dd4y45i-7bcf6495-cbf9-4d12-961a-3d695033d20c.jpg/v1/fill/w_609,h_801,q_75,strp/supreme_leader_snoke_by_maximussupremo_dd4y45i-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAxIiwicGF0aCI6IlwvZlwvNWNkMDA3Y2UtZGE1OC00YTM1LTk2NWUtNTZhMTQxMjk3MmEwXC9kZDR5NDVpLTdiY2Y2NDk1LWNiZjktNGQxMi05NjFhLTNkNjk1MDMzZDIwYy5qcGciLCJ3aWR0aCI6Ijw9NjA5In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.K1wDYhE8b6Kk7dBqQaEiT_CtRnW5xgMHr6GB5dzSzOA",
+    stats: {
+        forca: 70,
+        velocidade: 70,
+        defesa: 83,
+        inteligencia: 97,
+        poder: 91,
+        combate: 78
+    }
+},
+
+{
+    nome: "General Grievous",
+    universo: "Star Wars",
+    descricao: "General Supremo dos exércitos Separatistas. Um guerreiro ciborgue extremamente habilidoso que empunhava múltiplos sabres de luz e aterrorizava Jedi durante as Guerras Clônicas.",
+    imagem: "https://i.pinimg.com/originals/d9/b2/4c/d9b24c02ac772f85f58cd8706dcb1167.jpg",
+    stats: {
+        forca: 95,
+        velocidade: 94,
+        defesa: 96,
+        inteligencia: 85,
+        poder: 78,
+        combate: 100
+    }
+},
+
+{
+    nome: "Count Dooku",
+    universo: "Star Wars",
+    descricao: "Antigo Mestre Jedi que se tornou Darth Tyranus, discípulo de Darth Sidious e líder dos Separatistas. Um duelista excepcional e poderoso usuário da Força.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b433f5f8-cede-4cdf-8cff-a279f697545d/df3exaa-26a81001-744d-44b1-8d03-025e873621a1.jpg/v1/fill/w_774,h_1032,q_70,strp/count_dooku_by_paulofodra_df3exaa-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjE2MCIsInBhdGgiOiJcL2ZcL2I0MzNmNWY4LWNlZGUtNGNkZi04Y2ZmLWEyNzlmNjk3NTQ1ZFwvZGYzZXhhYS0yNmE4MTAwMS03NDRkLTQ0YjEtOGQwMy0wMjVlODczNjIxYTEuanBnIiwid2lkdGgiOiI8PTE2MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.zaNAS1-_c2Xj-kxGa1Ql4cKbqXTCyaQYDBXlw3mivE4",
+    stats: {
+        forca: 78,
+        velocidade: 86,
+        defesa: 94,
+        inteligencia: 98,
+        poder: 96,
+        combate: 100
+    }
+},
+
+{
+    nome: "Anakin Skywalker",
+    universo: "Star Wars",
+    descricao: "O Escolhido da profecia e um dos Jedi mais poderosos de sua geração. Seu enorme potencial na Força e suas habilidades excepcionais de combate fizeram dele um dos maiores guerreiros da galáxia.",
+    imagem: "https://i.pinimg.com/originals/f9/02/5c/f9025ce2295d57da1d0ab16f370b774e.jpg",
+    stats: {
+        forca: 94,
+        velocidade: 96,
+        defesa: 91,
+        inteligencia: 91,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "O Mandaloriano",
+    universo: "Star Wars",
+    descricao: "Din Djarin, um habilidoso caçador de recompensas mandaloriano. Equipado com uma armadura beskar, arsenal avançado, jetpack e diversas armas, tornou-se um dos mais perigosos guerreiros da galáxia.",
+    imagem: "https://cdnb.artstation.com/p/assets/images/images/054/142/809/large/darren-tan-swl-mando-grogu-da1.jpg?1663850838",
+    stats: {
+        forca: 84,
+        velocidade: 88,
+        defesa: 98,
+        inteligencia: 94,
+        poder: 82,
+        combate: 99
+    }
+},
+
+
+    /* =========================================================
+       ===================== TRANSFORMERS ======================
+       ========================================================= */
+
+    {
+        nome: "Optimus Prime",
+        universo: "Transformers",
+        descricao: "Líder dos Autobots.",
+        imagem: "https://wallpaperaccess.com/full/5446857.jpg",
+        stats: {
+            forca: 98,
+            velocidade: 80,
+            defesa: 97,
+            inteligencia: 94,
+            poder: 95,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Megatron",
+        universo: "Transformers",
+        descricao: "Líder dos Decepticons.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/038/040/063/large/dhymas-putra-pamungkas-asset.jpg?1622011318",
+        stats: {
+            forca: 99,
+            velocidade: 78,
+            defesa: 96,
+            inteligencia: 91,
+            poder: 97,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Bumblebee",
+        universo: "Transformers",
+        descricao: "Autobot veloz, corajoso e extremamente leal.",
+        imagem: "https://w0.peakpx.com/wallpaper/21/782/HD-wallpaper-transformers-bumblebee-bumblebee-movies-artist-artwork-artstation.jpg",
+        stats: {
+            forca: 78,
+            velocidade: 94,
+            defesa: 82,
+            inteligencia: 85,
+            poder: 82,
+            combate: 91
+        }
+    },
+
+    {
+        nome: "Starscream",
+        universo: "Transformers",
+        descricao: "Decepticon aéreo e ambicioso.",
+        imagem: "https://i.pinimg.com/736x/71/da/cb/71dacb420b73f559a4d7045341c81b1b.jpg",
+        stats: {
+            forca: 82,
+            velocidade: 99,
+            defesa: 78,
+            inteligencia: 87,
+            poder: 91,
+            combate: 86
+        }
+    },
+
+    {
+        nome: "Soundwave",
+        universo: "Transformers",
+        descricao: "Especialista em espionagem e comunicações dos Decepticons.",
+        imagem: "https://i.pinimg.com/originals/4f/dc/82/4fdc8279cf6ee13df8f360670ed99aca.jpg",
+        stats: {
+            forca: 84,
+            velocidade: 72,
+            defesa: 91,
+            inteligencia: 94,
+            poder: 86,
+            combate: 89
+        }
+    },
+
+    {
+        nome: "Grimlock",
+        universo: "Transformers",
+        descricao: "Líder dos Dinobots e extremamente poderoso.",
+        imagem: "https://i.redd.it/v468uk5p2if41.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 70,
+            defesa: 99,
+            inteligencia: 62,
+            poder: 96,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Shockwave",
+        universo: "Transformers",
+        descricao: "Cientista Decepticon extremamente lógico e perigoso.",
+        imagem: "https://i.redd.it/ci5ikdcs1rf41.jpg",
+        stats: {
+            forca: 90,
+            velocidade: 72,
+            defesa: 94,
+            inteligencia: 100,
+            poder: 96,
+            combate: 92
+        }
+    },
+
+    {
+        nome: "Unicron",
+        universo: "Transformers",
+        descricao: "Entidade cósmica gigantesca e devoradora de mundos.",
+        imagem: "https://static.zerochan.net/Unicron.(Transformers).full.2309178.jpg",
+        stats: {
+            forca: 100,
+            velocidade: 90,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 100
+        }
+    },
+
+    {
+    nome: "Galvatron",
+    universo: "Transformers",
+    descricao: "Uma poderosa versão de Megatron transformada por forças cósmicas. Galvatron é um dos mais perigosos líderes dos Decepticons, conhecido por sua força, resistência e poderoso armamento.",
+    imagem: "https://img02.deviantart.net/4927/i/2014/267/b/1/galvatron_by_marcouellette-d80cwjb.jpg",
+    stats: {
+        forca: 99,
+        velocidade: 82,
+        defesa: 98,
+        inteligencia: 91,
+        poder: 99,
+        combate: 100
+    }
+},
+
+{
+    nome: "Lockdown",
+    universo: "Transformers",
+    descricao: "Um caçador de recompensas Cybertroniano extremamente habilidoso. Lockdown trabalha por contratos e utiliza um enorme arsenal de armas e equipamentos para capturar suas presas.",
+    imagem: "https://cdnb.artstation.com/p/assets/covers/images/038/202/337/large/andrei-le-mezec-andrei-le-mezec-vignette.jpg?1622470465",
+    stats: {
+        forca: 91,
+        velocidade: 88,
+        defesa: 92,
+        inteligencia: 97,
+        poder: 88,
+        combate: 100
+    }
+},
+
+{
+    nome: "The Fallen",
+    universo: "Transformers",
+    descricao: "Um dos primeiros Primes e uma entidade extremamente poderosa que se voltou contra seus irmãos. The Fallen possui conhecimentos ancestrais e poderes muito superiores aos Transformers comuns.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9714bd09-83f7-4435-ad75-73053be4caf3/d833bhe-817edc73-e554-4947-bb00-e4e70f36b7a1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MTRiZDA5LTgzZjctNDQzNS1hZDc1LTczMDUzYmU0Y2FmM1wvZDgzM2JoZS04MTdlZGM3My1lNTU0LTQ5NDctYmIwMC1lNGU3MGYzNmI3YTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Y9E0XLJInCPetBk1OfPn7rQv47Tyl2ZwZXzzZXX2L2I",
+    stats: {
+        forca: 100,
+        velocidade: 90,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 99
+    }
+},
+
+{
+    nome: "Quintessa",
+    universo: "Transformers",
+    descricao: "Uma entidade misteriosa associada à origem dos Transformers. É extremamente inteligente, manipuladora e possui conhecimentos avançados sobre Cybertron e seus habitantes.",
+    imagem: "https://i.pinimg.com/736x/2a/4d/a9/2a4da9ab91db26a2e9380fe5268ce313.jpg",
+    stats: {
+        forca: 72,
+        velocidade: 65,
+        defesa: 84,
+        inteligencia: 100,
+        poder: 98,
+        combate: 75
+    }
+},
+
+{
+    nome: "Primus",
+    universo: "Transformers",
+    descricao: "Entidade primordial e criadora dos Transformers, associada ao próprio planeta Cybertron. Primus está entre as entidades mais poderosas de toda a mitologia Transformers.",
+    imagem: "https://i.pinimg.com/originals/33/57/8f/33578fb85467ddca90cb40f86b67b1b2.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 95,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Sentinel Prime",
+    universo: "Transformers",
+    descricao: "Um antigo Prime e líder dos Autobots. Extremamente experiente e poderoso, Sentinel Prime possui grande conhecimento de tecnologia Cybertroniana e habilidades excepcionais de combate.",
+    imagem: "https://comicvine.gamespot.com/a/uploads/original/11112/111122896/4743260-transformers_sentinel_prime_and_laserbeak_by_carorichard-d4jyi3w.jpg",
+    stats: {
+        forca: 97,
+        velocidade: 82,
+        defesa: 96,
+        inteligencia: 97,
+        poder: 94,
+        combate: 100
+    }
+},
+
+{
+    nome: "Ironhide",
+    universo: "Transformers",
+    descricao: "Um dos guerreiros mais experientes dos Autobots. Ironhide é conhecido por sua enorme resistência, força e especialização em armamentos pesados.",
+    imagem: "https://i.pinimg.com/originals/d2/08/c0/d208c0b9c691eaf95dc1ed89c4c3482a.jpg",
+    stats: {
+        forca: 96,
+        velocidade: 72,
+        defesa: 98,
+        inteligencia: 82,
+        poder: 91,
+        combate: 98
+    }
+},
+
+{
+    nome: "Jetfire",
+    universo: "Transformers",
+    descricao: "Um antigo e poderoso Transformer capaz de se transformar em uma aeronave. Apesar de sua idade avançada, Jetfire possui enorme experiência de combate e impressionante poder de fogo.",
+    imagem: "https://i.pinimg.com/originals/32/f6/2f/32f62f00e291e71f4df9139722f33de7.jpg",
+    stats: {
+        forca: 94,
+        velocidade: 96,
+        defesa: 91,
+        inteligencia: 94,
+        poder: 95,
+        combate: 94
+    }
+},
+
+{
+    nome: "Omega Supreme",
+    universo: "Transformers",
+    descricao: "Um dos mais poderosos e antigos guerreiros dos Autobots. Omega Supreme é um gigantesco Guardian Robot especializado em defesa, combate pesado e proteção de Cybertron.",
+    imagem: "https://wallpapercave.com/wp/wp10580726.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 62,
+        defesa: 100,
+        inteligencia: 86,
+        poder: 98,
+        combate: 97
+    }
+},
+
+{
+    nome: "Metroplex",
+    universo: "Transformers",
+    descricao: "Um dos maiores Titans dos Autobots. Metroplex possui tamanho colossal, força extraordinária e capacidade de se transformar em uma gigantesca cidade-fortaleza.",
+    imagem: "https://wallpaperaccess.com/full/12254958.png",
+    stats: {
+        forca: 100,
+        velocidade: 45,
+        defesa: 100,
+        inteligencia: 94,
+        poder: 100,
+        combate: 98
+    }
+},
+
+{
+    nome: "Trypticon",
+    universo: "Transformers",
+    descricao: "Um gigantesco Titan dos Decepticons e uma das maiores máquinas de guerra de Cybertron. Trypticon possui poder de fogo devastador e força suficiente para enfrentar outros Titans.",
+    imagem: "https://i.pinimg.com/originals/ce/86/d0/ce86d0cc2b8488c9617e7d2e09783562.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 48,
+        defesa: 100,
+        inteligencia: 82,
+        poder: 100,
+        combate: 99
+    }
+},
+
+{
+    nome: "Devastator",
+    universo: "Transformers",
+    descricao: "Um gigantesco Combiner Decepticon formado pela união dos Constructicons. Devastator possui força e resistência extraordinárias, sendo uma das maiores armas de guerra dos Decepticons.",
+    imagem: "https://wallpapercave.com/wp/wp13764992.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 55,
+        defesa: 99,
+        inteligencia: 72,
+        poder: 98,
+        combate: 96
+    }
+},
+
+    /* =========================================================
+       ================= SENHOR DOS ANÉIS ======================
+       ========================================================= */
+
+    {
+        nome: "Gandalf",
+        universo: "Senhor dos Anéis",
+        descricao: "Istar e poderoso mago enviado para combater o mal.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/063/426/995/large/florian-bossonney-gandalf-mtg-v003-web.jpg?1685508530",
+        stats: {
+            forca: 70,
+            velocidade: 70,
+            defesa: 88,
+            inteligencia: 100,
+            poder: 99,
+            combate: 94
+        }
+    },
+
+    {
+        nome: "Gandalf, o Branco",
+        universo: "Senhor dos Anéis",
+        descricao: "Versão mais poderosa de Gandalf após seu retorno.",
+        imagem: "https://i.redd.it/9qycdfjddlna1.jpg",
+        stats: {
+            forca: 78,
+            velocidade: 76,
+            defesa: 94,
+            inteligencia: 100,
+            poder: 100,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Sauron",
+        universo: "Senhor dos Anéis",
+        descricao: "Senhor do Escuro e grande inimigo da Terra-média.",
+        imagem: "https://i.pinimg.com/originals/f8/fa/98/f8fa9807f1d931858359dd31ed4e16f4.png",
+        stats: {
+            forca: 100,
+            velocidade: 70,
+            defesa: 100,
+            inteligencia: 100,
+            poder: 100,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Saruman",
+        universo: "Senhor dos Anéis",
+        descricao: "Istar que se voltou para o poder e para a escuridão.",
+        imagem: "https://i.pinimg.com/736x/52/3a/a5/523aa58f7ca761a33b7120c60ee2b0ca--fantasy-wizard-fantasy-art.jpg",
+        stats: {
+            forca: 70,
+            velocidade: 62,
+            defesa: 84,
+            inteligencia: 99,
+            poder: 96,
+            combate: 80
+        }
+    },
+
+    {
+        nome: "Aragorn",
+        universo: "Senhor dos Anéis",
+        descricao: "Herdeiro de Isildur e futuro Rei de Gondor.",
+        imagem: "https://i.pinimg.com/originals/8e/b9/63/8eb9639384ff306e4d23142e02d163cd.png",
+        stats: {
+            forca: 82,
+            velocidade: 78,
+            defesa: 86,
+            inteligencia: 91,
+            poder: 70,
+            combate: 100
+        }
+    },
+
+    {
+        nome: "Legolas",
+        universo: "Senhor dos Anéis",
+        descricao: "Príncipe Elfo e extraordinário arqueiro.",
+        imagem: "https://paintingvalley.com/images/legolas-painting-20.jpg",
+        stats: {
+            forca: 72,
+            velocidade: 98,
+            defesa: 78,
+            inteligencia: 92,
+            poder: 70,
+            combate: 99
+        }
+    },
+
+    {
+        nome: "Gimli",
+        universo: "Senhor dos Anéis",
+        descricao: "Guerreiro anão extremamente resistente.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/067/366/749/4k/ben-judd-gimli-2.jpg",
+        stats: {
+            forca: 92,
+            velocidade: 58,
+            defesa: 94,
+            inteligencia: 70,
+            poder: 68,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Rei Bruxo de Angmar",
+        universo: "Senhor dos Anéis",
+        descricao: "O mais poderoso dos Nazgûl.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/028/614/389/large/kawin-akaworawit-witch-king-of-angmar-small-file.jpg?1594974840",
+        stats: {
+            forca: 92,
+            velocidade: 70,
+            defesa: 97,
+            inteligencia: 88,
+            poder: 96,
+            combate: 98
+        }
+    },
+
+    {
+        nome: "Elrond",
+        universo: "Senhor dos Anéis",
+        descricao: "Senhor de Valfenda e poderoso líder élfico.",
+        imagem: "https://cdna.artstation.com/p/assets/images/images/000/377/028/large/martin-zlatev-elrond.jpg?1419870415",
+        stats: {
+            forca: 72,
+            velocidade: 80,
+            defesa: 88,
+            inteligencia: 99,
+            poder: 94,
+            combate: 91
+        }
+    },
+
+    {
+        nome: "Galadriel",
+        universo: "Senhor dos Anéis",
+        descricao: "Uma das mais poderosas e antigas elfas da Terra-média.",
+        imagem: "https://cdna.artstation.com/p/assets/images/images/057/777/420/large/ellizaart-asset.jpg?1672659671",
+        stats: {
+            forca: 70,
+            velocidade: 78,
+            defesa: 92,
+            inteligencia: 100,
+            poder: 99,
+            combate: 88
+        }
+    },
+
+    {
+        nome: "Boromir",
+        universo: "Senhor dos Anéis",
+        descricao: "Guerreiro de Gondor e membro da Sociedade do Anel.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/077/828/013/large/paulo-fodra-img-0287.jpg?1720468967",
+        stats: {
+            forca: 88,
+            velocidade: 65,
+            defesa: 87,
+            inteligencia: 78,
+            poder: 63,
+            combate: 96
+        }
+    },
+
+    {
+        nome: "Frodo",
+        universo: "Senhor dos Anéis",
+        descricao: "Portador do Um Anel.",
+        imagem: "https://i.pinimg.com/736x/d6/f2/c2/d6f2c22dc25b3cd4ceed43ad449d820c.jpg",
+        stats: {
+            forca: 35,
+            velocidade: 55,
+            defesa: 65,
+            inteligencia: 82,
+            poder: 75,
+            combate: 55
+        }
+    },
+
+    {
+        nome: "Samwise Gamgee",
+        universo: "Senhor dos Anéis",
+        descricao: "Companheiro leal de Frodo e herói da Sociedade.",
+        imagem: "https://cdnb.artstation.com/p/assets/images/images/048/764/431/large/emma-buck-asset.jpg?1650893903",
+        stats: {
+            forca: 58,
+            velocidade: 55,
+            defesa: 70,
+            inteligencia: 75,
+            poder: 55,
+            combate: 70
+        }
+    },
+
+    {
+    nome: "Bilbo Baggins",
+    universo: "Senhor dos Anéis",
+    descricao: "Hobbit de Bolsão que participou da jornada até Erebor e encontrou o Um Anel. Apesar de não possuir grandes poderes, demonstrou coragem, inteligência e habilidade para sobreviver a situações extremamente perigosas.",
+    imagem: "https://i.pinimg.com/736x/1a/32/f9/1a32f92e9a12536c9c0e2700c62653e6--hobbit-art-the-hobbit.jpg",
+    stats: {
+        forca: 38,
+        velocidade: 58,
+        defesa: 62,
+        inteligencia: 91,
+        poder: 55,
+        combate: 58
+    }
+},
+
+{
+    nome: "Thorin Oakenshield",
+    universo: "Senhor dos Anéis",
+    descricao: "Rei sob a Montanha e líder da Companhia de Thorin. Um guerreiro anão extremamente habilidoso, conhecido por sua força, resistência e domínio da espada.",
+    imagem: "https://i.pinimg.com/1200x/57/bf/e5/57bfe54632a6e83ef2664550a4ddd6e0.jpg",
+    stats: {
+        forca: 91,
+        velocidade: 65,
+        defesa: 91,
+        inteligencia: 82,
+        poder: 68,
+        combate: 99
+    }
+},
+
+{
+    nome: "Azog",
+    universo: "Senhor dos Anéis",
+    descricao: "O poderoso líder orc conhecido como Azog, o Profanador. Um guerreiro brutal que liderou exércitos de orcs e desenvolveu uma rivalidade mortal com Thorin Oakenshield.",
+    imagem: "https://cdnb.artstation.com/p/assets/images/images/084/162/533/large/nick-keller-8593-azog-armour-9-fin-nk.jpg?1737677400",
+    stats: {
+        forca: 94,
+        velocidade: 73,
+        defesa: 91,
+        inteligencia: 76,
+        poder: 67,
+        combate: 98
+    }
+},
+
+{
+    nome: "Smaug",
+    universo: "Senhor dos Anéis",
+    descricao: "O grande dragão que tomou Erebor e seu tesouro. Extremamente inteligente, poderoso e capaz de voar, lançar fogo e resistir a ataques convencionais.",
+    imagem: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/91e0d414-7eb2-42f8-bb46-e2c452de8ff6/def1aot-fddd417d-4168-4b3b-822b-3b5ad9eeb009.jpg/v1/fill/w_1280,h_2066,q_75,strp/smaug_by_vikingstevo_def1aot-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjA2NiIsInBhdGgiOiJcL2ZcLzkxZTBkNDE0LTdlYjItNDJmOC1iYjQ2LWUyYzQ1MmRlOGZmNlwvZGVmMWFvdC1mZGRkNDE3ZC00MTY4LTRiM2ItODIyYi0zYjVhZDllZWIwMDkuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YNDAbUcFcEFdyPDpukelY0YI3adToO9N-Qg3ojI6ny4",
+    stats: {
+        forca: 100,
+        velocidade: 89,
+        defesa: 100,
+        inteligencia: 98,
+        poder: 100,
+        combate: 97
+    }
+},
+
+{
+    nome: "Shelob",
+    universo: "Senhor dos Anéis",
+    descricao: "Uma gigantesca criatura aracnídea que habitava as montanhas próximas a Mordor. Descendente de uma linhagem primordial de aranhas, Shelob era uma predadora extremamente perigosa.",
+    imagem: "https://cdna.artstation.com/p/assets/images/images/055/498/848/large/alex-rosko-sam-vs-shelob-artstation.jpg?1667099372",
+    stats: {
+        forca: 91,
+        velocidade: 76,
+        defesa: 94,
+        inteligencia: 82,
+        poder: 87,
+        combate: 95
+    }
+},
+
+{
+    nome: "Ungoliant",
+    universo: "Senhor dos Anéis",
+    descricao: "Uma entidade primordial em forma de aranha gigantesca, associada às trevas e ao vazio. Ungoliant foi capaz de consumir a luz das Duas Árvores de Valinor e chegou a rivalizar com Morgoth.",
+    imagem: "https://pre03.deviantart.net/553d/th/pre/i/2014/243/9/3/ungoliant_and_melkor_by_rubendevela-d2803ie.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 91,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Ancalagon, o Negro",
+    universo: "Senhor dos Anéis",
+    descricao: "O maior e mais poderoso dos dragões alados de Morgoth. Ancalagon foi lançado contra os exércitos dos Valar durante a Guerra da Ira e era tão colossal que sua queda destruiu os picos das Montanhas de Thangorodrim.",
+    imagem: "https://cdna.artstation.com/p/assets/images/images/049/670/658/large/anato-finnstark-anato-finnstark-3d11f1aa860072b5f79b7eafc33ce09a-anato-finnstark-web-petit1-237.jpg?1653028261",
+    stats: {
+        forca: 100,
+        velocidade: 94,
+        defesa: 100,
+        inteligencia: 89,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Gothmog",
+    universo: "Senhor dos Anéis",
+    descricao: "Senhor dos Balrogs e capitão das forças de Morgoth. Uma entidade demoníaca extremamente poderosa, comandante dos exércitos de Angband.",
+    imagem: "https://i.pinimg.com/originals/aa/2d/da/aa2dda0e2e0b7e3568640ad51063ffea.jpg",
+    stats: {
+        forca: 100,
+        velocidade: 78,
+        defesa: 100,
+        inteligencia: 91,
+        poder: 99,
+        combate: 100
+    }
+},
+
+{
+    nome: "Morgoth",
+    universo: "Senhor dos Anéis",
+    descricao: "Melkor, posteriormente chamado Morgoth, foi o mais poderoso dos Ainur que se rebelou contra Eru Ilúvatar. Primeiro Senhor do Escuro e principal inimigo da Primeira Era.",
+    imagem: "https://i.pinimg.com/originals/1b/c0/ae/1bc0ae3ebca6640c4f9422dc04975f9d.png",
+    stats: {
+        forca: 100,
+        velocidade: 96,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Eru Ilúvatar",
+    universo: "Senhor dos Anéis",
+    descricao: "O Ser Supremo da cosmologia de Tolkien e criador de Eä. Eru Ilúvatar está acima de todos os Valar, Maiar, Elfos, Homens e demais seres da criação.",
+    imagem: "https://preview.redd.it/eru-il%C3%BAvatar-and-the-ainur-v0-s6t81f8or3xb1.jpg?auto=webp&s=0c23632d28bf313aaec90dfbf000b41ae205c7c7",
+    stats: {
+        forca: 100,
+        velocidade: 100,
+        defesa: 100,
+        inteligencia: 100,
+        poder: 100,
+        combate: 100
+    }
+},
+
+{
+    nome: "Durin's Bane",
+    universo: "Senhor dos Anéis",
+    descricao: "Um Balrog de Morgoth que sobreviveu à Primeira Era e permaneceu adormecido nas profundezas de Moria. Conhecido como o Flagelo de Durin, enfrentou Gandalf em uma das maiores batalhas da Terra-média.",
+    imagem: "https://wallpapers.com/images/hd/lotr-fiery-durin-s-bane-balrog-xeja9twk27yzanb7.jpg",
+    stats: {
+        forca: 99,
+        velocidade: 82,
+        defesa: 100,
+        inteligencia: 84,
+        poder: 98,
+        combate: 100
+    }
+},
+
+{
+    nome: "Celebrimbor",
+    universo: "Senhor dos Anéis",
+    descricao: "Um dos maiores ferreiros élficos da Terra-média e criador dos Anéis de Poder. Na série de jogos Middle-earth, seu espírito se une a Talion, concedendo-lhe extraordinárias habilidades.",
+    imagem: "https://i.pinimg.com/originals/54/13/1c/54131cfb4f63b097ed65ed14bc940aa8.jpg",
+    stats: {
+        forca: 72,
+        velocidade: 86,
+        defesa: 88,
+        inteligencia: 100,
+        poder: 98,
+        combate: 96
+    }
+},
+
+{
+    nome: "Talion",
+    universo: "Senhor dos Anéis",
+    descricao: "Gondoriano que se tornou um guerreiro sobrenatural após sua morte e ligação com o espírito de Celebrimbor. Utiliza habilidades de combate, furtividade e poderes do mundo espiritual.",
+    imagem: "https://vignette.wikia.nocookie.net/lotr/images/6/61/Shadow-of-mordor-wallpaper.jpg/revision/latest?cb=20170821035001",
+    stats: {
+        forca: 88,
+        velocidade: 94,
+        defesa: 91,
+        inteligencia: 92,
+        poder: 96,
+        combate: 100
+    }
+},
+
+{
+    nome: "Thranduil",
+    universo: "Senhor dos Anéis",
+    descricao: "Rei dos Elfos da Floresta das Trevas. Um poderoso guerreiro élfico, extremamente habilidoso com espada e conhecido por sua velocidade e experiência.",
+    imagem: "https://i.etsystatic.com/38640606/r/il/73bb7e/4502115067/il_fullxfull.4502115067_3r4j.jpg",
+    stats: {
+        forca: 82,
+        velocidade: 96,
+        defesa: 90,
+        inteligencia: 94,
+        poder: 82,
+        combate: 99
+    }
+},
+
+{
+    nome: "Annatar (Halbrand)",
+    universo: "Senhor dos Anéis",
+    descricao: "A forma assumida por Sauron para manipular os povos da Terra-média. Sob a identidade de Halbrand e posteriormente como Annatar, apresenta-se como um ser benevolente e habilidoso, mas utiliza sua inteligência, poder e conhecimento para manipular reis, elfos e outros povos.",
+    imagem: "https://i.pinimg.com/originals/b9/0e/7f/b90e7f3a372c3278f99ba181cbce8126.png",
+    stats: {
+        forca: 94,
+        velocidade: 88,
+        defesa: 96,
+        inteligencia: 100,
+        poder: 100,
+        combate: 94
+    }
+},
+
+];
+
+
+   
+
+
+/* =============================================================
+   VARIÁVEIS
+============================================================= */
+
+let personagem1 = null;
+
+let personagem2 = null;
+
+let universoAtual = "Todos";
+
+
+/* =============================================================
+   ELEMENTOS
+============================================================= */
+
+const catalogo =
+    document.getElementById(
+        "catalogoPersonagens"
+    );
+
+const search =
+    document.getElementById(
+        "search"
+    );
+
+const filtros =
+    document.querySelectorAll(
+        ".filter"
+    );
+
+
+/* =============================================================
+   RENDERIZAR CATALOGO
+============================================================= */
+
+function renderizarCatalogo() {
+
+    const termo =
+        search.value
+            .toLowerCase()
+            .trim();
+
+
+    catalogo.innerHTML = "";
+
+
+    const resultados =
+        personagens.filter(personagem => {
+
+            const universoOk =
+                universoAtual === "Todos" ||
+                personagem.universo === universoAtual;
+
+
+            const pesquisaOk =
+                personagem.nome
+                    .toLowerCase()
+                    .includes(termo) ||
+
+                personagem.universo
+                    .toLowerCase()
+                    .includes(termo);
+
+
+            return universoOk && pesquisaOk;
+
+        });
+
+
+    resultados.forEach(personagem => {
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "character-card";
+
+
+        card.innerHTML = `
+
+            <div class="character-image">
+
+                <img
+                    src="${personagem.imagem}"
+                    alt="${personagem.nome}"
+                    loading="lazy"
+                >
+
+                <span class="universe">
+                    ${personagem.universo}
+                </span>
+
+            </div>
+
+
+            <div class="character-info">
+
+                <h3>
+                    ${personagem.nome}
+                </h3>
+
+                <p>
+                    ${personagem.descricao}
+                </p>
+
+                <button
+                    class="select-button"
+                >
+                    ⚔️ Selecionar
+                </button>
+
+            </div>
+
+        `;
+
+
+        const botao =
+            card.querySelector(
+                ".select-button"
+            );
+
+
+        botao.addEventListener(
+            "click",
+            () => selecionarPersonagem(
+                personagem,
+                card
+            )
+        );
+
+
+        catalogo.appendChild(card);
+
+    });
+
+}
+
+
+/* =============================================================
+   SELECIONAR PERSONAGEM
+============================================================= */
+
+function selecionarPersonagem(
+    personagem,
+    card
+) {
+
+    if (
+        personagem1 &&
+        personagem2
+    ) {
+
+        personagem1 = null;
+
+        personagem2 = null;
+
+        document
+            .querySelectorAll(
+                ".character-card"
+            )
+            .forEach(c =>
+                c.classList.remove(
+                    "selected"
+                )
+            );
+    }
+
+
+    if (!personagem1) {
+
+        personagem1 =
+            personagem;
+
+        card.classList.add(
+            "selected"
+        );
+
+        atualizarFighter(
+            personagem,
+            1
+        );
+
+        return;
+    }
+
+
+    if (!personagem2) {
+
+        personagem2 =
+            personagem;
+
+        card.classList.add(
+            "selected"
+        );
+
+        atualizarFighter(
+            personagem,
+            2
+        );
+
+        document
+            .getElementById("arena")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+}
+
+
+/* =============================================================
+   ATUALIZAR LUTADOR
+============================================================= */
+
+function atualizarFighter(
+    personagem,
+    numero
+) {
+
+    document
+        .getElementById(
+            `fighter${numero}Image`
+        )
+        .src =
+        personagem.imagem;
+
+
+    document
+        .getElementById(
+            `fighter${numero}Name`
+        )
+        .textContent =
+        personagem.nome;
+
+
+    document
+        .getElementById(
+            `fighter${numero}Universe`
+        )
+        .textContent =
+        personagem.universo;
+
+
+    const stats =
+        document
+            .getElementById(
+                `fighter${numero}Stats`
+            );
+
+
+    stats.innerHTML = `
+
+        ${criarStat(
+            "💪 Força",
+            personagem.stats.forca
+        )}
+
+        ${criarStat(
+            "⚡ Velocidade",
+            personagem.stats.velocidade
+        )}
+
+        ${criarStat(
+            "🛡️ Defesa",
+            personagem.stats.defesa
+        )}
+
+        ${criarStat(
+            "🧠 Inteligência",
+            personagem.stats.inteligencia
+        )}
+
+        ${criarStat(
+            "🔥 Poder",
+            personagem.stats.poder
+        )}
+
+        ${criarStat(
+            "⚔️ Combate",
+            personagem.stats.combate
+        )}
+
+    `;
+
+}
+
+
+/* =============================================================
+   CRIAR STAT
+============================================================= */
+
+function criarStat(
+    nome,
+    valor
+) {
+
+    return `
+
+        <div class="stat">
+
+            <div class="stat-header">
+
+                <span>
+                    ${nome}
+                </span>
+
+                <strong>
+                    ${valor}
+                </strong>
+
+            </div>
+
+            <div class="bar">
+
+                <div
+                    class="bar-fill"
+                    style="width:${valor}%"
+                ></div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+/* =============================================================
+   CALCULAR PODER TOTAL
+============================================================= */
+
+function calcularTotal(
+    personagem
+) {
+
+    const s =
+        personagem.stats;
+
+
+    return (
+
+        s.forca +
+        s.velocidade +
+        s.defesa +
+        s.inteligencia +
+        s.poder +
+        s.combate
+
+    );
+
+}
+
+
+/* =============================================================
+   INICIAR BATALHA
+============================================================= */
+
+document
+    .getElementById("fightButton")
+    .addEventListener(
+        "click",
+        iniciarBatalha
+    );
+
+
+function iniciarBatalha() {
+
+    if (
+        !personagem1 ||
+        !personagem2
+    ) {
+
+        alert(
+            "⚠️ Escolha dois personagens antes de iniciar a batalha!"
+        );
+
+        return;
+    }
+
+
+    const total1 =
+        calcularTotal(
+            personagem1
+        );
+
+
+    const total2 =
+        calcularTotal(
+            personagem2
+        );
+
+
+    let vencedor;
+
+    let perdedor;
+
+    let diferenca;
+
+
+    if (total1 > total2) {
+
+        vencedor =
+            personagem1;
+
+        perdedor =
+            personagem2;
+
+        diferenca =
+            total1 - total2;
+
+    }
+
+    else if (total2 > total1) {
+
+        vencedor =
+            personagem2;
+
+        perdedor =
+            personagem1;
+
+        diferenca =
+            total2 - total1;
+
+    }
+
+    else {
+
+        vencedor = null;
+
+    }
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    const winner =
+        document.getElementById(
+            "winner"
+        );
+
+
+    const resultText =
+        document.getElementById(
+            "resultText"
+        );
+
+
+    result.classList.add(
+        "show"
+    );
+
+
+    if (!vencedor) {
+
+        winner.textContent =
+            "EMPATE!";
+
+        resultText.textContent =
+            "Os dois personagens possuem a mesma pontuação geral de atributos. Em um confronto hipotético, o resultado poderia depender principalmente do ambiente, estratégia e circunstâncias da batalha.";
+
+        return;
+    }
+
+
+    winner.textContent =
+        vencedor.nome;
+
+
+    let dificuldade;
+
+
+    if (diferenca <= 15) {
+
+        dificuldade =
+            "seria uma batalha extremamente equilibrada.";
+
+    }
+
+    else if (diferenca <= 40) {
+
+        dificuldade =
+            "teria vantagem, mas enfrentaria uma resistência considerável.";
+
+    }
+
+    else {
+
+        dificuldade =
+            "teria uma vantagem estatística bastante significativa.";
+
+    }
+
+
+    resultText.innerHTML = `
+
+        <strong>
+            ${vencedor.nome}
+        </strong>
+        teria vantagem sobre
+        <strong>
+            ${perdedor.nome}
+        </strong>
+        neste confronto hipotético.
+
+        <br><br>
+
+        Pontuação de
+        <strong>
+            ${vencedor.nome}
+        </strong>:
+        ${calcularTotal(vencedor)}
+
+        <br>
+
+        Pontuação de
+        <strong>
+            ${perdedor.nome}
+        </strong>:
+        ${calcularTotal(perdedor)}
+
+        <br><br>
+
+        A diferença de atributos é de
+        <strong>
+            ${diferenca} pontos
+        </strong>.
+
+        Portanto,
+        ${vencedor.nome}
+        ${dificuldade}
+
+        <br><br>
+
+        ⚠️ O resultado é uma simulação baseada
+        nos atributos cadastrados no sistema e
+        não representa necessariamente o resultado
+        oficial de um confronto entre esses personagens.
+    `;
+
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+/* =============================================================
+   PESQUISA
+============================================================= */
+
+search.addEventListener(
+    "input",
+    renderizarCatalogo
+);
+
+
+/* =============================================================
+   FILTROS
+============================================================= */
+
+filtros.forEach(
+    botao => {
+
+        botao.addEventListener(
+            "click",
+            () => {
+
+                filtros.forEach(
+                    b =>
+                    b.classList.remove(
+                        "active"
+                    )
+                );
+
+
+                botao.classList.add(
+                    "active"
+                );
+
+
+                universoAtual =
+                    botao.dataset.universe;
+
+
+                renderizarCatalogo();
+
+            }
+        );
+
+    }
+);
+
+
+/* =============================================================
+   INICIALIZAÇÃO
+============================================================= */
+
+renderizarCatalogo();
+
+
+</script>
+
+
+</body>
+
+</html>
