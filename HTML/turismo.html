@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>World Explorer - Pontos Turísticos do Mundo</title>
+
+    <meta name="description"
+          content="Explore os monumentos, paisagens e pontos turísticos mais famosos do mundo.">
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            min-height: 520px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 20, 45, 0.72),
+                    rgba(0, 20, 45, 0.78)
+                ),
+                url("https://commons.wikimedia.org/wiki/Special:FilePath/Earth_from_Apollo_17.jpg")
+                center / cover;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 40px 20px;
+        }
+
+        .hero {
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #55c7ff;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #e5eef7;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            margin-top: 35px;
+            padding: 15px 30px;
+
+            background: #168de2;
+            color: white;
+
+            text-decoration: none;
+            border-radius: 50px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-4px);
+            background: #0d72ba;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+
+        /* =========================================================
+           MENU
+        ========================================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e4e9f0;
+
+            padding: 15px 25px;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #147bc1;
+        }
+
+        nav a {
+            color: #26364a;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #168de2;
+        }
+
+        /* =========================================================
+           CONTROLES
+        ========================================================= */
+
+        .controls {
+            max-width: 1300px;
+            margin: 50px auto 30px;
+
+            padding: 0 25px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 15px 20px;
+
+            border: 1px solid #dce3ec;
+            border-radius: 50px;
+
+            font-size: 16px;
+            outline: none;
+
+            background: white;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,.05);
+        }
+
+        .search-box input:focus {
+            border-color: #168de2;
+            box-shadow: 0 0 0 4px rgba(22,141,226,.12);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter {
+            border: none;
+            background: white;
+
+            padding: 11px 18px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+            color: #475569;
+
+            border: 1px solid #e1e7ef;
+
+            transition: .25s;
+        }
+
+        .filter:hover,
+        .filter.active {
+            background: #168de2;
+            color: white;
+            border-color: #168de2;
+        }
+
+        /* =========================================================
+           TÍTULO
+        ========================================================= */
+
+        .section-title {
+            max-width: 1300px;
+            margin: 30px auto 40px;
+
+            padding: 0 25px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* =========================================================
+           GRID
+        ========================================================= */
+
+        .destinos {
+            max-width: 1300px;
+
+            margin: auto;
+
+            padding: 0 25px 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 28px;
+        }
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .card {
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 30px rgba(25, 55, 90, .08);
+
+            transition:
+                transform .3s,
+                box-shadow .3s;
+
+            animation: aparecer .5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 20px 45px rgba(25, 55, 90, .15);
+        }
+
+        .imagem-container {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform .5s;
+        }
+
+        .card:hover img {
+            transform: scale(1.07);
+        }
+
+        .continente {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            background: rgba(0,0,0,.65);
+
+            color: white;
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            backdrop-filter: blur(5px);
+        }
+
+        .card-content {
+            padding: 23px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #172033;
+        }
+
+        .pais {
+            color: #168de2;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .descricao {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .coordenadas {
+            background: #f4f8fc;
+
+            border-radius: 12px;
+
+            padding: 13px;
+
+            margin-bottom: 15px;
+        }
+
+        .coordenadas strong {
+            display: block;
+            color: #334155;
+            margin-bottom: 5px;
+        }
+
+        .coordenadas span {
+            font-family: monospace;
+            color: #168de2;
+        }
+
+        .mapa {
+            display: block;
+
+            text-align: center;
+
+            padding: 12px;
+
+            background: #eef7ff;
+
+            color: #0878bd;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .mapa:hover {
+            background: #168de2;
+            color: white;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #101827;
+
+            color: #b9c5d4;
+
+            text-align: center;
+
+            padding: 50px 20px;
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           ANIMAÇÃO
+        ========================================================= */
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                position: relative;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <header>
+
+        <div class="hero">
+
+            <h1>
+                WORLD <span>EXPLORER</span>
+            </h1>
+
+            <p>
+                Descubra alguns dos monumentos, paisagens naturais
+                e pontos turísticos mais impressionantes do planeta.
+                Explore culturas, histórias e lugares únicos espalhados
+                pelos cinco continentes.
+            </p>
+
+            <a href="#destinos" class="hero-button">
+                Explorar o mundo ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MENU
+    ========================================================= -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <div class="logo">
+                🌎 World Explorer
+            </div>
+
+            <div>
+                <a href="#destinos">Destinos</a>
+                <a href="#sobre">Sobre</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         PESQUISA E FILTROS
+    ========================================================= -->
+
+    <section class="controls">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="🔎 Pesquisar monumento, país ou cidade..."
+            >
+
+        </div>
+
+        <div class="filters">
+
+            <button class="filter active" data-cont="Todos">
+                Todos
+            </button>
+
+            <button class="filter" data-cont="Europa">
+                Europa
+            </button>
+
+            <button class="filter" data-cont="Ásia">
+                Ásia
+            </button>
+
+            <button class="filter" data-cont="África">
+                África
+            </button>
+
+            <button class="filter" data-cont="América do Norte">
+                América do Norte
+            </button>
+
+            <button class="filter" data-cont="América do Sul">
+                América do Sul
+            </button>
+
+            <button class="filter" data-cont="Oceania">
+                Oceania
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         TÍTULO
+    ========================================================= -->
+
+    <section class="section-title" id="destinos">
+
+        <h2>
+            🌍 Lugares incríveis do mundo
+        </h2>
+
+        <p>
+            Uma seleção de destinos que marcaram a história,
+            a cultura e as paisagens do nosso planeta.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         DESTINOS
+    ========================================================= -->
+
+    <main class="destinos" id="listaDestinos">
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer id="sobre">
+
+        <h2>🌎 World Explorer</h2>
+
+        <p>
+            Explore o planeta, conheça novas culturas e descubra
+            os lugares mais extraordinários da Terra.
+        </p>
+
+        <br>
+
+        <p>
+            Projeto desenvolvido em HTML5, CSS3 e JavaScript.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        /*
+        ============================================================
+        BANCO DE DESTINOS
+
+        Para adicionar um novo lugar, basta copiar um objeto
+        e preencher as informações.
+        ============================================================
+        */
+
+        const destinos = [
+
+            {
+                nome: "Torre Eiffel",
+                pais: "França",
+                continente: "Europa",
+                coordenadas: "48.8584, 2.2945",
+
+                descricao:
+                    "Um dos monumentos mais reconhecidos do mundo. Construída para a Exposição Universal de 1889, tornou-se o principal símbolo de Paris e da França.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_Tower.JPG"
+            },
+
+            {
+                nome: "Coliseu",
+                pais: "Itália",
+                continente: "Europa",
+                coordenadas: "41.8902, 12.4922",
+
+                descricao:
+                    "O enorme anfiteatro romano construído no século I é um dos maiores símbolos da Roma Antiga e um dos monumentos históricos mais visitados da Itália.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg"
+            },
+
+            {
+                nome: "Big Ben",
+                pais: "Reino Unido",
+                continente: "Europa",
+                coordenadas: "51.5007, -0.1246",
+
+                descricao:
+                    "A famosa torre do Parlamento britânico é um dos símbolos mais conhecidos de Londres e da arquitetura do Reino Unido.",
+
+                imagem:
+                    "https://images.pexels.com/photos/635611/pexels-photo-635611.jpeg?cs=srgb&dl=big-ben-london-night-photography-635611.jpg&fm=jpg"
+            },
+
+            {
+                nome: "Torre de Pisa",
+                pais: "Itália",
+                continente: "Europa",
+                coordenadas: "43.7230, 10.3966",
+
+                descricao:
+                    "Famosa por sua inclinação, a Torre de Pisa é uma das construções medievais mais reconhecidas do mundo.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Leaning_Tower_of_Pisa.jpg"
+            },
+
+            {
+                nome: "Sagrada Família",
+                pais: "Espanha",
+                continente: "Europa",
+                coordenadas: "41.4036, 2.1744",
+
+                descricao:
+                    "Obra-prima arquitetônica de Antoni Gaudí, localizada em Barcelona. Sua construção começou no século XIX e continua sendo um dos maiores símbolos da cidade.",
+
+                imagem:
+                    "https://www.voceviajando.com.br/wp-content/uploads/2017/04/2017-04-24-sagrada-familia-barcelona-voce-viajando.jpg"
+            },
+
+            {
+                nome: "Stonehenge",
+                pais: "Reino Unido",
+                continente: "Europa",
+                coordenadas: "51.1789, -1.8262",
+
+                descricao:
+                    "Monumento pré-histórico formado por enormes pedras dispostas em círculo. Sua finalidade original continua sendo objeto de estudos e debates.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Stonehenge.jpg"
+            },
+
+            {
+                nome: "Machu Picchu",
+                pais: "Peru",
+                continente: "América do Sul",
+                coordenadas: "-13.1631, -72.5450",
+
+                descricao:
+                    "Antiga cidade inca localizada nos Andes peruanos. É um dos sítios arqueológicos mais importantes e impressionantes do mundo.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Machu_Picchu%2C_Peru.jpg"
+            },
+
+            {
+                nome: "Cristo Redentor",
+                pais: "Brasil",
+                continente: "América do Sul",
+                coordenadas: "-22.9519, -43.2105",
+
+                descricao:
+                    "Grande estátua de Jesus Cristo localizada no alto do Morro do Corcovado, no Rio de Janeiro. É um dos símbolos mais conhecidos do Brasil.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Christ_the_Redeemer_-_Cristo_Redentor.jpg"
+            },
+
+            {
+                nome: "Cataratas do Iguaçu",
+                pais: "Brasil / Argentina",
+                continente: "América do Sul",
+                coordenadas: "-25.6953, -54.4367",
+
+                descricao:
+                    "Um dos maiores sistemas de cachoeiras do planeta, formado por centenas de quedas d'água cercadas pela Mata Atlântica.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Iguazu_Cataratas2.jpg"
+            },
+
+            {
+                nome: "Ilhas Galápagos",
+                pais: "Equador",
+                continente: "América do Sul",
+                coordenadas: "-0.9538, -90.9656",
+
+                descricao:
+                    "Arquipélago famoso por sua biodiversidade única e por sua importância nos estudos de Charles Darwin sobre evolução.",
+
+                imagem:
+                    "https://wallpaperaccess.com/full/1131494.jpg"
+            },
+
+            {
+                nome: "Estátua da Liberdade",
+                pais: "Estados Unidos",
+                continente: "América do Norte",
+                coordenadas: "40.6892, -74.0445",
+
+                descricao:
+                    "Monumento localizado na entrada do porto de Nova York. Tornou-se um símbolo mundial de liberdade e dos Estados Unidos.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Liberty_7.jpg"
+            },
+
+            {
+                nome: "Grand Canyon",
+                pais: "Estados Unidos",
+                continente: "América do Norte",
+                coordenadas: "36.1069, -112.1129",
+
+                descricao:
+                    "Gigantesco cânion escavado pelo rio Colorado ao longo de milhões de anos, conhecido por suas dimensões e paisagens impressionantes.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Canyon_view_from_Pima_Point_2010.jpg"
+            },
+
+            {
+                nome: "Times Square",
+                pais: "Estados Unidos",
+                continente: "América do Norte",
+                coordenadas: "40.7580, -73.9855",
+
+                descricao:
+                    "Uma das áreas urbanas mais famosas de Nova York, conhecida pelos enormes painéis luminosos, teatros e intenso movimento.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Times_Square%2C_New_York_City_%28HDR%29.jpg"
+            },
+
+            {
+                nome: "Chichén Itzá",
+                pais: "México",
+                continente: "América do Norte",
+                coordenadas: "20.6843, -88.5678",
+
+                descricao:
+                    "Uma das principais cidades da antiga civilização maia. Seu templo de Kukulcán é uma das construções arqueológicas mais famosas da América.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Chichen_Itza_3.jpg"
+            },
+
+            {
+                nome: "Palácio de Buckingham",
+                pais: "Reino Unido",
+                continente: "Europa",
+                coordenadas: "51.5014, -0.1419",
+
+                descricao:
+                    "Residência e importante local cerimonial da monarquia britânica, localizado no coração de Londres.",
+
+                imagem:
+                    "https://i.pinimg.com/originals/9c/4b/3d/9c4b3d8ff4fc71bba013817163859cc3.jpg"
+            },
+
+            {
+                nome: "Monte Fuji",
+                pais: "Japão",
+                continente: "Ásia",
+                coordenadas: "35.3606, 138.7274",
+
+                descricao:
+                    "Montanha mais alta do Japão e um dos símbolos naturais mais importantes do país. Sua forma quase perfeitamente cônica inspirou artistas durante séculos.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Fuji_from_Lake_Kawaguchi.jpg"
+            },
+
+            {
+                nome: "Grande Muralha da China",
+                pais: "China",
+                continente: "Ásia",
+                coordenadas: "40.4319, 116.5704",
+
+                descricao:
+                    "Sistema de fortificações construído ao longo de diferentes períodos da história chinesa para proteger territórios e rotas estratégicas.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Great_Wall_of_China_July_2006.JPG"
+            },
+
+            {
+                nome: "Taj Mahal",
+                pais: "Índia",
+                continente: "Ásia",
+                coordenadas: "27.1751, 78.0421",
+
+                descricao:
+                    "Magnífico mausoléu construído pelo imperador Shah Jahan em memória de sua esposa Mumtaz Mahal. É considerado uma obra-prima da arquitetura islâmica.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Taj_Mahal%2C_Agra%2C_India.jpg"
+            },
+
+            {
+                nome: "Petra",
+                pais: "Jordânia",
+                continente: "Ásia",
+                coordenadas: "30.3285, 35.4444",
+
+                descricao:
+                    "Antiga cidade esculpida nas rochas do deserto jordaniano. Foi um importante centro comercial da região e é conhecida como a Cidade Rosa.",
+
+                imagem:
+                    "https://image.geo.de/30129264/t/TJ/v3/w1440/r0/-/petra-jordanien-f-164089584-jpg--73337-.jpg"
+            },
+
+            {
+                nome: "Burj Khalifa",
+                pais: "Emirados Árabes Unidos",
+                continente: "Ásia",
+                coordenadas: "25.1972, 55.2744",
+
+                descricao:
+                    "Arranha-céu localizado em Dubai e um dos edifícios mais altos já construídos pelo ser humano.",
+
+                imagem:
+                    "https://cdn-imgix.headout.com/collection-card-image/158/image/09c609a1134ea7b034ee4cbd61bdbba5-158-dubai-002-dubai-burj-khalifa-01.jpg"
+            },
+
+            {
+                nome: "Angkor Wat",
+                pais: "Camboja",
+                continente: "Ásia",
+                coordenadas: "13.4125, 103.8670",
+
+                descricao:
+                    "Grande complexo de templos construído durante o Império Khmer. É considerado um dos maiores monumentos religiosos do mundo.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Angkor_Wat.jpg"
+            },
+
+            {
+                nome: "Templo de Kiyomizu-dera",
+                pais: "Japão",
+                continente: "Ásia",
+                coordenadas: "34.9949, 135.7850",
+
+                descricao:
+                    "Um dos templos budistas mais conhecidos de Kyoto, famoso por sua grande plataforma de madeira e pela vista da cidade.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Kiyomizu-dera_in_Kyoto.jpg"
+            },
+
+            {
+                nome: "Monte Everest",
+                pais: "Nepal / China",
+                continente: "Ásia",
+                coordenadas: "27.9881, 86.9250",
+
+                descricao:
+                    "A montanha mais alta da Terra acima do nível do mar, localizada na cordilheira do Himalaia.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
+            },
+
+            {
+                nome: "Pirâmides de Gizé",
+                pais: "Egito",
+                continente: "África",
+                coordenadas: "29.9792, 31.1342",
+
+                descricao:
+                    "Complexo formado pelas famosas pirâmides egípcias, incluindo a Grande Pirâmide de Quéops, uma das Sete Maravilhas do Mundo Antigo.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/All_Gizah_Pyramids.jpg"
+            },
+
+            {
+                nome: "Esfinge de Gizé",
+                pais: "Egito",
+                continente: "África",
+                coordenadas: "29.9753, 31.1376",
+
+                descricao:
+                    "Monumento monumental esculpido em calcário com corpo de leão e cabeça humana, localizado próximo às pirâmides de Gizé.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Great_Sphinx_of_Giza_-_20080716a.jpg"
+            },
+
+            {
+                nome: "Monte Kilimanjaro",
+                pais: "Tanzânia",
+                continente: "África",
+                coordenadas: "-3.0674, 37.3556",
+
+                descricao:
+                    "A montanha mais alta da África, famosa por seu enorme vulcão e pelos diferentes ecossistemas encontrados em suas encostas.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Kilimanjaro.jpg"
+            },
+
+            {
+                nome: "Cataratas Vitória",
+                pais: "Zâmbia / Zimbábue",
+                continente: "África",
+                coordenadas: "-17.9243, 25.8572",
+
+                descricao:
+                    "Uma das maiores e mais impressionantes quedas d'água do mundo, localizada no rio Zambeze.",
+
+                imagem:
+                    "https://www.nationalgeographic.com.es/medio/2015/10/20/gettyimages-520190187_1000x715.jpg"
+            },
+
+            {
+                nome: "Deserto do Saara",
+                pais: "Diversos países",
+                continente: "África",
+                coordenadas: "23.4162, 25.6628",
+
+                descricao:
+                    "O maior deserto quente do planeta, atravessando grande parte do norte da África e apresentando paisagens de dunas, montanhas e planícies.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Sahara_desert.jpg"
+            },
+
+            {
+                nome: "Sydney Opera House",
+                pais: "Austrália",
+                continente: "Oceania",
+                coordenadas: "-33.8568, 151.2153",
+
+                descricao:
+                    "Um dos edifícios mais reconhecidos da Austrália. Sua arquitetura em forma de velas tornou-se símbolo internacional de Sydney.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_Opera_House_-_Dec_2008.jpg"
+            },
+
+            {
+                nome: "Grande Barreira de Corais",
+                pais: "Austrália",
+                continente: "Oceania",
+                coordenadas: "-18.2871, 147.6992",
+
+                descricao:
+                    "O maior sistema de recifes de coral do mundo, localizado na costa nordeste da Austrália e conhecido por sua extraordinária biodiversidade marinha.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Great_Barrier_Reef.jpg"
+            },
+
+            {
+                nome: "Uluru",
+                pais: "Austrália",
+                continente: "Oceania",
+                coordenadas: "-25.3444, 131.0369",
+
+                descricao:
+                    "Monólito de arenito localizado no centro da Austrália. Possui enorme importância cultural para os povos aborígenes da região.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Uluru_%28Ayers_Rock%29.jpg"
+            },
+
+            {
+                nome: "Moai da Ilha de Páscoa",
+                pais: "Chile",
+                continente: "América do Sul",
+                coordenadas: "-27.1127, -109.3497",
+
+                descricao:
+                    "Monumentais estátuas de pedra criadas pelo povo Rapa Nui na Ilha de Páscoa, sendo um dos maiores mistérios arqueológicos do Pacífico.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Moai_Rano_raraku.jpg"
+            },
+
+            {
+                nome: "Salto Ángel",
+                pais: "Venezuela",
+                continente: "América do Sul",
+                coordenadas: "5.9670, -62.5362",
+
+                descricao:
+                    "Uma das maiores quedas d'água do mundo, localizada no Parque Nacional Canaima, em uma região de impressionantes montanhas de topo plano.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Angel_Falls.jpg"
+            },
+
+            {
+                nome: "Torres del Paine",
+                pais: "Chile",
+                continente: "América do Sul",
+                coordenadas: "-51.2530, -72.9820",
+
+                descricao:
+                    "Parque nacional conhecido por montanhas, glaciares, lagos e enormes formações rochosas na Patagônia chilena.",
+
+                imagem:
+                    "https://wallpaperaccess.com/full/5730164.jpg"
+            },
+
+            {
+                nome: "Aurora Boreal",
+                pais: "Noruega",
+                continente: "Europa",
+                coordenadas: "69.6492, 18.9553",
+
+                descricao:
+                    "Fenômeno natural caracterizado por enormes cortinas luminosas no céu, observado principalmente em regiões próximas ao Círculo Polar Ártico.",
+
+                imagem:
+                    "https://1.bp.blogspot.com/-eYe7-_1BIxg/WKhVnYZZVdI/AAAAAAAA7wk/LGVa9qnbNs81yw4aGGlbjCpycqrHO4vMgCLcB/s1600/533936+-+copia.jpg"
+            },
+
+            {
+                nome: "Canais de Veneza",
+                pais: "Itália",
+                continente: "Europa",
+                coordenadas: "45.4408, 12.3155",
+
+                descricao:
+                    "A cidade de Veneza é famosa por seus canais, pontes históricas, arquitetura e pelo sistema tradicional de transporte por gôndolas.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Venice_Grand_Canal.jpg"
+            },
+
+            {
+                nome: "Acrópole de Atenas",
+                pais: "Grécia",
+                continente: "Europa",
+                coordenadas: "37.9715, 23.7257",
+
+                descricao:
+                    "Antiga cidadela localizada sobre uma colina de Atenas. O Partenon, dedicado à deusa Atena, é seu monumento mais famoso.",
+
+                imagem:
+                    "https://cdn.getyourguide.com/img/location/53bffc8761175-m1404810424.jpg/88.jpg"
+            },
+
+            {
+                nome: "Palácio de Versalhes",
+                pais: "França",
+                continente: "Europa",
+                coordenadas: "48.8049, 2.1204",
+
+                descricao:
+                    "Magnífico palácio francês associado à monarquia absolutista e conhecido por seus jardins e pela famosa Galeria dos Espelhos.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Chateau_Versailles_Galerie_des_Glaces.jpg"
+            },
+
+            {
+                nome: "Cristo Rei",
+                pais: "Portugal",
+                continente: "Europa",
+                coordenadas: "38.6780, -9.1714",
+
+                descricao:
+                    "Grande monumento religioso situado em Almada, próximo a Lisboa, inspirado no Cristo Redentor brasileiro.",
+
+                imagem:
+                    "https://cdn.generationvoyage.fr/2025/03/Le-Cristo-Rei-a-Lisbonne-au-Portugal-1536x1150.jpeg"
+            },
+
+            {
+                nome: "Templo de Borobudur",
+                pais: "Indonésia",
+                continente: "Ásia",
+                coordenadas: "-7.6079, 110.2038",
+
+                descricao:
+                    "Um dos maiores monumentos budistas do mundo, construído no século IX e decorado com milhares de relevos e centenas de estátuas.",
+
+                imagem:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Borobudur-Nothwest-view.jpg"
+            },
+
+            {
+                nome: "Baía de Ha Long",
+                pais: "Vietnã",
+                continente: "Ásia",
+                coordenadas: "20.9101, 107.1839",
+
+                descricao:
+                    "Famosa baía vietnamita formada por milhares de ilhas e formações calcárias que emergem das águas do Golfo de Tonkin.",
+
+                imagem:
+                    "https://mybestplace.com/uploads/2019/12/Baia-di-Halong-Vietnam-2.jpg"
+            }
+
+        ];
+
+
+        /* =========================================================
+           ELEMENTOS
+        ========================================================= */
+
+        const lista = document.getElementById("listaDestinos");
+
+        const pesquisa = document.getElementById("pesquisa");
+
+        const botoes = document.querySelectorAll(".filter");
+
+
+        let continenteAtual = "Todos";
+
+
+        /* =========================================================
+           RENDERIZAR DESTINOS
+        ========================================================= */
+
+        function renderizarDestinos() {
+
+            const termo = pesquisa.value.toLowerCase().trim();
+
+            lista.innerHTML = "";
+
+
+            const resultados = destinos.filter(destino => {
+
+                const correspondeContinente =
+                    continenteAtual === "Todos" ||
+                    destino.continente === continenteAtual;
+
+                const correspondePesquisa =
+                    destino.nome.toLowerCase().includes(termo) ||
+                    destino.pais.toLowerCase().includes(termo) ||
+                    destino.descricao.toLowerCase().includes(termo);
+
+                return correspondeContinente && correspondePesquisa;
+
+            });
+
+
+            if (resultados.length === 0) {
+
+                lista.innerHTML = `
+                    <div style="
+                        grid-column: 1 / -1;
+                        text-align:center;
+                        padding:60px 20px;
+                    ">
+
+                        <h2>🌎 Nenhum destino encontrado</h2>
+
+                        <p style="
+                            color:#64748b;
+                            margin-top:10px;
+                        ">
+                            Tente pesquisar outro monumento ou país.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            resultados.forEach(destino => {
+
+                const mapa =
+                    `https://www.google.com/maps/search/?api=1&query=${destino.coordenadas}`;
+
+
+                const card = document.createElement("article");
+
+                card.className = "card";
+
+
+                card.innerHTML = `
+
+                    <div class="imagem-container">
+
+                        <img
+                            src="${destino.imagem}"
+                            alt="${destino.nome}"
+                            loading="lazy"
+                            onerror="this.src='https://via.placeholder.com/800x500?text=Imagem+indisponível'"
+                        >
+
+                        <span class="continente">
+                            ${destino.continente}
+                        </span>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <h3>
+                            ${destino.nome}
+                        </h3>
+
+
+                        <div class="pais">
+                            🌎 ${destino.pais}
+                        </div>
+
+
+                        <p class="descricao">
+                            ${destino.descricao}
+                        </p>
+
+
+                        <div class="coordenadas">
+
+                            <strong>
+                                📍 Coordenadas
+                            </strong>
+
+                            <span>
+                                ${destino.coordenadas}
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            class="mapa"
+                            href="${mapa}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            🗺️ Ver no Google Maps
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                lista.appendChild(card);
+
+            });
+
+        }
+
+
+        /* =========================================================
+           FILTROS
+        ========================================================= */
+
+        botoes.forEach(botao => {
+
+            botao.addEventListener("click", () => {
+
+                botoes.forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                botao.classList.add("active");
+
+                continenteAtual =
+                    botao.dataset.cont;
+
+                renderizarDestinos();
+
+            });
+
+        });
+
+
+        /* =========================================================
+           PESQUISA
+        ========================================================= */
+
+        pesquisa.addEventListener(
+            "input",
+            renderizarDestinos
+        );
+
+
+        /* =========================================================
+           INICIALIZAÇÃO
+        ========================================================= */
+
+        renderizarDestinos();
+
+    </script>
+
+</body>
+</html>
